@@ -1,7 +1,72 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+$primary-background: radial-gradient(circle, rgb(105, 116, 169) 0%, rgb(195, 154, 163) 100%);
 ;
 
+* {
+  // border: 2px solid orange;
+}
+
 body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
   background: $primary-background;
+}
+
+.container {
+  display: grid;
+  height: 100 vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 4fr 5fr 8fr 0.4fr;
+  grid-template-areas: "nav nav nav nav"
+  "sidebar main main main"
+  "sidebar content1 content2 content3"
+  "sidebar footer footer footer";
+  grid-gap: 0.5rem;
+}
+
+nav {
+  background: rgb(139, 165, 108);
+  grid-area: nav;
+}
+
+main {
+  background: rgb(120, 197, 230);
+  grid-area: main;
+  margin-right: 1rem;
+  border-radius: 10px;
+}
+
+aside {
+  background: rgb(4, 134, 137);
+  grid-area: sidebar;
+}
+
+.content {
+  margin-top: 1.2rem;
+}
+
+.content-1 {
+  background: rgb(150, 98, 218);
+  grid-area: content1;
+  border-radius: 10px;
+}
+
+.content-2 {
+  background: rgb(196, 73, 120);
+  grid-area: content2;
+  border-radius: 10px;
+}
+
+.content-3 {
+  background: rgb(108, 90, 113);
+  grid-area: content3;
+  border-radius: 10px;
+  margin-right: 1rem;
+}
+
+footer {
+  background: rgb(102, 244, 142);
+  grid-area: footer;
+  margin-top: 2rem;
 }
