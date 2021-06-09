@@ -13,15 +13,43 @@ body {
   background: $primary-background;
 }
 
-.container {
+// PAGE LOGIN
+.container-login {
   display: grid;
-  height: 100 vh;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 4fr 5fr 8fr 0.4fr;
+  grid-template-areas: "nav-l nav-l nav-l nav-l"
+  "sidebar-l main-l main-l main-l"
+  "sidebar-l main-l main-l main-l"
+  "sidebar-l main-l main-l main-l";
+}
+
+.nav-login {
+  background: palegreen;
+  grid-area: nav-l;
+}
+
+.main-login {
+  background: palevioletred;
+  grid-area: main-l;
+}
+
+.aside-login {
+  background:rgb(120, 197, 230);
+  grid-area: sidebar-l;
+}
+
+// MAIN DASHBOARD
+.container-main {
+  display: grid;
+  height: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 4fr 5fr 8fr 0.4fr;
   grid-template-areas: "nav nav nav nav"
   "sidebar main main main"
   "sidebar content1 content2 content3"
-  "sidebar footer footer footer";
+  "sidebar content1 content2 content3";
   grid-gap: 0.5rem;
 }
 
@@ -43,7 +71,7 @@ aside {
 }
 
 .content {
-  margin-top: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .content-1 {
@@ -65,8 +93,6 @@ aside {
   margin-right: 1rem;
 }
 
-footer {
-  background: rgb(102, 244, 142);
-  grid-area: footer;
-  margin-top: 2rem;
+.hidden {
+  display: none;
 }
