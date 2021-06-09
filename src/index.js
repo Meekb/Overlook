@@ -1,11 +1,12 @@
 // import apiCalls from "./apiCalls";
 import { getAllData } from '../src/apiCalls';
 
-let customersData, allRoomsData, allBookingsData;
+let allData, customersData, allRoomsData, allBookingsData;
 
 
 window.onload = () => {
-    console.log('starting')
-    getAllData('customers')
-      .then(response => customersData = response);
+  console.log('starting')
+  // getAllData()
+  //   .then(response => allData = response);
+  // console.log(allData);
 }     

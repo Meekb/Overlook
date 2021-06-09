@@ -2,6 +2,13 @@ class Customer {
   constructor(newCustomer) {
     this.id = newCustomer.id;
     this.name = newCustomer.name;
-    console.log(newCustomer);
+    this.bookings = [];
   }
+
+//   getBookingsTotal() {
+//       this.bookings.reduce()...this.
+//   }
+
 }
+
+export default Customer;
