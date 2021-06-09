@@ -23,12 +23,12 @@ describe('Customer', () => {
   });
 
   it('should have a an id', function() {
-    expect(cust1.id).to.equal(8);
-    expect(cust5.id).to.equal(45);
+    expect(cust1.id).to.equal(2);
+    expect(cust5.id).to.equal(37);
   });
 
   it('should have a name', function() {
-    expect(cust2.name).to.equal("Rocio Schuster");
+    expect(cust2.name).to.equal("Era Hand");
   });
 
   it('should have an array of all bookings', function() {
