@@ -28,6 +28,7 @@ To verify that it is setup correctly, run `npm start` in your terminal. Go to `h
 
 ### JavaScript
 
+
 You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
 
 **Create all of your feature code files in the `src` directory.**
