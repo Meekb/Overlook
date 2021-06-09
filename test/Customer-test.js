@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 import sampleCustomersData from '../SampleData/sample-customers';
-import Customer from '../Classes/Customer'
+import Customer from '../Classes/Customer';
 
 
 let customerData, newCustomer;
@@ -19,6 +19,10 @@ describe('Customer', () => {
 
   it('should have a name', function() {
     expect(newCustomer.name).to.equal("Era Hand");
+  });
+
+  it('should have an array of all bookings', function() {
+    expect(newCustomer.bookings).to.be.an('array');
   });
 
 });
