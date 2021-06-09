@@ -1,18 +1,24 @@
 import chai from 'chai';
 const expect = chai.expect;
-import testCustomersData from './test/Customer-test';
+import sampleCustomersData from '../SampleData/sample-customers';
+import Customer from '../Classes/Customer'
 
-let customer;
 
+let customerData, newCustomer;
 
-describe('Customer', function() => {
+describe('Customer', () => {
+
+  beforeEach(() => {
+    customerData = sampleCustomersData.customers[0];
+  })
   
-  beforeEach(function() => {
-    customer = new Customer(testCustomersData[0]);
+  it('should have a an id', function() {
+    newCustomer = new Customer(customerData);
+    expect(newCustomer.id).to.equal(8);
   });
 
-
-  it('should return true', function() {
-    expect(true).to.equal(true);
+  it('should have a name', function() {
+    expect(newCustomer.name).to.equal("Era Hand");
   });
+
 });
