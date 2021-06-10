@@ -1,6 +1,8 @@
 import apiCalls from './apiCalls';
 import domUpdates from './domUpdates';
 import Customer from '../Classes/Customer';
+import Room from '../Classes/Room';
+import Booking from '../Classes/Booking';
 
 
 
@@ -21,17 +23,16 @@ let customer;
 
 //EVENT HANDLERS
 window.onload = () => {
-  console.log('starting')
   apiCalls.receiveData()
     .then((promise) => {
       customersData = promise[0];
       roomsData = promise[1];
       bookingsData = promise[2];
-      console.log('customer data', customersData);
-      console.log('rooms data', roomsData);
-      console.log('bookings data', bookingsData);
+      console.log('customer data', customersData, 'rooms data', roomsData, 'bookings data', bookingsData);
     }); 
+    // right now im generating a random customer. need a function that takes that index number and retrieves the individual customer information with customers/id endpoint.
 } 
+
 
 
 loginBtn.addEventListener('click', (event) => {
@@ -39,14 +40,23 @@ loginBtn.addEventListener('click', (event) => {
   let username = loginForm.username.value;
   let password = loginForm.password.value;
   if (username === 'customer50' && password === 'overlook2021') {
-    customer = new Customer(getRandomIndex(customersData));
-    console.log(customer);
+    // let index = getRandomIndex(customersData)
+    // console.log(index);
+    console.log(Customer);
+    // console.log(customer);
+    // console.log(customer.id);
     domUpdates.toggleLoginPage();
   } 
 });
 
 
 // FUNCTIONS
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
+function getRandomIndex(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
+
+
+// function generateAll() {
+//   customer = new Customer()
+// }
+
