@@ -1,5 +1,6 @@
 import apiCalls from './apiCalls';
-import Customer from '../Classes/Customer'
+import domUpdates from './domUpdates';
+import Customer from '../Classes/Customer';
 
 
 
@@ -40,6 +41,7 @@ loginBtn.addEventListener('click', (event) => {
   if (username === 'customer50' && password === 'overlook2021') {
     customer = new Customer(getRandomIndex(customersData));
     console.log(customer);
+    domUpdates.toggleLoginPage();
   } 
 });
 

@@ -25,4 +25,4 @@ let dataToPost = (postData, pathEnd) => {
     return Promise.all([sendData(postData, `http://localhost:3001/api/v1/${pathEnd}`)]);
 }
 
-export default { receiveData };
+export default { receiveData, dataToPost };
