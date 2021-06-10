@@ -32,7 +32,8 @@ describe('Customer', () => {
   });
 
   it('should have an array of all bookings', function() {
-    expect(cust4.bookings).to.be.an('array');
+    expect(cust4.bookingHistory).to.be.an('array');
+    expect(cust4.bookingHistory.length).to.be.equal(0);
   });
 
 });
