@@ -1,6 +1,7 @@
 class Service {
-  constructor() {
-
+  constructor(newService) {
+    this.type = newService.type;
+    this.totalCharge = newService.totalCharge;
   }
 }
 

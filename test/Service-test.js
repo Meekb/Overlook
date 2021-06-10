@@ -10,30 +10,31 @@ describe('Booking', () => {
 
   beforeEach(() => {
     let servData = sampleServicesData.services;
-    serv1 = new Booking(servData[0]);
-    serv2 = new Booking(servData[1]);
-    serv3 = new Booking(servData[2]);
-    serv4 = new Booking(servData[3]);
-    serv5 = new Booking(servData[4]);
+    serv1 = new Service(servData[0]);
+    serv2 = new Service(servData[1]);
+    serv3 = new Service(servData[2]);
+    serv4 = new Service(servData[3]);
+    serv5 = new Service(servData[4]);
   });
 
   it('should be an instance of Service', function() {
     expect(serv1).to.be.instanceOf(Service);
   });
 
-  it.skip('should have a type', function() {
+  it('should have a type', function() {
     expect(serv2.type).to.be.a('string');
     expect(serv2.type).to.be.equal('laundry');
   });
 
-  it.skip('should be able to have another type', function {
-    expect(serv3.type).to.be.equal('movie rental');
-    expect(serv4.type).to.be.equal('cabana rental');
+  it('should be able to have another type', function() {
+    expect(serv3.type).to.be.equal('valet');
+    expect(serv5.type).to.be.equal('pool cabana');
   });
 
-  it.skip('should have a total cost', function() {
-      expect(serv4.totalCost).to.be.a('number');
-      expect(serv4.totalCost).to.be.equal(117.00);
+  it('should have a total cost charged for the service', function() {
+      expect(serv4.totalCharge).to.be.a('number');
+      expect(serv4.totalCharge).to.be.equal(12.50);
+      expect(serv5.totalCharge).to.be.equal(117.38);
   });
 
 });
