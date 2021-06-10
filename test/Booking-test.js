@@ -2,6 +2,7 @@ import chai from 'chai';
 const expect = chai.expect;
 import sampleBookingsData from '../SampleData/sample-bookings';
 import Booking from '../Classes/Booking';
+import Customer from '../Classes/Customer';
 // import Room from '../Classes/Room';
 
 let booking1, booking2, booking3, booking4, booking5, booking6;

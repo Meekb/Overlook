@@ -1,3 +1,5 @@
+import sampleRoomsData from "../SampleData/sample-rooms";
+
 class Customer {
   constructor(newCustomer) {
     this.id = newCustomer.id;
@@ -5,9 +7,16 @@ class Customer {
     this.bookingHistory = [];
   }
 
-//   getBookingsTotal() {
-//       this.bookings.reduce()...this.
-//   }
+  getBookingsTotal() {
+    let total = this.bookingHistory.reduce((acc, cur) => {
+      sampleRoomsData.rooms.find(room => {
+        room.number === cur.roomNumber;
+        cur.roomTotal = room.costPerNight;
+      });
+     return acc += cur.roomTotal;
+    }, 0);  
+    return total;
+  }
 
 }
 
