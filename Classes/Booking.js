@@ -7,13 +7,13 @@ class Booking {
     this.roomServiceCharges = [];
   }
 
-  // method to find customer info
+  // method to find customer info using the userID
 
   // method to block the room from availability for booked dates
 
   // method to total room service charges
 
-  // method to total the room total for booked nights 
+  // method to total the room charged for booked nights 
 
   // method to total all charges at checkout
 }
