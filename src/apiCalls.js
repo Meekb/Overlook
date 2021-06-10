@@ -1,12 +1,13 @@
 let getData = (pathEnd) => fetch(`http://localhost:3001/api/v1/${pathEnd}`)
   .then(response => response.json())
+  .then(data => data)
   .catch(err => console.log('error', err))
 
 
 function receiveData() {
     return Promise.all([getData('customers'), getData('rooms'), getData('bookings')]);
-    // getData(`customers/${customer.id}`),
 }
+// getData(`customers/${id}`)
 
 // let dataSend = (sentData, url) => {
 //     return fetch(url, {
