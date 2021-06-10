@@ -12,13 +12,14 @@ import Booking from '../Classes/Booking';
 const loginForm = document.getElementById('loginForm');
 const loginBtn = document.getElementById('loginBtn');
 const loginErrMsg = document.getElementById('loginErrMsg');
+const detailBtn = document.getElementById('detailBtn');
 
 //GLOBAL DATA VARIABLES
 let customersData, roomsData, bookingsData;
 let customer;
 
 // EVENT LISTENERS
-
+detailBtn.addEventListener('click', generateHistory);
 
 
 //EVENT HANDLERS
@@ -33,21 +34,31 @@ window.onload = () => {
     // right now im generating a random customer. need a function that takes that index number and retrieves the individual customer information with customers/id endpoint.
 } 
 
-
-
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
   let username = loginForm.username.value;
   let password = loginForm.password.value;
   if (username === 'customer50' && password === 'overlook2021') {
-    // let index = getRandomIndex(customersData)
-    // console.log(index);
-    console.log(Customer);
-    // console.log(customer);
-    // console.log(customer.id);
+    let index = getRandomIndex(customersData.customers);
+    customer = new Customer(index);
+    customer.getBookingsHistory(bookingsData);
+    customer.bookingsTotal = customer.getBookingsTotal(roomsData);
     domUpdates.toggleLoginPage();
+    domUpdates.greetCustomer(customer);
+    domUpdates.displayCustDetail(customer);
   } 
 });
+
+function generateHistory(event) {
+  event.preventDefault();
+  let history = customer.bookingHistory;
+  history.forEach(entry => {
+    let format = entry.date.split('/');
+    entry.date = `${format[1]}/${format[2]}/${format[0]}`;
+  });
+  domUpdates.displayHistory(history);
+}
+
 
 
 // FUNCTIONS
@@ -55,8 +66,4 @@ function getRandomIndex(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-
-// function generateAll() {
-//   customer = new Customer()
-// }
 

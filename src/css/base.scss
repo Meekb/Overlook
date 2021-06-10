@@ -23,7 +23,7 @@ body {
   "sidebar-l main-l main-l main-l"
   "sidebar-l main-l main-l main-l"
   "sidebar-l main-l main-l main-l";
-  grid-gap: 1rem;
+  grid-gap: 0.5rem;
 }
 
 .nav-login {
@@ -97,22 +97,40 @@ body {
 nav {
   background: rgb(139, 165, 108);
   grid-area: nav;
+  font-size: 42px;
+  text-align: center;
+  padding-top: 60px;
 }
 
-main {
+.book-room-area {
   background: rgb(120, 197, 230);
   grid-area: main;
   margin-right: 1rem;
   border-radius: 10px;
+  text-align: center;
 }
 
 aside {
   background: rgb(4, 134, 137);
   grid-area: sidebar;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  overflow: scroll;
+
+  p {
+    font-size: 22px;
+  }
+
 }
 
+// .all-details {
+
+// }
+
 .content {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .content-1 {

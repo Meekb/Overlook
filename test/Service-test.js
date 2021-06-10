@@ -6,7 +6,7 @@ import sampleServicesData from '../SampleData/sample-services';
 
 let serv1, serv2, serv3, serv4, serv5;
 
-describe('Booking', () => {
+describe('Service', () => {
 
   beforeEach(() => {
     let servData = sampleServicesData.services;
