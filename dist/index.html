@@ -8,12 +8,15 @@
 </head>
 <body>
   
-  <section class="container-login">
+  <section class="container-login" id="loginPage">
     <nav class="nav-login">LOGIN NAVBAR</nav>
     <main class="main-login">
+      <div class="login-error-container">
+        <p class="login-err-msg" id="loginErrMsg">Invalid username <span class="login-err-msg" id="loginErrLine2">and/or password</span></p>
+      </div>
       <form action="URLtoSendto" name="login" id="loginForm">
         <input type="text" id="username" placeholder="username" class="username" required>
-        <input type="text" id="password" placeholder="password" class="password" required>
+        <input type="password" id="password" placeholder="password" class="password" required>
         <div class="login-btn-container">
           <button type="submit" name="login" form="loginForm" formmethod="GET" class="login-btn" id="loginBtn">Login</button>
         </div>
@@ -22,7 +25,7 @@
     <aside class="aside-login">LOGIN SIDEBAR</aside>
   </section>
 
-  <section class="container-main hidden">
+  <section class="container-main hidden" id="mainPage">
     <nav class="nav-bar" id="navBar">NAV BAR</nav>
     <main class="main" id="main">MAIN</main>
     <aside class="sidebar" id="sideBar">Sidebar</aside>

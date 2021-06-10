@@ -3,8 +3,9 @@ let getData = (pathEnd) => fetch(`http://localhost:3001/api/v1/${pathEnd}`)
   .catch(err => console.log('error', err))
 
 
-function getAllData() {
-    return Promise.all([getData('customers'), getData(`customers/${id}`), getData('rooms'), getData('bookings')]);
+function receiveData() {
+    return Promise.all([getData('customers'), getData('rooms'), getData('bookings')]);
+    // getData(`customers/${customer.id}`),
 }
 
 // let dataSend = (sentData, url) => {
@@ -24,4 +25,4 @@ let dataToPost = (postData, pathEnd) => {
     return Promise.all([sendData(postData, `http://localhost:3001/api/v1/${pathEnd}`)]);
 }
 
-export default { getAllData };
+export default { receiveData, dataToPost };
