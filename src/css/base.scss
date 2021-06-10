@@ -23,6 +23,7 @@ body {
   "sidebar-l main-l main-l main-l"
   "sidebar-l main-l main-l main-l"
   "sidebar-l main-l main-l main-l";
+  grid-gap: 1rem;
 }
 
 .nav-login {
@@ -33,11 +34,51 @@ body {
 .main-login {
   background: palevioletred;
   grid-area: main-l;
+  border-radius: 10px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  .username {
+    height: 1.5rem;
+    margin-top: 100px;
+    margin-left: 430px;
+    font-size: 18px;
+    background: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 3px solid black;
+  }
+
+  .password {
+    height: 1.5rem;
+    margin-left: 430px;
+    font-size: 18px;
+    background: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 3px solid black;
+  }
+
+  .login-btn {
+    margin-top: 25px;
+    margin-left: 465px;
+    width: 120px;
+    height: 35px;
+    border: 1px solid chartreuse;
+    border-radius: 4px;
+    background: none;
+  }
+
 }
 
 .aside-login {
   background:rgb(120, 197, 230);
   grid-area: sidebar-l;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 // MAIN DASHBOARD

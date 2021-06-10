@@ -7,15 +7,16 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px"> -->
+  
   <section class="container-login">
     <nav class="nav-login">LOGIN NAVBAR</nav>
     <main class="main-login">
-      <form action="URLtoSendto" name="login">
-        <input type="text" id="username" placeholder="username">
-        <label for="username">Username</label>
-        <input type="text" id="password" placeholder="password">
-        <label for="password">Password</label>
+      <form action="URLtoSendto" name="login" id="loginForm">
+        <input type="text" id="username" placeholder="username" class="username" required>
+        <input type="text" id="password" placeholder="password" class="password" required>
+        <div class="login-btn-container">
+          <button type="submit" name="login" form="loginForm" formmethod="GET" class="login-btn" id="loginBtn">Login</button>
+        </div>
       </form>
     </main>
     <aside class="aside-login">LOGIN SIDEBAR</aside>
