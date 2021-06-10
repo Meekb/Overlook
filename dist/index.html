@@ -9,7 +9,7 @@
 <body>
   
   <section class="container-login" id="loginPage">
-    <nav class="nav-login">LOGIN NAVBAR</nav>
+    <nav class="nav-login"></nav>
     <main class="main-login">
       <div class="login-error-container">
         <p class="login-err-msg" id="loginErrMsg">Invalid username <span class="login-err-msg" id="loginErrLine2">and/or password</span></p>
@@ -26,9 +26,19 @@
   </section>
 
   <section class="container-main hidden" id="mainPage">
-    <nav class="nav-bar" id="navBar">NAV BAR</nav>
-    <main class="main" id="main">MAIN</main>
-    <aside class="sidebar" id="sideBar">Sidebar</aside>
+    <nav class="nav-bar" id="navBar"><h1>Welcome User!</h1></nav>
+    <main class="book-room-area" id="bookRoom"><h2>Book A Room</h2></main>
+    
+    <aside class="sidebar" id="sideBar">
+      <h2>History Overlook</h2>
+      <p class="detail-text" id="detailText">Customer Detail</p>
+      <p class="total-bookings" id="totalBookings">Total Bookings at Overlook:</p>
+      <p class="total-spent" id="totalSpent">Total Spent at Overlook:</p>
+      <button class="details-btn" id="detailBtn" name="Get Details">See Booking History</button>
+      <div class="all-details" id="allDetails">
+      </div>
+    </aside>
+    
     <section class="content content-1" id="content1">Content1</section>
     <section class="content content-2" id="content2">Content2</section>
     <section class="content content-3" id="content3">Content3</section>

@@ -42,6 +42,11 @@ describe('Customer', () => {
     expect(cust4.bookingHistory.length).to.be.equal(0);
   });
 
+  it('should get be able to populate those bookings into the bookingHistory', function() {
+    const thisHistory = cust4.getBookingsHistory(sampleBookingsData);
+    expect(cust4.bookingHistory.length).to.equal(2);
+  });
+
   it('should have way to calculate the total of all bookings, past, present, and future', function () {
     booking1 = new Booking(sampleBookingsData.bookings[2]);
     booking2 = new Booking(sampleBookingsData.bookings[6]);
@@ -49,7 +54,7 @@ describe('Customer', () => {
     room2 = booking2.roomNumber;
     cust4.bookingHistory.push(booking1);
     cust4.bookingHistory.push(booking2);
-    expect(cust4.getBookingsTotal()).to.be.equal(414.48);
+    expect(cust4.getBookingsTotal(sampleRoomsData)).to.be.equal(551.19);
   });
 
 });
