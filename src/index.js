@@ -12,7 +12,9 @@ import Booking from '../Classes/Booking';
 const loginForm = document.getElementById('loginForm');
 const loginBtn = document.getElementById('loginBtn');
 const loginErrMsg = document.getElementById('loginErrMsg');
-const detailBtn = document.getElementById('detailBtn');
+const detailsBtn = document.getElementById('detailBtn');
+const hideDetailBtn = document.getElementById('hideDetailBtn')
+const sideBar = document.getElementById("sideBar")
 
 //GLOBAL DATA VARIABLES
 let customersData, roomsData, bookingsData;
@@ -20,6 +22,7 @@ let customer;
 
 // EVENT LISTENERS
 detailBtn.addEventListener('click', generateHistory);
+hideDetailBtn.addEventListener('click', closeHistory);
 
 
 //EVENT HANDLERS
@@ -57,7 +60,15 @@ function generateHistory(event) {
     entry.date = `${format[1]}/${format[2]}/${format[0]}`;
   });
   domUpdates.displayHistory(history);
+  domUpdates.hideShowBtns(detailsBtn, hideDetailBtn);
 }
+
+function closeHistory() {
+  domUpdates.clearHistoryArea();
+  domUpdates.hideShowBtns(hideDetailBtn, detailBtn);
+}
+
+// function 
 
 
 

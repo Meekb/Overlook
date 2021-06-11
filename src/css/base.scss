@@ -1,5 +1,5 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: rgb(135, 35, 35);
+$primary-background: #872323;
 ;
 
 * {
@@ -29,6 +29,10 @@ body {
 .nav-login {
   background: rgb(92, 111, 92);
   grid-area: nav-l;
+
+  h1 {
+    margin-top: 5px;
+  }
 }
 
 .main-login {
@@ -37,38 +41,43 @@ body {
   border-radius: 10px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
+  justify-content: center;
+  align-items: center;
 
   .username {
     height: 1.5rem;
-    margin-top: 100px;
-    margin-left: 430px;
-    font-size: 18px;
+    margin-top: 85px;
     background: none;
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid black;
   }
 
   .password {
     height: 1.5rem;
-    margin-left: 430px;
-    font-size: 18px;
+    margin-top: 35px;
     background: none;
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: 3px solid black;
+    border-bottom: 2px solid black;
   }
 
   .login-btn {
     margin-top: 25px;
-    margin-left: 465px;
+    margin-left: 45px;
     width: 120px;
     height: 35px;
     border: 2px solid rgb(188, 96, 16);
     border-radius: 4px;
     background: none;
+    font-size: 18px;
+    // font-weight: bold;
+  }
+
+  .label {
+    margin-right: 30px;
   }
 
 }
@@ -80,6 +89,8 @@ body {
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
 }
+
+
 
 // MAIN DASHBOARD
 .container-main {
@@ -94,6 +105,14 @@ body {
   grid-gap: 0.5rem;
 }
 
+form {
+  font-size: 20px;
+}
+
+.date {
+  font-size: 18px;
+}
+
 nav {
   background: rgb(139, 165, 108);
   grid-area: nav;
@@ -102,16 +121,23 @@ nav {
   padding-top: 60px;
 }
 
-.book-room-area {
-  background: rgb(120, 197, 230);
+main {
+  background: #78c5e6;
   grid-area: main;
   margin-right: 1rem;
   border-radius: 10px;
   text-align: center;
 }
 
+.book-it-btn {
+  border: 2px solid #872323;
+  border-radius: 4px;
+  background: none;
+  font-size: 20px;
+}
+
 aside {
-  background: rgb(4, 134, 137);
+  background: #048689;
   grid-area: sidebar;
   text-align: center;
   border-radius: 10px;
@@ -123,11 +149,31 @@ aside {
     font-size: 22px;
   }
 
+  .details-btn {
+    border: 2px solid #872323;
+    border-radius: 4px;
+    background: none;
+    font-size: 18px;
+    height: 2.8rem;
+  }
+
+  .hide-details-btn {
+    border: 2px solid #872323;
+    border-radius: 4px;
+    background: none;
+    font-size: 18px;
+    height: 2.8rem;
+  }
+
+  li { 
+    font-size: 20px;
+    background: rgb(249, 248, 246);
+    margin-right: 35px;
+    padding: 10px;
+    border: 2px solid black;
+  } 
+
 }
-
-// .all-details {
-
-// }
 
 .content {
   margin-bottom: 0.5rem;

@@ -20,6 +20,11 @@ let domUpdates = {
     mainPage.classList.remove('hidden');
   },
 
+  hideShowBtns(btn1, btn2) {
+    btn1.classList.add('hidden');
+    btn2.classList.remove('hidden');
+  },
+
   greetCustomer(customer) {
     navBar.innerHTML = `Welcome back, ${customer.name.split(' ').shift()}!`;
     detailText.innerHTML = `${customer.name}`;
@@ -31,20 +36,25 @@ let domUpdates = {
   },
 
   displayHistory(history) {
-
     history.forEach(entry => {
       allDetails.innerHTML +=  
        `  
          <ul>
          <li>
          Date: ${entry.date}
+         <br>
          Room: ${entry.roomNumber}
+         <br>
          Room Total: ${entry.roomTotal}
          </li> 
          </ul>
        `
      });  
   },
+
+  clearHistoryArea() {
+    allDetails.innerHTML = '';
+  }
 
 
 
