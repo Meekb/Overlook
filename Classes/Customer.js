@@ -23,6 +23,8 @@ class Customer {
       data.rooms.filter(rm => {
         if (rm.number === entry.roomNumber) {
           entry.roomTotal = rm.costPerNight;
+          entry.roomType = rm.roomType;
+          console.log(this.bookingHistory);
         }
       });
     });

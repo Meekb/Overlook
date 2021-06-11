@@ -1,5 +1,5 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: #872323;
+$primary-background: #050505;
 ;
 
 * {
@@ -36,17 +36,21 @@ body {
 }
 
 .main-login {
-  background: rgb(232, 186, 201);
+  background-image: url(../images/over-overlook.png);
+  background-size: cover;
   grid-area: main-l;
   border-radius: 10px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   justify-content: center;
   align-items: center;
+  color: whitesmoke;
+  text-shadow: 3px 3px #040404;
+  font-weight: bold;
 
   .username {
     height: 1.5rem;
-    margin-top: 85px;
+    margin-top: 235px;
     background: none;
     border-top: none;
     border-right: none;
@@ -65,15 +69,17 @@ body {
   }
 
   .login-btn {
-    margin-top: 25px;
-    margin-left: 45px;
+    margin-top: 29px;
+    margin-left: 41px;
     width: 120px;
     height: 35px;
-    border: 2px solid rgb(188, 96, 16);
+    border: 3px solid #2e2f30;
     border-radius: 4px;
     background: none;
-    font-size: 18px;
-    // font-weight: bold;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 3px 3px #040404
   }
 
   .label {
@@ -88,6 +94,8 @@ body {
   border-radius: 10px;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
+  text-align: center;
+  font-size: 22px;
 }
 
 
@@ -130,38 +138,50 @@ main {
 }
 
 .book-it-btn {
-  border: 2px solid #872323;
+  border: 2px solid #2a2929;
   border-radius: 4px;
   background: none;
   font-size: 20px;
 }
 
-aside {
-  background: #048689;
+.sidebar {
+  background-image: url(../images/overlook-skypool.png);
+  background-size: cover;
   grid-area: sidebar;
   text-align: center;
   border-radius: 10px;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   overflow: scroll;
+  
 
   p {
-    font-size: 22px;
+    margin-top: 35px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1px 1px whitesmoke;
   }
 
   .details-btn {
-    border: 2px solid #872323;
+    border: 2px solid black;
     border-radius: 4px;
     background: none;
-    font-size: 18px;
     height: 2.8rem;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1.5px 1.5px whitesmoke;
   }
 
   .hide-details-btn {
-    border: 2px solid #872323;
+    border: 2px solid black;
+    color: black;
+    text-shadow: 1.5px 1.5px whitesmoke;
     border-radius: 4px;
     background: none;
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: bold;
     height: 2.8rem;
   }
 
@@ -177,22 +197,26 @@ aside {
 
 .content {
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .content-1 {
-  background: rgb(150, 98, 218);
+  background-image: url(../images/overlook-suite.png);
+  background-size: cover;
   grid-area: content1;
   border-radius: 10px;
 }
 
 .content-2 {
-  background: rgb(196, 73, 120);
+  background-image: url(../images/overlook-queen.png);
+  background-size: cover;
   grid-area: content2;
   border-radius: 10px;
 }
 
 .content-3 {
-  background: rgb(108, 90, 113);
+  background-image: url(../images/overlook-junior.png);
+  background-size: cover;
   grid-area: content3;
   border-radius: 10px;
   margin-right: 1rem;

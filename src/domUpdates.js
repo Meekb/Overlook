@@ -1,5 +1,5 @@
-import apiCalls from './apiCalls';
-import Customer from '../Classes/Customer';
+// import apiCalls from './apiCalls';
+// import Customer from '../Classes/Customer';
 
 
 let loginPage = document.getElementById('loginPage');
@@ -39,22 +39,24 @@ let domUpdates = {
     history.forEach(entry => {
       allDetails.innerHTML +=  
        `  
-         <ul>
-         <li>
-         Date: ${entry.date}
-         <br>
-         Room: ${entry.roomNumber}
-         <br>
-         Room Total: ${entry.roomTotal}
-         </li> 
-         </ul>
+        <ul>
+          <li>
+          Date: ${entry.date}
+          <br>
+          Room: ${entry.roomNumber}
+          <br>
+          Room Type: ${entry.roomType}
+          <br>
+          Room Total: ${entry.roomTotal}
+          </li> 
+        </ul>
        `
      });  
   },
 
   clearHistoryArea() {
     allDetails.innerHTML = '';
-  }
+  },
 
 
 

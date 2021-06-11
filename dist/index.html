@@ -49,12 +49,12 @@
       <h3>Select your dates:</h3>
       <form action="">
         <label for="check-in">Check-in</label>
-        <input type="date" class="date">
+        <input type="date" class="in-date" id="inDate">
       </form>
       <br>
       <form action="checkout">
         <label for="roomBooking">Checkout</label>
-        <input type="date" class="date">
+        <input type="date" class="out-date" id="outDate">
       </form>
       <br>
       <button type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
@@ -71,9 +71,17 @@
       </div>
     </aside>
     
-    <section class="content content-1" id="content1">Content1</section>
-    <section class="content content-2" id="content2">Content2</section>
-    <section class="content content-3" id="content3">Content3</section>
+    <section class="content content-1" id="luxeSuite">
+     <h2>Luxury Suite</h2>
+    </section>
+
+    <section class="content content-2" id="resSuite">
+      <h2>Residential Suite</h2>
+    </section>
+
+    <section class="content content-3" id="junSuite">
+      <h2>Junior Suite</h2>
+    </section>
   </section>  
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
