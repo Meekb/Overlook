@@ -57,17 +57,17 @@ window.onload = () => {
     // right now im generating a random customer. need a function that takes that index number and retrieves the individual customer information with customers/id endpoint??
 } 
 
-loginBtn.addEventListener('click', (event) => {
-  event.preventDefault();
-  let username = loginForm.username.value;
-  let password = loginForm.password.value;
-  let id = username.split('r')
-  id = id[1];
-  console.log(id);
-
+// loginBtn.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   let username = loginForm.username.value;
+//   let password = loginForm.password.value;
+//   let id = username.split('r')
+//   console.log(id);
+//   let userToLogIn = `http://localhost:3001/api/v1/customers/${id[1]}`
+//   console.log(userToLogIn)
       // let thisCustomer = promise[0];
       // console.log(thisCustomer)
-    }
+  // }
   // if (username === 'customer50' && password === 'overlook2021') {
     // let index = getRandomIndex(customersData.customers);
     // customer = new Customer(index);
@@ -76,6 +76,24 @@ loginBtn.addEventListener('click', (event) => {
     // domUpdates.toggleLoginPage();
     // domUpdates.greetCustomer(customer);
     // domUpdates.displayCustDetail(customer);
+
+loginBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  let username = loginForm.username.value;
+  let id = username.split('r')[1];
+  let password = loginForm.password.value;
+  let thisUser = `http://localhost:3001/api/v1/customers/${id}`;
+  console.log(thisUser);
+  if (username.split('r')[0] === 'custome' && password === 'overlook2021') {
+    console.log(true);
+    let index = getRandomIndex(customersData.customers);
+    customer = new Customer(index);
+    customer.getBookingsHistory(bookingsData);
+    customer.bookingsTotal = customer.getBookingsTotal(roomsData);
+    domUpdates.toggleLoginPage();
+    domUpdates.greetCustomer(customer);
+    domUpdates.displayCustDetail(customer);
+  } 
 });
 
 function generateHistory(event) {
@@ -105,6 +123,10 @@ function captureBooking(event) {
       domUpdates.showFilterBtns();
   }
 }
+
+// FUNCTIONS
+//start over button returns user to calendar
+//go back button returns user to filter screen
 
 function runBookingSequence() {
   domUpdates.hideError(bookingErr);
@@ -140,63 +162,51 @@ function filterRoomSelection(event) {
   
 }
 
-//start over button returns user to calendar
-//go back button returns user to filter screen
-  
-  function showLuxuryRooms() {
-    domUpdates.hideRoomFilterBtns(suite, junior, single);
-    domUpdates.removeHidden(startOver);
-    domUpdates.hideContentAreas();
-  }
-
-  function showSuiteRooms() {
-    domUpdates.hideRoomFilterBtns(luxury, junior, single);
-    domUpdates.removeHidden(startOver);
-    domUpdates.hideContentAreas();
-  }
-
-  function showJuniorRooms() {
-    domUpdates.hideRoomFilterBtns(luxury, suite, single);
-    domUpdates.removeHidden(startOver);
-    domUpdates.hideContentAreas();
-  }
-
-  function showSingleRooms() {
-    domUpdates.hideRoomFilterBtns(luxury, suite, junior);
-    domUpdates.removeHidden(startOver); 
-    domUpdates.hideContentAreas();
-  }
-
-  function returnToCalendar() {
-    domUpdates.hideFilterBtns();
-    domUpdates.addHidden(roomFilterArea);
-    domUpdates.removeHidden(bookRoomArea); 
-  }
-
-  function returnToFilters() {
-    domUpdates.showFilterBtns();
-    domUpdates.showContentAreas();
-  }
-
-// function formatAndProcessBooking() {
-
-// }
-
 
 // let formatIn = checkin.split('/');
 // checkin = `${formatIn[1]}/${formatIn[2]}/${formatIn[0]}`;
 // let checkout = outDate.value;
 // fixDateFormat(checkin);
 // console.log(checkin)
+  
+function showLuxuryRooms() {
+  domUpdates.hideRoomFilterBtns(suite, junior, single);
+  domUpdates.removeHidden(startOver);
+  domUpdates.hideContentAreas();
+}
 
-// FUNCTIONS
+function showSuiteRooms() {
+  domUpdates.hideRoomFilterBtns(luxury, junior, single);
+  domUpdates.removeHidden(startOver);
+  domUpdates.hideContentAreas();
+}
+
+function showJuniorRooms() {
+  domUpdates.hideRoomFilterBtns(luxury, suite, single);
+  domUpdates.removeHidden(startOver);
+  domUpdates.hideContentAreas();
+}
+
+function showSingleRooms() {
+  domUpdates.hideRoomFilterBtns(luxury, suite, junior);
+  domUpdates.removeHidden(startOver); 
+  domUpdates.hideContentAreas();
+}
+
+function returnToCalendar() {
+  domUpdates.hideFilterBtns();
+  domUpdates.addHidden(roomFilterArea);
+  domUpdates.removeHidden(bookRoomArea); 
+}
+
+function returnToFilters() {
+  domUpdates.showFilterBtns();
+  domUpdates.showContentAreas();
+}
+
 function getRandomIndex(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-
-// function fixDateFormat(date) {
-
-// }
 
 
 
