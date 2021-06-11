@@ -57,4 +57,12 @@ describe('Customer', () => {
     expect(cust4.getBookingsTotal(sampleRoomsData)).to.be.equal(551.19);
   });
 
+  it('should be able to create a new hotel Booking', function() {
+    let data = cust2
+    let newBooking = cust2.createNewBooking(data);
+     expect(newBooking.userID).to.be.equal(8);
+     expect(newBooking.roomServiceCharges).to.be.an('array');
+     expect(newBooking.roomServiceCharges.length).to.be.equal(0);
+  });
+
 });

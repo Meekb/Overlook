@@ -5,9 +5,18 @@ let getData = (pathEnd) => fetch(`http://localhost:3001/api/v1/${pathEnd}`)
 
 
 function receiveData() {
-    return Promise.all([getData('customers'), getData('rooms'), getData('bookings')]);
+  return Promise.all([getData('customers'), getData('rooms'), getData('bookings')]);
 }
-// getData(`customers/${id}`)
+
+let getData2 = (pathEnd) => fetch(`http://localhost:3001/api/v1/customers/${pathEnd}`)
+  .then(response => response.json())
+  .then(data => data)
+  .catch(err => console.log('error', err))
+
+function receiveCustProfile() {
+  return Promise.all([getData2(id)]);
+}
+
 
 // let dataSend = (sentData, url) => {
 //     return fetch(url, {
@@ -26,4 +35,4 @@ let dataToPost = (postData, pathEnd) => {
     return Promise.all([sendData(postData, `http://localhost:3001/api/v1/${pathEnd}`)]);
 }
 
-export default { receiveData, dataToPost };
+export default { receiveData, receiveCustProfile, dataToPost };

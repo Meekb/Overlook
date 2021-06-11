@@ -1,19 +1,28 @@
-// import apiCalls from './apiCalls';
-// import Customer from '../Classes/Customer';
-
-
-let loginPage = document.getElementById('loginPage');
-let mainPage = document.getElementById('mainPage');
-let navBar = document.getElementById('navBar');
-let detailText = document.getElementById('detailText');
-let totalBookings = document.getElementById('totalBookings');
-let totalSpent = document.getElementById('totalSpent');
-let allDetails = document.getElementById('allDetails');
+const loginPage = document.getElementById('loginPage');
+const mainPage = document.getElementById('mainPage');
+const navBar = document.getElementById('navBar');
+const detailText = document.getElementById('detailText');
+const totalBookings = document.getElementById('totalBookings');
+const totalSpent = document.getElementById('totalSpent');
+const allDetails = document.getElementById('allDetails');
+const filterDate = document.getElementById('filterDate');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const content = document.querySelectorAll('content');
+// const bookingErr = document.getElementById('bookErrMsg');
+// const loginErr = document.getElementById('loginErrMsg');
 
 
 //DOM FUNCTIONS
 
 let domUpdates = {
+
+  hideFilterBtns() {
+    filterBtns.forEach(btn => btn.classList.add('hidden'));
+  },
+
+  showFilterBtns() {
+    filterBtns.forEach(btn => btn.classList.remove('hidden'));
+  },
   
   toggleLoginPage() {
     loginPage.classList.add('hidden');
@@ -23,6 +32,35 @@ let domUpdates = {
   hideShowBtns(btn1, btn2) {
     btn1.classList.add('hidden');
     btn2.classList.remove('hidden');
+  },
+
+  hideContentAreas() {
+    content.forEach(cont => cont.classList.add('hidden'));
+  },
+
+  showContentAreas() {
+    content.forEach(cont => cont.classList.remove('hidden'));
+  },
+
+  addHidden(el) {
+    el.classList.add('hidden');
+  },
+
+  removeHidden(el) {
+    el.classList.remove('hidden');
+  },
+
+  hideAllRmFilters(btn1, btn2, btn3, btn4) {
+    btn1.classList.add('hidden');
+    btn2.classList.add('hidden');
+    btn3.classList.add('hidden');
+    btn4.classList.add('hidden');
+  },
+
+  hideRoomFilterBtns(btn1, btn2, btn3) {
+    btn1.classList.add('hidden');
+    btn2.classList.add('hidden');
+    btn3.classList.add('hidden');
   },
 
   greetCustomer(customer) {
@@ -54,8 +92,21 @@ let domUpdates = {
      });  
   },
 
+  displayCheckInDate(data) {
+    filterDate.innerHTML = '';
+    filterDate.innerHTML = `Checkin Date: ${data.date}`;
+  },
+
   clearHistoryArea() {
     allDetails.innerHTML = '';
+  },
+
+  revealError(el) {
+    el.classList.remove('hidden');
+  },
+
+  hideError(el) {
+    el.classList.add('hidden');
   },
 
 

@@ -15,7 +15,7 @@
 
     <main class="main-login">
       <div class="login-error-container">
-        <p class="login-err-msg" id="loginErrMsg">Invalid username <span class="login-err-msg" id="loginErrLine2">and/or password</span></p>
+        <p class="login-err-msg hidden" id="loginErrMsg">Invalid username and/or password</p>
       </div>
       <form action="URLtoSendto" name="login" id="loginForm">
         <div class="label">
@@ -54,14 +54,27 @@
       <br>
       <form action="checkout">
         <label for="roomBooking">Checkout</label>
-        <input type="date" class="out-date" id="outDate">
+        <input type="date" class="out-date" id="outDate" required>
       </form>
-      <br>
+      <p class="booking-err-msg hidden" id="bookErrMsg">Error: Please select valid check-in/checkout dates.</p>
       <button type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
+    </main>
+
+    <main class="room-filter-area hidden" id="roomFilterArea">
+      <h2>Filter by room type:</h2>
+      <h3 class="filter-data" id="filterDate">Checkin Date:</h3>
+      <button class="filter-btn" id="luxury">Luxury Residential Suite</button>
+      <button class="filter-btn" id="suite">Suite</button>
+      <button class="filter-btn" id="junior">Junior Suite</button>
+      <button class="filter-btn" id="single">Single Room</button>
+      <div>
+        <button class="filter-btn hidden" id="startOver">Start Over</button>
+        <button type="button" class="back-btn" id="backBtn">Back To Rooms</button>
+      </div>
     </main>
     
     <aside class="sidebar" id="sideBar">
-      <h2>History Overlook</h2>
+      <h2>History Overlook:</h2>
       <p class="detail-text" id="detailText">Customer Detail</p>
       <p class="total-bookings" id="totalBookings">Total Bookings at Overlook:</p>
       <p class="total-spent" id="totalSpent">Total Spent at Overlook:</p>
@@ -72,11 +85,11 @@
     </aside>
     
     <section class="content content-1" id="luxeSuite">
-     <h2>Luxury Suite</h2>
+     <h2>Luxury Residential Suite</h2>
     </section>
 
-    <section class="content content-2" id="resSuite">
-      <h2>Residential Suite</h2>
+    <section class="content content-2" id="regSuite">
+      <h2>Suite</h2>
     </section>
 
     <section class="content content-3" id="junSuite">

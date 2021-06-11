@@ -1,11 +1,12 @@
 import chai from 'chai';
 const expect = chai.expect;
 import sampleBookingsData from '../SampleData/sample-bookings';
+import sampleCustomersData from '../SampleData/sample-customers';
 import Booking from '../Classes/Booking';
 import Customer from '../Classes/Customer';
 // import Room from '../Classes/Room';
 
-let booking1, booking2, booking3, booking4, booking5, booking6;
+let booking1, booking2, booking3, booking4, booking5, booking6, cust2;
 
 describe('Booking', () => {
 
@@ -16,6 +17,7 @@ describe('Booking', () => {
     booking4 = new Booking(sampleBookingsData.bookings[3]);
     booking5 = new Booking(sampleBookingsData.bookings[4]);
     booking6 = new Booking(sampleBookingsData.bookings[5]);
+    cust2 = new Customer(sampleCustomersData.customers[1])
   });
 
   it('should be an instance of Booking', function() {
@@ -45,7 +47,11 @@ describe('Booking', () => {
     expect(booking1.roomServiceCharges.length).to.be.equal(0);
   });
 
-  // other tests/methods TBD
-  // will need to add more tests for roomServiceCharges (class Service still needed)
+//  it('should have a way to create a new Booking', function() {
+//    let newBooking = cust2.createNewBooking(cust2);
+//     expect(newBooking.id).to.be.equal(8);
+//     expect(newBooking.roomServiceCharges).to.be.an('array');
+//     expect(newBooking.roomServiceCharges.length).to.be(0);
+//  });
     
 });
