@@ -1,5 +1,4 @@
-import sampleBookingsData from "../SampleData/sample-bookings";
-import sampleRoomsData from "../SampleData/sample-rooms";
+import Booking from '../Classes/Booking';
 
 class Customer {
   constructor(newCustomer) {
@@ -23,14 +22,21 @@ class Customer {
       data.rooms.filter(rm => {
         if (rm.number === entry.roomNumber) {
           entry.roomTotal = rm.costPerNight;
+          entry.roomType = rm.roomType;
         }
       });
     });
     let total = this.bookingHistory.reduce((acc, cur) => {
       return acc += cur.roomTotal;
     }, 0)
-    return Math.round(total).toFixed(2);
+    return Number((total).toFixed(2));
   }
+
+  createNewBooking(data) {
+    let newBooking = new Booking({id: 'TBD', userID: Number(`${data.id}`), date: 'TBD', roomNumber: 'TBD', roomServiceCharges: []});
+    // this.bookingHistory.push(newBooking);
+    return newBooking;
+}
 
 }
 
