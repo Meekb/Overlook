@@ -35,7 +35,7 @@ const junSuite = document.getElementById('junSuite');
 
 //GLOBAL DATA VARIABLES
 let customersData, roomsData, bookingsData;
-let customer, newBooking;
+let acct, customer, newBooking;
 
 // EVENT LISTENERS
 bookItBtn.addEventListener('click', captureBooking);
@@ -54,47 +54,33 @@ window.onload = () => {
       bookingsData = promise[2];
       console.log('customer data', customersData, 'rooms data', roomsData, 'bookings data', bookingsData);
     }); 
-    // right now im generating a random customer. need a function that takes that index number and retrieves the individual customer information with customers/id endpoint??
-} 
-
-// loginBtn.addEventListener('click', (event) => {
-//   event.preventDefault();
-//   let username = loginForm.username.value;
-//   let password = loginForm.password.value;
-//   let id = username.split('r')
-//   console.log(id);
-//   let userToLogIn = `http://localhost:3001/api/v1/customers/${id[1]}`
-//   console.log(userToLogIn)
-      // let thisCustomer = promise[0];
-      // console.log(thisCustomer)
-  // }
-  // if (username === 'customer50' && password === 'overlook2021') {
-    // let index = getRandomIndex(customersData.customers);
-    // customer = new Customer(index);
-    // customer.getBookingsHistory(bookingsData);
-    // customer.bookingsTotal = customer.getBookingsTotal(roomsData);
-    // domUpdates.toggleLoginPage();
-    // domUpdates.greetCustomer(customer);
-    // domUpdates.displayCustDetail(customer);
+  } 
 
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
   let username = loginForm.username.value;
-  let id = username.split('r')[1];
+  let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
-  let thisUser = `http://localhost:3001/api/v1/customers/${id}`;
-  console.log(thisUser);
-  if (username.split('r')[0] === 'custome' && password === 'overlook2021') {
-    console.log(true);
-    let index = getRandomIndex(customersData.customers);
-    customer = new Customer(index);
-    customer.getBookingsHistory(bookingsData);
-    customer.bookingsTotal = customer.getBookingsTotal(roomsData);
-    domUpdates.toggleLoginPage();
-    domUpdates.greetCustomer(customer);
-    domUpdates.displayCustDetail(customer);
+  console.log(username, password)
+  if (typeof id === 'number' && id < 51 && password === 'overlook2021') {
+    apiCalls.receiveCustProfile(id)
+      .then((promise) => {
+      acct = promise[0];
+      customer = new Customer(acct);
+      console.log(customer.name);
+      loginCustomer(customer);  
+    });
   } 
 });
+
+function loginCustomer(customer) {
+  customer.getBookingsHistory(bookingsData);
+  customer.bookingsTotal = customer.getBookingsTotal(roomsData);
+  domUpdates.toggleLoginPage();
+  domUpdates.greetCustomer(customer);
+  domUpdates.displayCustDetail(customer);
+}
+
 
 function generateHistory(event) {
   event.preventDefault();
