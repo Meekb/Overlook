@@ -148,7 +148,6 @@ function filterRoomSelection(event) {
   
 }
 
-
 // let formatIn = checkin.split('/');
 // checkin = `${formatIn[1]}/${formatIn[2]}/${formatIn[0]}`;
 // let checkout = outDate.value;
@@ -190,9 +189,7 @@ function returnToFilters() {
   domUpdates.showContentAreas();
 }
 
-function getRandomIndex(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+
 
 
 
