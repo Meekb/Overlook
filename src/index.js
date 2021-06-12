@@ -1,14 +1,18 @@
 import apiCalls from './apiCalls';
 import domUpdates from './domUpdates';
 import Customer from '../Classes/Customer';
+import Hotel from '../Classes/Hotel';
 import Room from '../Classes/Room';
 import Booking from '../Classes/Booking';
+import hotelData from '../SampleData/sample-hotel';
+
 
 
 //DOM VARIABLES
 const bookingErr = document.getElementById('bookErrMsg');
 const bookRoomArea = document.getElementById('bookRoom');
 const inDate = document.getElementById('inDate');
+const outDate = document.getElementById('outDate');
 const loginErr = document.getElementById('loginErrMsg');
 const loginForm = document.getElementById('loginForm');
 const loginBtn = document.getElementById('loginBtn');
@@ -35,7 +39,7 @@ const junSuite = document.getElementById('junSuite');
 
 //GLOBAL DATA VARIABLES
 let customersData, roomsData, bookingsData;
-let acct, customer, newBooking;
+let acct, customer, newBooking, overlook;
 
 // EVENT LISTENERS
 bookItBtn.addEventListener('click', captureBooking);
@@ -61,6 +65,7 @@ loginBtn.addEventListener('click', (event) => {
   let username = loginForm.username.value;
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
+  overlook = new Hotel(hotelData);
   console.log(username, password)
   if (typeof id === 'number' && id < 51 && password === 'overlook2021') {
     apiCalls.receiveCustProfile(id)
@@ -145,7 +150,6 @@ function filterRoomSelection(event) {
   } else if (el.id === 'startOver') {
     returnToCalendar();
   }
-  
 }
 
 // let formatIn = checkin.split('/');
@@ -155,38 +159,55 @@ function filterRoomSelection(event) {
 // console.log(checkin)
   
 function showLuxuryRooms() {
+  domUpdates.hideContentAreas();
   domUpdates.hideRoomFilterBtns(suite, junior, single);
   domUpdates.removeHidden(startOver);
-  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(backBtn);
+  domUpdates.removeHidden(roomsDisplay);
+  let results = overlook.filterRoomsByType(roomsData, 'residential suite');
+  domUpdates.displayRoomType(results);
 }
 
 function showSuiteRooms() {
+  domUpdates.hideContentAreas();
   domUpdates.hideRoomFilterBtns(luxury, junior, single);
   domUpdates.removeHidden(startOver);
-  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(backBtn);
+  domUpdates.removeHidden(roomsDisplay)
+  let results = overlook.filterRoomsByType(roomsData, 'suite');
+  console.log(results);
+  domUpdates.displayRoomType(results);
 }
 
 function showJuniorRooms() {
+  domUpdates.hideContentAreas();
   domUpdates.hideRoomFilterBtns(luxury, suite, single);
   domUpdates.removeHidden(startOver);
-  domUpdates.hideContentAreas();
 }
 
 function showSingleRooms() {
+  domUpdates.hideContentAreas();
   domUpdates.hideRoomFilterBtns(luxury, suite, junior);
   domUpdates.removeHidden(startOver); 
-  domUpdates.hideContentAreas();
 }
 
 function returnToCalendar() {
+  domUpdates.showContentAreas();
   domUpdates.hideFilterBtns();
   domUpdates.addHidden(roomFilterArea);
-  domUpdates.removeHidden(bookRoomArea); 
+  domUpdates.removeHidden(bookRoomArea);
+  domUpdates.removeHidden(backBtn); 
+  domUpdates.addHidden(startOver);
+  domUpdates.addHidden(roomsDisplay);
+  domUpdates.clearCalendar(inDate, outDate);
 }
 
 function returnToFilters() {
   domUpdates.showFilterBtns();
   domUpdates.showContentAreas();
+  domUpdates.addHidden(backBtn);
+  domUpdates.addHidden(startOver);
+  domUpdates.addHidden(roomsDisplay);
 }
 
 

@@ -7,14 +7,87 @@ const totalSpent = document.getElementById('totalSpent');
 const allDetails = document.getElementById('allDetails');
 const filterDate = document.getElementById('filterDate');
 const filterBtns = document.querySelectorAll('.filter-btn');
-const content = document.querySelectorAll('content');
-// const bookingErr = document.getElementById('bookErrMsg');
-// const loginErr = document.getElementById('loginErrMsg');
+const content = document.querySelectorAll('.content');
+
+
+//ROOM CONTENT
+// const luxeSuite = document.getElementById('luxeSuite');
+// const regSuite = document.getElementById('regSuite');
+// const junSuite = document.getElementById('junSuite');
+const roomsDisplay = document.getElementById('roomsDisplay');
 
 
 //DOM FUNCTIONS
 
 let domUpdates = {
+
+  greetCustomer(customer) {
+    navBar.innerHTML = `Welcome back, ${customer.name.split(' ').shift()}!`;
+    detailText.innerHTML = `${customer.name}`;
+  },
+
+  displayCustDetail(customer) {
+    totalBookings.innerHTML = `Total Bookings at Overlook: ${customer.bookingHistory.length}`;
+    totalSpent.innerHTML = `Total Spent at Overlook: $${customer.bookingsTotal}`;
+  },
+
+  displayHistory(history) {
+    history.forEach(entry => {
+      allDetails.innerHTML +=  
+       `  
+        <ul>
+          <li>
+          Date: ${entry.date}
+          <br>
+          Room: ${entry.roomNumber}
+          <br>
+          Room Type: ${entry.roomType}
+          <br>
+          Room Total: ${entry.roomTotal}
+          </li> 
+        </ul>
+       `
+     });  
+  },
+
+  displayCheckInDate(data) {
+    filterDate.innerHTML = '';
+    filterDate.innerHTML = `Checkin Date: ${data.date}`;
+  },
+
+  displayRoomType(roomsToDisplay) {
+    roomsDisplay.innerText = '';
+    roomsToDisplay.forEach(room => {
+    //  let format = room.roomType.split('');
+     roomsDisplay.innerHTML +=  
+     `
+      <section class="room" id="luxe">
+       <h2>${room.roomType}</h2>
+       <br>
+       <p>Room Number:${room.number}<p>
+       <br>
+       <p>Room Cost Per Night:${room.costPerNight}</p>
+      </section>
+     `
+    });
+  },
+
+  clearCalendar(inDay, outDay) {
+    inDay.value = '';
+    outDay.value = '';
+  },
+   
+  clearHistoryArea() {
+    allDetails.innerHTML = '';
+  },
+
+  revealError(el) {
+    el.classList.remove('hidden');
+  },
+
+  hideError(el) {
+    el.classList.add('hidden');
+  },
 
   hideFilterBtns() {
     filterBtns.forEach(btn => btn.classList.add('hidden'));
@@ -62,55 +135,6 @@ let domUpdates = {
     btn2.classList.add('hidden');
     btn3.classList.add('hidden');
   },
-
-  greetCustomer(customer) {
-    navBar.innerHTML = `Welcome back, ${customer.name.split(' ').shift()}!`;
-    detailText.innerHTML = `${customer.name}`;
-  },
-
-  displayCustDetail(customer) {
-    totalBookings.innerHTML = `Total Bookings at Overlook: ${customer.bookingHistory.length}`;
-    totalSpent.innerHTML = `Total Spent at Overlook: $${customer.bookingsTotal}`;
-  },
-
-  displayHistory(history) {
-    history.forEach(entry => {
-      allDetails.innerHTML +=  
-       `  
-        <ul>
-          <li>
-          Date: ${entry.date}
-          <br>
-          Room: ${entry.roomNumber}
-          <br>
-          Room Type: ${entry.roomType}
-          <br>
-          Room Total: ${entry.roomTotal}
-          </li> 
-        </ul>
-       `
-     });  
-  },
-
-  displayCheckInDate(data) {
-    filterDate.innerHTML = '';
-    filterDate.innerHTML = `Checkin Date: ${data.date}`;
-  },
-
-  clearHistoryArea() {
-    allDetails.innerHTML = '';
-  },
-
-  revealError(el) {
-    el.classList.remove('hidden');
-  },
-
-  hideError(el) {
-    el.classList.add('hidden');
-  },
-
-
-
 
 }
 

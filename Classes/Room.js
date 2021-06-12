@@ -8,7 +8,15 @@ class Room {
     this.costPerNight = newRoom.costPerNight;
   }
 
-//   room methods TDB
+  filterRoomsByType(data, type) {
+    let search = [];
+    data.rooms.filter(room => {
+      if (room.roomType === type) {
+        search.push(room);
+      }
+    return search;
+    });
+  }  
 
 }
 

@@ -231,6 +231,25 @@ form {
 
 }
 
+.rooms-display {
+  display: flex;
+  // flex-wrap: wrap;
+
+  .room {
+    font-size: 20px;
+    background: rgb(249, 248, 246);
+    margin-right: 35px;
+    padding: 10px;
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 10px;
+    // min-width: 45%;
+    overflow: scroll;
+  }
+
+}
+
+
 .content {
   margin-bottom: 0.5rem;
   text-align: center;

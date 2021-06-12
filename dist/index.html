@@ -61,7 +61,7 @@
     </main>
 
     <main class="room-filter-area hidden" id="roomFilterArea">
-      <h2>Filter by room type:</h2>
+      <h2>Pick your room type:</h2>
       <h3 class="filter-data" id="filterDate">Checkin Date:</h3>
       <button class="filter-btn" id="luxury">Luxury Residential Suite</button>
       <button class="filter-btn" id="suite">Suite</button>
@@ -85,16 +85,23 @@
     </aside>
     
     <section class="content content-1" id="luxeSuite">
-     <h2>Luxury Residential Suite</h2>
+      <h2>Luxury Residential Suite</h2>
     </section>
-
+    
     <section class="content content-2" id="regSuite">
       <h2>Suite</h2>
     </section>
-
+    
     <section class="content content-3" id="junSuite">
       <h2>Junior Suite</h2>
     </section>
+
+    <div class="rooms-display hidden" id="roomsDisplay">
+      <section class="room-display" id="roomDisplay">
+        <h2>Luxury Residential Suite</h2>
+      </section>
+    </div>
+
   </section>  
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
