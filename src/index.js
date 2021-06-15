@@ -34,6 +34,7 @@ const backBtn = document.getElementById('backBtn');
 const selectionTitle = document.getElementById('selectionTitle');
 const roomsDisplay = document.getElementById('roomsDisplay');
 // const type = document.querySelectorAll('.room');
+const loginEr = document.getElementById('loginErrMsg')
 
 // const sideBar = document.getElementById('sideBar');
 // ROOM CONTENT AREA
@@ -71,16 +72,19 @@ loginBtn.addEventListener('click', (event) => {
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
   overlook = new Hotel(hotelData);
-  console.log(username, password)
-  if (typeof id === 'number' && id < 51 && password === 'overlook2021') {
+  console.log(username, password);
+
+  if (typeof id !== 'number' || id >= 51 || id === 0 || password !== 'overlook2021') {
+    domUpdates.revealError(loginErr);
+  } else {
     apiCalls.receiveCustProfile(id)
-      .then((promise) => {
-      acct = promise[0];
-      customer = new Customer(acct);
-      console.log(customer.name);
-      loginCustomer(customer);  
+    .then((promise) => {
+    acct = promise[0];
+    customer = new Customer(acct);
+    console.log(customer.name);
+    loginCustomer(customer);  
     });
-  } 
+  }
 });
 
 function loginCustomer(customer) {
@@ -89,7 +93,7 @@ function loginCustomer(customer) {
   domUpdates.toggleFromLoginPage();
   domUpdates.greetCustomer(customer);
   domUpdates.displayCustDetail(customer);
-  // logout.addEventListener('click', logoutCustomer);
+  domUpdates.hideError(loginErr);
 }
 
 function generateHistory(event) {

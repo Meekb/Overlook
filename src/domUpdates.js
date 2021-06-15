@@ -8,8 +8,9 @@ const allDetails = document.getElementById('allDetails');
 const filterDate = document.getElementById('filterDate');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const content = document.querySelectorAll('.content');
-const date = document.getElementById('dateDisplay');
-const myDate = document.getElementById('myDate');
+
+
+
 //ROOM CONTENT
 const roomsDisplay = document.getElementById('roomsDisplay');
 
