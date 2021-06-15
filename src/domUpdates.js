@@ -62,7 +62,6 @@ let domUpdates = {
   displayRoomType(roomsToDisplay) {
     roomsDisplay.innerText = '';
     roomsToDisplay.forEach(room => {
-    //  let format = room.roomType.split('');
      roomsDisplay.innerHTML +=  
      `
       <section class="room" id="${room.roomType}" type="${room.number}">
