@@ -121,7 +121,7 @@ function bookThisRoom(event) {
   domUpdates.addHidden(roomsDisplay);
   domUpdates.addHidden(selectRoomText);
   domUpdates.removeHidden(selectedRoom);
-  domUpdates.displaySelectedRoom(newBooking);
+  domUpdates.displaySelectedRoom(el);
 }
 
 function confirmAndPost() {
@@ -225,6 +225,7 @@ function returnToCalendar() {
   domUpdates.removeHidden(backBtn); 
   domUpdates.addHidden(startOver);
   domUpdates.addHidden(roomsDisplay);
+  domUpdates.addHidden(selectedRoom);
   domUpdates.addHidden(selectionTitle);
   domUpdates.clearCalendar(inDate, outDate);
 }
@@ -233,6 +234,7 @@ function returnToFilters() {
   domUpdates.showFilterBtns();
   domUpdates.showContentAreas();
   domUpdates.addHidden(backBtn);
+  domUpdates.addHidden(selectedRoom);
   domUpdates.addHidden(startOver);
   domUpdates.addHidden(roomsDisplay);
   domUpdates.addHidden(selectionTitle);

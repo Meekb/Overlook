@@ -60,9 +60,9 @@ let domUpdates = {
     filterDate.innerHTML = `Checkin Date: ${data.date}`;
   },
 
-  displayRoomType(roomsToDisplay) {
+  displayRoomType(availRooms) {
     roomsDisplay.innerText = '';
-    roomsToDisplay.forEach(room => {
+    availRooms.forEach(room => {
      roomsDisplay.innerHTML +=  
      `
       <section class="room" id="${room.roomType}" type="${room.number}">
@@ -77,13 +77,14 @@ let domUpdates = {
     });
   },
 
-  displaySelectedRoom(selection) {
+  displaySelectedRoom(el) {
+    let roomNumber = el.id
     let yourRoom = document.getElementById('yourRoom');
+    console.log(el.type);
     yourRoom.innerHTML = '';
-    yourRoom +=  
+    yourRoom.innerHTML =  
     `  
-      <h2 class="your-room" id="yourRoom">You have rightly seclected the luxious ${selection.roomType}, Room Number ${selection.roomNumber}!</h2>
-      <button class="confirm-btn" id="postBtn">Click to confirm</button>
+      <h2 class="your-room" id="yourRoom">You have rightly seclected the luxurious, Room Number ${roomNumber}!</h2>
     `
   },
 
