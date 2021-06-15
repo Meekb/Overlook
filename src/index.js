@@ -114,8 +114,10 @@ function captureBooking(event) {
   let now = new Date().toString();
   let todaysDate = Number(now.split(' ')[2]);
   let enteredDate = inDate.value;
-  let enteredToNum = enteredDate.split('-')[2];
-  if (inDate.value === '' || outDate.value === '' || enteredToNum < todaysDate) {
+  let enteredInToNum = enteredDate.split('-')[2];
+  let enteredOutDate = outDate.value;
+  let enteredOutToNum = enteredOutDate.split('-')[2];
+  if (inDate.value === '' || outDate.value === '' || enteredInToNum < todaysDate || enteredOutToNum <= todaysDate) {
     domUpdates.revealError(bookingErr);
     return;
   } else {
