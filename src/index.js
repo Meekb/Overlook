@@ -68,13 +68,16 @@ window.onload = () => {
 
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
+  overlook = new Hotel(hotelData);
   let username = loginForm.username.value;
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
-  overlook = new Hotel(hotelData);
-  console.log(username, password);
+  validate(id, username, password);
+});
 
-  if (typeof id !== 'number' || id >= 51 || id === 0 || password !== 'overlook2021') {
+function validate(id, username, password) {
+  console.log(username, password);
+  if (typeof id !== 'number' || id >= 51 || id <= 0 || password !== 'overlook2021' || username.split('r') !== 'custume') {
     domUpdates.revealError(loginErr);
   } else {
     apiCalls.receiveCustProfile(id)
@@ -85,7 +88,7 @@ loginBtn.addEventListener('click', (event) => {
     loginCustomer(customer);  
     });
   }
-});
+}
 
 function loginCustomer(customer) {
   customer.getBookingsHistory(bookingsData);
