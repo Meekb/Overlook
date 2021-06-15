@@ -8,8 +8,9 @@ const allDetails = document.getElementById('allDetails');
 const filterDate = document.getElementById('filterDate');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const content = document.querySelectorAll('.content');
-const date = document.getElementById('dateDisplay');
-const myDate = document.getElementById('myDate');
+
+
+
 //ROOM CONTENT
 const roomsDisplay = document.getElementById('roomsDisplay');
 
@@ -29,8 +30,11 @@ let domUpdates = {
   },
 
   displayCustDetail(customer) {
+    totalBookings.innerHTML = '';
     totalBookings.innerHTML = `Total Bookings at Overlook: ${customer.bookingHistory.length}`;
-    totalSpent.innerHTML = `Total Spent at Overlook: $${customer.bookingsTotal}`;
+    totalSpent.innerHTML = '';
+    console.log(customer.bookingTotal);
+    totalSpent.innerHTML = `Total Spent at Overlook: $${customer.bookingTotal}`;
   },
 
   displayHistory(history) {
@@ -61,7 +65,6 @@ let domUpdates = {
   displayRoomType(roomsToDisplay) {
     roomsDisplay.innerText = '';
     roomsToDisplay.forEach(room => {
-    //  let format = room.roomType.split('');
      roomsDisplay.innerHTML +=  
      `
       <section class="room" id="${room.roomType}" type="${room.number}">
@@ -70,7 +73,7 @@ let domUpdates = {
        <p>Room Number: ${room.number}<p>
        <br>
        <p>Room Cost Per Night: ${room.costPerNight}</p>
-       <button type="submit" class="book-room" id="bookRoom">Book This Room</button>
+       <button type="submit" class="book-room" id="${room.number}">Book This Room</button>
       </section>
      `
     });

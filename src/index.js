@@ -33,22 +33,26 @@ const startOver = document.getElementById('startOver');
 const backBtn = document.getElementById('backBtn');
 const selectionTitle = document.getElementById('selectionTitle');
 const roomsDisplay = document.getElementById('roomsDisplay');
-// const type = document.querySelectorAll('.room');
+const loginEr = document.getElementById('loginErrMsg');
+const confirmBtn = document.getElementById('postBtn');
 
 // const sideBar = document.getElementById('sideBar');
 // ROOM CONTENT AREA
 const luxeSuite = document.getElementById('luxeSuite');
 const regSuite = document.getElementById('regSuite');
 const junSuite = document.getElementById('junSuite');
+const selectedRoom = document.getElementById('selectedRoom');
+const selectRoomText = document.getElementById('selectRoomText');
 
 //GLOBAL DATA VARIABLES
 let customersData, roomsData, bookingsData;
-let acct, customer, newBooking, overlook;
+let acct, bookingToPost, customer, newBooking, overlook;
 
 // EVENT LISTENERS
 bookItBtn.addEventListener('click', captureBooking);
 detailBtn.addEventListener('click', generateHistory);
 hideDetailBtn.addEventListener('click', closeHistory);
+confirmBtn.addEventListener('click', confirmAndPost);
 roomFilterArea.addEventListener('click', filterRoomSelection);
 roomsDisplay.addEventListener('click', bookThisRoom);
 // bookRoom.addEventListener('click', bookThisRoom);
@@ -67,29 +71,32 @@ window.onload = () => {
 
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
+  overlook = new Hotel(hotelData);
   let username = loginForm.username.value;
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
-  overlook = new Hotel(hotelData);
-  console.log(username, password)
-  if (typeof id === 'number' && id < 51 && password === 'overlook2021') {
+  // validate(id, username, password);
+  console.log(username, password);
+  if (typeof id !== 'number' || id >= 51 || id <= 0 || password !== 'overlook2021') {
+    domUpdates.revealError(loginErr);
+  } else {
     apiCalls.receiveCustProfile(id)
-      .then((promise) => {
-      acct = promise[0];
-      customer = new Customer(acct);
-      console.log(customer.name);
-      loginCustomer(customer);  
+    .then((promise) => {
+    acct = promise[0];
+    customer = new Customer(acct);
+    console.log(customer.name);
+    loginCustomer(customer);  
     });
-  } 
+  }
 });
 
 function loginCustomer(customer) {
   customer.getBookingsHistory(bookingsData);
-  customer.bookingsTotal = customer.getBookingsTotal(roomsData);
+  customer.bookingTotal = customer.getBookingsTotal(roomsData);
   domUpdates.toggleFromLoginPage();
   domUpdates.greetCustomer(customer);
   domUpdates.displayCustDetail(customer);
-  // logout.addEventListener('click', logoutCustomer);
+  domUpdates.hideError(loginErr);
 }
 
 function generateHistory(event) {
@@ -117,6 +124,7 @@ function captureBooking(event) {
   let enteredInToNum = enteredDate.split('-')[2];
   let enteredOutDate = outDate.value;
   let enteredOutToNum = enteredOutDate.split('-')[2];
+  
   if (inDate.value === '' || outDate.value === '' || enteredInToNum < todaysDate || enteredOutToNum <= todaysDate) {
     domUpdates.revealError(bookingErr);
     return;
@@ -124,6 +132,7 @@ function captureBooking(event) {
       runBookingSequence();
       domUpdates.showFilterBtns();
   }
+
 }
 
 // FUNCTIONS
@@ -132,17 +141,16 @@ function captureBooking(event) {
 
 function runBookingSequence() {
   domUpdates.hideError(bookingErr);
-      let checkin = inDate.value;
-      let checkout = outDate.value;
-      let data = Number(customer.id)
-      newBooking = customer.createNewBooking(data);
-      newBooking.id = newBooking.createBookingId(17);
-      newBooking.userID = customer.id;
-      newBooking.date = checkin;
-      console.log(newBooking);
-      domUpdates.addHidden(bookRoomArea);
-      domUpdates.removeHidden(roomFilterArea); 
-      domUpdates.displayCheckInDate(newBooking);
+  let checkin = inDate.value.split('-').join('/')
+  let data = Number(customer.id)
+  newBooking = customer.createNewBooking(data);
+  // newBooking.id = newBooking.createBookingId(17);
+  newBooking.userID = customer.id;
+  newBooking.date = checkin;
+  console.log(newBooking);
+  domUpdates.addHidden(bookRoomArea); 
+  domUpdates.removeHidden(roomFilterArea); 
+  domUpdates.displayCheckInDate(newBooking);
 }
 
 function filterRoomSelection(event) {
@@ -158,15 +166,30 @@ function filterRoomSelection(event) {
     showSingleRooms();
   } else if (el.id === 'backBtn') {
     returnToFilters();
+    domUpdates.addHidden(selectedRoom);
   } else if (el.id === 'startOver') {
     returnToCalendar();
+    domUpdates.addHidden(selectedRoom);
   }
 }
 
 function bookThisRoom(event) {
   event.preventDefault();
-  let el = event.target;
-  console.log(el.id)
+  let el = event.target.closest('button');
+  newBooking.roomNumber = Number(el.id);
+  console.log('newBooking', newBooking);
+  domUpdates.addHidden(roomsDisplay);
+  domUpdates.addHidden(selectRoomText);
+  domUpdates.removeHidden(selectedRoom);
+}
+
+function confirmAndPost() {
+  apiCalls.dataToPost(newBooking);
+  console.log(customer.bookingHistory, customer.bookingTotal)
+
+  customer.bookingTotal = customer.getBookingsTotal(roomsData)
+  domUpdates.displayCustDetail(customer);
+  console.log('1005', bookingsData.bookings.length);
 }
 
 function showLuxuryRooms() {
