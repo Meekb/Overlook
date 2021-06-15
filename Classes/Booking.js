@@ -24,20 +24,9 @@ class Booking {
     }
     return result;
   }
-  // method to total the room charge for booked nights?
 
-  // method to total all charges at checkout?
 }
 
-
-// to get number of days between dates:
-//var minutes = 1000 * 60;
-// var hours = minutes * 60;
-// var days = hours * 24;
-// var years = days * 365;
-// var t = Date.now();
-
-// var y = Math.round(t / years);
 
 
 export default Booking;

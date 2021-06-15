@@ -62,4 +62,17 @@ describe('Hotel', () => {
         expect(search.length).to.be.eq(2);
     });
 
+    it('should have a way to track unavailable rooms on a given date', function() {
+        expect(hotel).to.have.property('unavailableRooms');
+    });
+    
+    it('should store unavailable rooms in an array', function() {
+        expect(hotel.unavailableRooms).to.be.an('array');
+    });
+
+    it('should be able to check availability on any given date', function() {
+        let unavailable = hotel.unavailableRooms;
+        expect(hotel.checkAvailability(sampleRoomsData)).to.change(unavailable.length);
+    });
+
 });

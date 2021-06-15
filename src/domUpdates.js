@@ -70,7 +70,7 @@ let domUpdates = {
        <p>Room Number: ${room.number}<p>
        <br>
        <p>Room Cost Per Night: ${room.costPerNight}</p>
-       <button type="submit" class="book-room" id="bookRoom">Book This Room</button>
+       <button type="submit" class="book-room" id="${room.number}">Book This Room</button>
       </section>
      `
     });
