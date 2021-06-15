@@ -20,24 +20,22 @@ class Hotel {
   }
 
   filterOutUnavailable(bkData, rmData, date) {
+    let openRooms = [];
     let dateNum = date.split('/');
     bkData.bookings.forEach(bking => {
       let compare = bking.date.split('/');
       if (Number(compare[2]) !== Number(dateNum[1])) {
        let avail = rmData.rooms.find(rm => {
-          return rm.number === bking.roomNumber;
+         if (openRooms.indexOf(bking.roomNumber) === -1)
+           openRooms.push(rm.number === bking.roomNumber);
         });
         this.availableRooms.push(avail);
       }
-    });
+    }); 
+    console.log(this.availableRooms)
     return this.availableRooms;
   }
-
-  confirmCustomerBooking() {
-    // this method needs to be called in the POST function and it should 'unshift' customer's booking object into their bookingsHistory array
-  }
     
-
 }
 
 

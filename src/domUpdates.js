@@ -7,15 +7,13 @@ const totalSpent = document.getElementById('totalSpent');
 const allDetails = document.getElementById('allDetails');
 const filterDate = document.getElementById('filterDate');
 const filterBtns = document.querySelectorAll('.filter-btn');
-const content = document.querySelectorAll('.content');
-
-
 
 //ROOM CONTENT
+const content = document.querySelectorAll('.content');
 const roomsDisplay = document.getElementById('roomsDisplay');
 
-//DOM FUNCTIONS
 
+//DOM FUNCTIONS
 let domUpdates = {
 
   greetCustomer(customer) {
@@ -62,9 +60,9 @@ let domUpdates = {
     filterDate.innerHTML = `Checkin Date: ${data.date}`;
   },
 
-  displayRoomType(roomsToDisplay) {
+  displayRoomType(availRooms) {
     roomsDisplay.innerText = '';
-    roomsToDisplay.forEach(room => {
+    availRooms.forEach(room => {
      roomsDisplay.innerHTML +=  
      `
       <section class="room" id="${room.roomType}" type="${room.number}">
@@ -79,23 +77,15 @@ let domUpdates = {
     });
   },
 
-  displaySelectedRoom() {
-    roomsDisplay.innerHTML= '';
-    roomsDisplay =  
+  displaySelectedRoom(el) {
+    let roomNumber = el.id
+    let yourRoom = document.getElementById('yourRoom');
+    console.log(el.type);
+    yourRoom.innerHTML = '';
+    yourRoom.innerHTML =  
     `  
-     <section class="room" id="${el.number}">
-     <p>HELLO<p>
+      <h2 class="your-room" id="yourRoom">You have rightly seclected the luxurious, Room Number ${roomNumber}!</h2>
     `
-    //    <h2>You've selected the ${room.roomType}!</h2>
-    //    <br>
-    //    <p>Selected Room Number: ${room.number}<p>
-    //    <br>
-    //    <p>Selected Room Cost Per Night: ${room.costPerNight}</p>
-    //    <div>
-    //     <img>
-    //    </div>
-    //  </section>
-    // `
   },
 
   clearCalendar(inDay, outDay) {
