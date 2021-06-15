@@ -24,11 +24,6 @@ describe('Booking', () => {
     expect(booking1).to.be.instanceOf(Booking);
   });
 
-  it('should have an id', function() {
-    expect(booking2.id).to.be.a('string');
-    expect(booking2.id).to.equal("5fwrgu4i7k55hl71t");
-  });
-
   it('should know what userID (customer) booked the room', function() {
     expect(booking6.userID).to.equal(12);
   });
@@ -41,17 +36,5 @@ describe('Booking', () => {
     expect(booking4.roomNumber).to.be.a('number');
     expect(booking4.roomNumber).to.equal(15);
   });
-
-  it('should keep track of room service charges', function() {
-    expect(booking1.roomServiceCharges).to.be.an('array');
-    expect(booking1.roomServiceCharges.length).to.be.equal(0);
-  });
-
-//  it('should have a way to create a new Booking', function() {
-//    let newBooking = cust2.createNewBooking(cust2);
-//     expect(newBooking.id).to.be.equal(8);
-//     expect(newBooking.roomServiceCharges).to.be.an('array');
-//     expect(newBooking.roomServiceCharges.length).to.be(0);
-//  });
     
 });

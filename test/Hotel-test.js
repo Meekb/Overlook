@@ -6,6 +6,7 @@ import Room from '../Classes/Room';
 // import Customer from '../Classes/Customer';
 import sampleRoomsData from '../SampleData/sample-rooms';
 import hotelData from '../SampleData/sample-hotel';
+import sampleBookingsData from '../SampleData/sample-bookings';
 
 let hotel, room1, room2, room3, room4, room5
 
@@ -62,17 +63,19 @@ describe('Hotel', () => {
         expect(search.length).to.be.eq(2);
     });
 
-    it('should have a way to track unavailable rooms on a given date', function() {
-        expect(hotel).to.have.property('unavailableRooms');
+    it('should have a way to track available rooms on a given date', function() {
+        expect(hotel).to.have.property('availableRooms');
     });
     
-    it('should store unavailable rooms in an array', function() {
-        expect(hotel.unavailableRooms).to.be.an('array');
+    it('should store available rooms in an array', function() {
+        expect(hotel.availableRooms).to.be.an('array');
     });
 
-    it('should be able to check availability on any given date', function() {
-        let unavailable = hotel.unavailableRooms;
-        expect(hotel.checkAvailability(sampleRoomsData)).to.change(unavailable.length);
+    it('should be able to store available room numbers in the availableRooms property array on a given search date', function() {
+        let availableRooms = hotel.filterOutUnavailable(sampleBookingsData, sampleRoomsData, '02/19/2020')
+        expect(hotel.availableRooms.length).to.be.eq(6);
     });
+
+    
 
 });

@@ -6,7 +6,7 @@ class Hotel {
     this.manager = newHotel.manager;
     this.numberOfRooms = newHotel.numberOfRooms;
     this.amenities = newHotel.amenities;
-    this.unavailableRooms = [];
+    this.availableRooms = [];
   }
 
   filterRoomsByType(data, type) {
@@ -19,16 +19,22 @@ class Hotel {
     return search;
   }
 
-  makeRoomUnavailable() {
-    // when a room is booked, it will need to be added to the array of unavailable rooms for that date
-    // i could set the value of this.unavailableRooms to an empty object, and then add a key for each date that has the value of an empty array. Each time a room is booked, we would need to check if this.unavailableRooms has a key matching that date. if not, the date is a key and the value an arr and push the room - if so, just push the room to the corresponding array with date key
+  filterOutUnavailable(bkData, rmData, date) {
+    let dateNum = date.split('/');
+    bkData.bookings.forEach(bking => {
+      let compare = bking.date.split('/');
+      if (Number(compare[2]) !== Number(dateNum[1])) {
+       let avail = rmData.rooms.find(rm => {
+          return rm.number === bking.roomNumber;
+        });
+        this.availableRooms.push(avail);
+      }
+    });
+    return this.availableRooms;
   }
 
-  checkAvailability(rmdata, date) {
-    let available = [];
-    // declare a variable with value of empty array to hold rooms that are available
-    // iterate over the roomsData.rooms array,
-    // for each room, if this.unavailable rooms.find returns false, push the room into the avail rooms array you declared at the beginning of this method
+  confirmCustomerBooking() {
+    // this method needs to be called in the POST function and it should 'unshift' customer's booking object into their bookingsHistory array
   }
     
 

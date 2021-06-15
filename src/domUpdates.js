@@ -30,8 +30,11 @@ let domUpdates = {
   },
 
   displayCustDetail(customer) {
+    totalBookings.innerHTML = '';
     totalBookings.innerHTML = `Total Bookings at Overlook: ${customer.bookingHistory.length}`;
-    totalSpent.innerHTML = `Total Spent at Overlook: $${customer.bookingsTotal}`;
+    totalSpent.innerHTML = '';
+    console.log(customer.bookingTotal);
+    totalSpent.innerHTML = `Total Spent at Overlook: $${customer.bookingTotal}`;
   },
 
   displayHistory(history) {

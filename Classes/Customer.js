@@ -33,10 +33,10 @@ class Customer {
   }
 
   createNewBooking(data) {
-    let newBooking = new Booking({id: 'TBD', userID: Number(`${data.id}`), date: 'TBD', roomNumber: 'TBD', roomServiceCharges: []});
-    // this.bookingHistory.push(newBooking);
+    let newBooking = new Booking({ userID: Number(`${data.id}`), date: 'TBD', roomNumber: 'TBD' });
+    this.bookingHistory.unshift(newBooking);
     return newBooking;
-}
+  }
 
 }
 

@@ -25,18 +25,17 @@ let sendData = (bookingInfo) => {
         method: 'POST',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(bookingInfo),
-    });
+    })
 
-    // .then(response => {
-    //   if (!response.ok) {
-    //     //throw an error
-    //     console.log(new Error());
-
-    //   } else {
-    //     return response.json();
-    //   }
-    // })
-    // .catch(err => console.log(err, 'here is the pt where error should be displayed'));
+    .then(response => {
+      console.log(response);
+      if (!response.ok) {
+        throw new Error()
+      } else {
+        return response.json();
+      }
+    })
+    .catch(err => console.log(err, 'here is the pt where error should be displayed'));
 }
 
 let dataToPost = (bookingObj) => {

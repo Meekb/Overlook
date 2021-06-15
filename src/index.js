@@ -46,7 +46,7 @@ const selectRoomText = document.getElementById('selectRoomText');
 
 //GLOBAL DATA VARIABLES
 let customersData, roomsData, bookingsData;
-let acct, customer, newBooking, overlook;
+let acct, bookingToPost, customer, newBooking, overlook;
 
 // EVENT LISTENERS
 bookItBtn.addEventListener('click', captureBooking);
@@ -92,7 +92,7 @@ loginBtn.addEventListener('click', (event) => {
 
 function loginCustomer(customer) {
   customer.getBookingsHistory(bookingsData);
-  customer.bookingsTotal = customer.getBookingsTotal(roomsData);
+  customer.bookingTotal = customer.getBookingsTotal(roomsData);
   domUpdates.toggleFromLoginPage();
   domUpdates.greetCustomer(customer);
   domUpdates.displayCustDetail(customer);
@@ -141,10 +141,10 @@ function captureBooking(event) {
 
 function runBookingSequence() {
   domUpdates.hideError(bookingErr);
-  let checkin = inDate.value;
+  let checkin = inDate.value.split('-').join('/')
   let data = Number(customer.id)
   newBooking = customer.createNewBooking(data);
-  newBooking.id = newBooking.createBookingId(17);
+  // newBooking.id = newBooking.createBookingId(17);
   newBooking.userID = customer.id;
   newBooking.date = checkin;
   console.log(newBooking);
@@ -177,15 +177,19 @@ function bookThisRoom(event) {
   event.preventDefault();
   let el = event.target.closest('button');
   newBooking.roomNumber = Number(el.id);
-  console.log(newBooking);
+  console.log('newBooking', newBooking);
   domUpdates.addHidden(roomsDisplay);
   domUpdates.addHidden(selectRoomText);
   domUpdates.removeHidden(selectedRoom);
 }
 
-function confirmAndPost(newBooking) {
+function confirmAndPost() {
   apiCalls.dataToPost(newBooking);
-  console.log(bookingsData.bookings.length);
+  console.log(customer.bookingHistory, customer.bookingTotal)
+
+  customer.bookingTotal = customer.getBookingsTotal(roomsData)
+  domUpdates.displayCustDetail(customer);
+  console.log('1005', bookingsData.bookings.length);
 }
 
 function showLuxuryRooms() {
