@@ -3,11 +3,9 @@ import sampleCustomersData from "../SampleData/sample-customers";
 
 class Booking {
   constructor(newBooking) {
-    // this.id = newBooking.id;
     this.userID = newBooking.userID;
     this.date = newBooking.date;
     this.roomNumber = newBooking.roomNumber;
-    // this.roomServiceCharges = [];
   }
 
   confirmUserId(userId) {
@@ -15,7 +13,7 @@ class Booking {
       return user.id === userId
   });
 }
-
+//did not end up needing this
   createBookingId(length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';  

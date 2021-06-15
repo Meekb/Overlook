@@ -7,15 +7,13 @@ const totalSpent = document.getElementById('totalSpent');
 const allDetails = document.getElementById('allDetails');
 const filterDate = document.getElementById('filterDate');
 const filterBtns = document.querySelectorAll('.filter-btn');
-const content = document.querySelectorAll('.content');
-
-
 
 //ROOM CONTENT
+const content = document.querySelectorAll('.content');
 const roomsDisplay = document.getElementById('roomsDisplay');
 
-//DOM FUNCTIONS
 
+//DOM FUNCTIONS
 let domUpdates = {
 
   greetCustomer(customer) {
@@ -79,23 +77,14 @@ let domUpdates = {
     });
   },
 
-  displaySelectedRoom() {
-    roomsDisplay.innerHTML= '';
-    roomsDisplay =  
+  displaySelectedRoom(selection) {
+    let yourRoom = document.getElementById('yourRoom');
+    yourRoom.innerHTML = '';
+    yourRoom +=  
     `  
-     <section class="room" id="${el.number}">
-     <p>HELLO<p>
+      <h2 class="your-room" id="yourRoom">You have rightly seclected the luxious ${selection.roomType}, Room Number ${selection.roomNumber}!</h2>
+      <button class="confirm-btn" id="postBtn">Click to confirm</button>
     `
-    //    <h2>You've selected the ${room.roomType}!</h2>
-    //    <br>
-    //    <p>Selected Room Number: ${room.number}<p>
-    //    <br>
-    //    <p>Selected Room Cost Per Night: ${room.costPerNight}</p>
-    //    <div>
-    //     <img>
-    //    </div>
-    //  </section>
-    // `
   },
 
   clearCalendar(inDay, outDay) {
