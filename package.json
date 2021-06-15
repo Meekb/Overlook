@@ -30,6 +30,7 @@
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
   },
   "dependencies": {
-    "save-dev": "^0.0.1-security"
+    "save-dev": "^0.0.1-security",
+    "util": "^0.12.4"
   }
 }
