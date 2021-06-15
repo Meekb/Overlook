@@ -1,17 +1,22 @@
 import apiCalls from './apiCalls';
 import domUpdates from './domUpdates';
 import Customer from '../Classes/Customer';
+import Hotel from '../Classes/Hotel';
 import Room from '../Classes/Room';
 import Booking from '../Classes/Booking';
+import hotelData from '../SampleData/sample-hotel';
+
 
 
 //DOM VARIABLES
 const bookingErr = document.getElementById('bookErrMsg');
 const bookRoomArea = document.getElementById('bookRoom');
 const inDate = document.getElementById('inDate');
+const outDate = document.getElementById('outDate');
 const loginErr = document.getElementById('loginErrMsg');
 const loginForm = document.getElementById('loginForm');
 const loginBtn = document.getElementById('loginBtn');
+const logout = document.getElementById('logout');
 
 // CUSTOMER DETAIL HISTORY
 const detailsBtn = document.getElementById('detailBtn');
@@ -20,12 +25,15 @@ const hideDetailBtn = document.getElementById('hideDetailBtn');
 // ROOM BOOK DETAIL AREA
 const roomFilterArea = document.getElementById('roomFilterArea');
 const bookItBtn = document.getElementById('bookItBtn');
+const bookRoom = document.querySelectorAll('.book-room');
 const junior = document.getElementById('junior');
 const luxury = document.getElementById('luxury');
 const suite = document.getElementById('suite');
 const startOver = document.getElementById('startOver');
 const backBtn = document.getElementById('backBtn');
-
+const selectionTitle = document.getElementById('selectionTitle');
+const roomsDisplay = document.getElementById('roomsDisplay');
+// const type = document.querySelectorAll('.room');
 
 // const sideBar = document.getElementById('sideBar');
 // ROOM CONTENT AREA
@@ -35,15 +43,16 @@ const junSuite = document.getElementById('junSuite');
 
 //GLOBAL DATA VARIABLES
 let customersData, roomsData, bookingsData;
-let acct, customer, newBooking;
+let acct, customer, newBooking, overlook;
 
 // EVENT LISTENERS
 bookItBtn.addEventListener('click', captureBooking);
 detailBtn.addEventListener('click', generateHistory);
 hideDetailBtn.addEventListener('click', closeHistory);
 roomFilterArea.addEventListener('click', filterRoomSelection);
-
-
+roomsDisplay.addEventListener('click', bookThisRoom);
+// bookRoom.addEventListener('click', bookThisRoom);
+// logout.addEventListener('click', logoutCustomer);
 
 //EVENT HANDLERS
 window.onload = () => {
@@ -61,6 +70,7 @@ loginBtn.addEventListener('click', (event) => {
   let username = loginForm.username.value;
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
+  overlook = new Hotel(hotelData);
   console.log(username, password)
   if (typeof id === 'number' && id < 51 && password === 'overlook2021') {
     apiCalls.receiveCustProfile(id)
@@ -76,11 +86,11 @@ loginBtn.addEventListener('click', (event) => {
 function loginCustomer(customer) {
   customer.getBookingsHistory(bookingsData);
   customer.bookingsTotal = customer.getBookingsTotal(roomsData);
-  domUpdates.toggleLoginPage();
+  domUpdates.toggleFromLoginPage();
   domUpdates.greetCustomer(customer);
   domUpdates.displayCustDetail(customer);
+  // logout.addEventListener('click', logoutCustomer);
 }
-
 
 function generateHistory(event) {
   event.preventDefault();
@@ -100,8 +110,14 @@ function closeHistory(event) {
 }
 
 function captureBooking(event) {
-  event.preventDefault()
-  if (inDate.value === '' || outDate.value === '') {
+  event.preventDefault()  
+  let now = new Date().toString();
+  let todaysDate = Number(now.split(' ')[2]);
+  let enteredDate = inDate.value;
+  let enteredInToNum = enteredDate.split('-')[2];
+  let enteredOutDate = outDate.value;
+  let enteredOutToNum = enteredOutDate.split('-')[2];
+  if (inDate.value === '' || outDate.value === '' || enteredInToNum < todaysDate || enteredOutToNum <= todaysDate) {
     domUpdates.revealError(bookingErr);
     return;
   } else {
@@ -145,54 +161,80 @@ function filterRoomSelection(event) {
   } else if (el.id === 'startOver') {
     returnToCalendar();
   }
-  
 }
 
+function bookThisRoom(event) {
+  event.preventDefault();
+  let el = event.target;
+  console.log(el.id)
+}
 
-// let formatIn = checkin.split('/');
-// checkin = `${formatIn[1]}/${formatIn[2]}/${formatIn[0]}`;
-// let checkout = outDate.value;
-// fixDateFormat(checkin);
-// console.log(checkin)
-  
 function showLuxuryRooms() {
+  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(selectionTitle);
   domUpdates.hideRoomFilterBtns(suite, junior, single);
   domUpdates.removeHidden(startOver);
-  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(backBtn);
+  domUpdates.removeHidden(roomsDisplay);
+  let results = overlook.filterRoomsByType(roomsData, 'residential suite');
+  domUpdates.displayRoomType(results);
 }
 
 function showSuiteRooms() {
+  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(selectionTitle);
   domUpdates.hideRoomFilterBtns(luxury, junior, single);
   domUpdates.removeHidden(startOver);
-  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(backBtn);
+  domUpdates.removeHidden(roomsDisplay)
+  let results = overlook.filterRoomsByType(roomsData, 'suite');
+  domUpdates.displayRoomType(results);
 }
 
 function showJuniorRooms() {
+  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(selectionTitle);
   domUpdates.hideRoomFilterBtns(luxury, suite, single);
   domUpdates.removeHidden(startOver);
-  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(backBtn);
+  domUpdates.removeHidden(roomsDisplay)
+  let results = overlook.filterRoomsByType(roomsData, 'junior suite');
+  domUpdates.displayRoomType(results);
 }
 
 function showSingleRooms() {
+  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(selectionTitle);
   domUpdates.hideRoomFilterBtns(luxury, suite, junior);
   domUpdates.removeHidden(startOver); 
-  domUpdates.hideContentAreas();
+  domUpdates.removeHidden(backBtn);
+  domUpdates.removeHidden(roomsDisplay)
+  let results = overlook.filterRoomsByType(roomsData, 'single room');
+  domUpdates.displayRoomType(results);
 }
 
 function returnToCalendar() {
+  domUpdates.showContentAreas();
   domUpdates.hideFilterBtns();
   domUpdates.addHidden(roomFilterArea);
-  domUpdates.removeHidden(bookRoomArea); 
+  domUpdates.removeHidden(bookRoomArea);
+  domUpdates.removeHidden(backBtn); 
+  domUpdates.addHidden(startOver);
+  domUpdates.addHidden(roomsDisplay);
+  domUpdates.addHidden(selectionTitle);
+  domUpdates.clearCalendar(inDate, outDate);
 }
 
 function returnToFilters() {
   domUpdates.showFilterBtns();
   domUpdates.showContentAreas();
+  domUpdates.addHidden(backBtn);
+  domUpdates.addHidden(startOver);
+  domUpdates.addHidden(roomsDisplay);
+  domUpdates.addHidden(selectionTitle);
 }
 
-function getRandomIndex(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+
 
 
 

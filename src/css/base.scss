@@ -27,14 +27,13 @@ body {
 }
 
 .nav-login {
-  background: rgb(92, 111, 92);
+  background: #638475;
+  color: #56cbf9;
   grid-area: nav-l;
   border-radius: 10px;
   margin: 0.5rem 0.5rem 0 0.5rem;
-
-  h1 {
-    margin-top: 5px;
-  }
+  text-align: center;
+  font-size: 55px;
 }
 
 .main-login {
@@ -93,9 +92,11 @@ body {
 }
 
 .aside-login {
-  background:rgb(120, 197, 230);
+  background:#805e73;
+  color: #56cbf9;
   grid-area: sidebar-l;
   border-radius: 10px;
+  padding-top: 150px;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   text-align: center;
@@ -117,7 +118,7 @@ body {
   grid-gap: 0.5rem;
 }
 
-nav {
+.nav-bar {
   background: rgb(139, 165, 108);
   grid-area: nav;
   font-size: 42px;
@@ -125,7 +126,14 @@ nav {
   padding-top: 60px;
   border-radius: 10px;
   margin: 0.5rem 0.5rem 0 0.5rem;
+
+  p {
+    font-size: 22px;
+    color: black;
+  }
+
 }
+
 
 main {
   background: #78c5e6;
@@ -147,6 +155,7 @@ main {
     font-size: 18px;
     background: none;
     border: 2px solid blue;
+    border-radius: 10px;
   }
 
 }
@@ -227,8 +236,38 @@ form {
     margin-right: 35px;
     padding: 10px;
     border: 2px solid black;
+    list-style-type: none;
   } 
+}
 
+hr {
+  border: 1.5px solid black;
+  background: black;
+}
+
+.rooms-display {
+  // display: flex;
+  // flex-direction: column;
+  grid-area: content1;
+  // justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.room {
+  font-size: 20px;
+  // width: 100%;
+  background: rgb(249, 248, 246);
+  margin-left: 50%;
+  padding: 10px;
+  border: 2px solid black;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.rooms-display-title {
+  color:rgb(249, 248, 246);
+  text-align: center;
 }
 
 .content {

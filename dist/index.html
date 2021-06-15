@@ -33,14 +33,17 @@
     </main>
 
     <aside class="aside-login">
-      <p>Welcome to the Overlook. Book now to experience luxury first-hand!</p>
+      <p>Welcome to the newly re-opened Overlook Hotel.</p>
+      <p>Book now to experience luxury first-hand!</p>
+      <br>
       <p>Don't have an account? Sign Up Now!</p>
     </aside>
   </section>
 
   <section class="container-main hidden" id="mainPage">
     <nav class="nav-bar" id="navBar">
-      <h1>Welcome User!</h1>
+      <h1 class="welcome">Welcome User!</h1>
+      <p class="date" id="dateDisplay">The current date and time is: <span id="myDate"></span></p>
       <button type="submit">Logout</button>
     </nav>
 
@@ -61,7 +64,7 @@
     </main>
 
     <main class="room-filter-area hidden" id="roomFilterArea">
-      <h2>Filter by room type:</h2>
+      <h2>Pick your room type:</h2>
       <h3 class="filter-data" id="filterDate">Checkin Date:</h3>
       <button class="filter-btn" id="luxury">Luxury Residential Suite</button>
       <button class="filter-btn" id="suite">Suite</button>
@@ -85,16 +88,28 @@
     </aside>
     
     <section class="content content-1" id="luxeSuite">
-     <h2>Luxury Residential Suite</h2>
+      <h2>Luxury Residential Suite</h2>
     </section>
-
+    
     <section class="content content-2" id="regSuite">
       <h2>Suite</h2>
     </section>
-
+    
     <section class="content content-3" id="junSuite">
       <h2>Junior Suite</h2>
     </section>
+    
+    <div class="rooms-display-title hidden" id="selectionTitle"><h1>Select Luxury Now!</h1></div>
+    
+    <section class="content content-3" id="roomPic">
+    </section>
+    
+    <div class="rooms-display hidden" id="roomsDisplay">
+      <section class="room-display" id="roomDisplay">
+        <h2>Luxury Residential Suite</h2>
+      </section>
+    </div>
+
   </section>  
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
