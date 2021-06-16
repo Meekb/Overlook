@@ -21,6 +21,7 @@ function receiveCustProfile(id) {
 
 
 let sendData = (bookingInfo) => {
+  console.log(bookingInfo)
   fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     headers: {'Content-type': 'application/json'},

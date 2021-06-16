@@ -64,18 +64,25 @@ beforeEach(() => {
     expect(hotel.availableRooms).to.be.an('array');
   });
 
-  it('should be able to store available room numbers in the availableRooms property array on a given search date', function() {
-    availableRooms = hotel.filterOutUnavailable(sampleBookingsData, '02/19/2020')
-    expect(hotel.availableRooms.length).to.be.eq(6);
+  it('should only store rooms if they are not booked for the given date', function() {
+
+    const adjustedBkData = {bookings: [{id: "5fwrgu4i7k55hl6yn", userID: 17, date: "2020/02/19", roomNumber: 11, roomServiceCharges:[]}, {id: "5fwkGu4i7k5U9l6yn", userID: 45, date: "2020/02/20", roomNumber: 15, roomServiceCharges:[]}]};
+
+    const adjustedRmData = [{number: 11, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 294.56}, {number: 15, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 325.6}];
+
+    availableRooms = hotel.filterOutUnavailable(adjustedBkData, adjustedRmData, '02/18/2020');
+
+    expect(hotel.availableRooms.length).to.equal(2);
   });
 
   it('should return an apology if there are no rooms available on the given date', function() {
-    const adjustedData = {bookings: [{id: "5fwrgu4i7k55hl6yn", userID: 17, date: "2020/02/19", roomNumber: 11, roomServiceCharges:[]}, {id: "5fwkGu4i7k5U9l6yn", userID: 45, date: "2020/02/19", roomNumber: 15, roomServiceCharges:[]}]};
 
-    const adjustRmData = { rooms: [{number: 15, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 294.56}, {number: 17, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 325.6}]};
+    const adjustedBkData = {bookings: [{id: "5fwrgu4i7k55hl6yn", userID: 17, date: "2020/02/19", roomNumber: 11, roomServiceCharges:[]}, {id: "5fwkGu4i7k5U9l6yn", userID: 45, date: "2020/02/19", roomNumber: 15, roomServiceCharges:[]}]};
+
+    const adjustedRmData = [{number: 15, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 294.56}, {number: 17, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 325.6}];
 
 
-    availableRooms = hotel.filterOutUnavailable(adjustedData, '02/19/2020');
+    availableRooms = hotel.filterOutUnavailable(adjustedBkData, adjustedRmData, '02/19/2020');
 
     expect(availableRooms).to.equal('So sorry, but we do not have available rooms on that date! Please adjust your search dates.');
   });

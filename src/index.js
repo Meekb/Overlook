@@ -53,8 +53,8 @@ window.onload = () => {
       customersData = promise[0];
       roomsData = promise[1];
       bookingsData = promise[2];
-    }); 
-} 
+  }); 
+}  
 
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
@@ -71,7 +71,7 @@ loginBtn.addEventListener('click', (event) => {
         customer = new Customer(acct);
         loginCustomer(customer);  
       });
-  }
+   }
 });
 
 function generateHistory(event) {
@@ -120,12 +120,12 @@ function bookThisRoom(event) {
 }
 
 function confirmAndPost() {
+
   apiCalls.dataToPost(newBooking);
-  customer.bookingTotal = customer.getBookingsTotal(roomsData);
-  domUpdates.displayConfirmation(newBooking.createBookingConf(17));
   domUpdates.displayCustDetail(customer);
-  domUpdates.addHidden(confirmBtn);
   domUpdates.displayConfirmation(newBooking);
+  fetchUpdatedData();
+
 }
 
 // FUNCTIONS
@@ -136,6 +136,16 @@ function loginCustomer(customer) {
   domUpdates.greetCustomer(customer);
   domUpdates.displayCustDetail(customer);
   domUpdates.hideError(loginErr);
+}
+
+function fetchUpdatedData() {
+  apiCalls.receiveData()
+  .then((promise) => {
+    customersData = promise[0];
+    roomsData = promise[1];
+    bookingsData = promise[2];
+  }); 
+  overlook = new Hotel(hotelData);
 }
 
 function runBookingSequence() {
@@ -170,15 +180,22 @@ function filterRoomSelection(event) {
   }
 }
 
+
 function showLuxuryRooms() {
+  let date = newBooking.date;
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
   domUpdates.hideRoomFilterBtns(suite, junior, junior);
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay);
+
   let results = overlook.filterRoomsByType(roomsData, 'residential suite');
-  domUpdates.displayRoomType(results);
+
+  
+  let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
+
+  domUpdates.displayRoomType(roomsToDisplay);
 }
 
 function showSuiteRooms() {

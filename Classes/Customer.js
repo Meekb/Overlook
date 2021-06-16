@@ -34,7 +34,7 @@ class Customer {
 
   createNewBooking(data) {
     let newBooking = new Booking({ userID: Number(`${data.id}`), date: 'TBD', roomNumber: 'TBD' });
-    this.bookingHistory.unshift(newBooking);
+    this.bookingHistory.push(newBooking);
     return newBooking;
   }
 
