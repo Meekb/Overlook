@@ -27,7 +27,7 @@ const startOver = document.getElementById('startOver');
 const backBtn = document.getElementById('backBtn');
 const selectionTitle = document.getElementById('selectionTitle');
 const roomsDisplay = document.getElementById('roomsDisplay');
-const confirmBtn = document.getElementById('postBtn');
+const confirmBtn = document.querySelector('.confirm-btn');
 
 // ROOM CONTENT AREA
 const selectedRoom = document.getElementById('selectedRoom');
@@ -53,7 +53,6 @@ window.onload = () => {
       customersData = promise[0];
       roomsData = promise[1];
       bookingsData = promise[2];
-      console.log('customer data', customersData, 'rooms data', roomsData, 'bookings data', bookingsData);
     }); 
   } 
 
@@ -63,7 +62,6 @@ loginBtn.addEventListener('click', (event) => {
   let username = loginForm.username.value;
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
-  console.log(username, password);
   if (typeof id !== 'number' || id >= 51 || id <= 0 || password !== 'overlook2021') {
     domUpdates.revealError(loginErr);
   } else {
@@ -71,7 +69,6 @@ loginBtn.addEventListener('click', (event) => {
     .then((promise) => {
     acct = promise[0];
     customer = new Customer(acct);
-    console.log(customer.name);
     loginCustomer(customer);  
     });
   }
@@ -116,7 +113,6 @@ function bookThisRoom(event) {
   event.preventDefault();
   let el = event.target.closest('button');
   newBooking.roomNumber = Number(el.id);
-  console.log('newBooking', newBooking);
   domUpdates.addHidden(roomsDisplay);
   domUpdates.addHidden(selectRoomText);
   domUpdates.removeHidden(selectedRoom);
@@ -125,8 +121,11 @@ function bookThisRoom(event) {
 
 function confirmAndPost() {
   apiCalls.dataToPost(newBooking);
-  customer.bookingTotal = customer.getBookingsTotal(roomsData)
+  customer.bookingTotal = customer.getBookingsTotal(roomsData);
+  domUpdates.displayConfirmation(newBooking.createBookingConf(17));
   domUpdates.displayCustDetail(customer);
+  domUpdates.addHidden(confirmBtn);
+  domUpdates.displayConfirmation(newBooking);
 }
 
 // FUNCTIONS
@@ -146,7 +145,6 @@ function runBookingSequence() {
   newBooking = customer.createNewBooking(data);
   newBooking.userID = customer.id;
   newBooking.date = checkin;
-  console.log(newBooking);
   domUpdates.addHidden(bookRoomArea); 
   domUpdates.removeHidden(roomFilterArea); 
   domUpdates.displayCheckInDate(newBooking);

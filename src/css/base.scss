@@ -29,6 +29,10 @@ $coverAll: cover;
 }
 
 //SELECTOR STYLING
+* {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
   @include setHeight(100%);
   padding: 0;
@@ -354,6 +358,8 @@ hr {
 .content {
   margin-bottom: 0.5rem;
   text-align: $goldieLocks;
+  color: $primary-color;
+  text-shadow: 2px 1.5px whitesmoke;
 }
 
 .content-1 {
@@ -409,11 +415,5 @@ hr {
     margin-right: 0.5rem;
     margin-left: 0.5rem;
   }
-
-  // .container-main {
-  //   @include chooseDisplay(flex);
-  //   flex-direction: column;
-  // }
-
 
 }
