@@ -7,11 +7,10 @@ import '../src/domUpdates'
 import './css/base.scss'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
 import './images/over-overlook.png'
 import './images/overlook-suite.png'
 import './images/overlook-queen.png'
-import './images/overlook-hall.png'
+import './images/overlook-junior.png'
 import './images/overlook-skypool.png'
 
 

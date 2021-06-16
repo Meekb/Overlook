@@ -84,7 +84,17 @@ let domUpdates = {
     yourRoom.innerHTML = '';
     yourRoom.innerHTML =  
     `  
-      <h2 class="your-room" id="yourRoom">You have rightly seclected the luxurious, Room Number ${roomNumber}!</h2>
+      <h2 class="your-room" id="yourRoom">You have rightly selected the luxurious, Room Number ${roomNumber}!</h2>
+    `
+  },
+
+  displayConfirmation(bking) {
+    let yourRoom = document.getElementById('yourRoom');
+    yourRoom.innerHTML = '';
+    yourRoom.innerHTML +=  
+    `  
+      <h2 class="your-room" id="yourRoom">Your Room is booked!<br></h2><h3>Confirmation# ${bking.bookingConfirmation}</h3><br>
+      <h4>Please retain for your records</h4>
     `
   },
 

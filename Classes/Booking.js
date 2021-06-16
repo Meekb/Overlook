@@ -1,6 +1,3 @@
-import sampleCustomersData from "../SampleData/sample-customers";
-
-
 class Booking {
   constructor(newBooking) {
     this.userID = newBooking.userID;
@@ -8,11 +5,15 @@ class Booking {
     this.roomNumber = newBooking.roomNumber;
   }
 
-  confirmUserId(userId) {
-    sampleCustomersData.filter(user => {
-      return user.id === userId
-    });
-  }
+  createBookingConf(length) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let confirmation = '';  
+    for (var i = 0; i < length; i++) {
+      confirmation += chars.charAt(Math.floor(Math.random() * chars.length))
+    }
+    this.bookingConfirmation = confirmation;
+    return confirmation;
+  } 
 
 }
 
