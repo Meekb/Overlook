@@ -5,7 +5,7 @@ import sampleRoomsData from '../SampleData/sample-rooms';
 import sampleBookingsData from '../SampleData/sample-bookings';
 import hotelData from '../SampleData/sample-hotel';
 
-let hotel;
+let hotel, availableRooms;
 
 describe('Hotel', () => {
 
@@ -65,7 +65,7 @@ beforeEach(() => {
   });
 
   it('should be able to store available room numbers in the availableRooms property array on a given search date', function() {
-    let availableRooms = hotel.filterOutUnavailable(sampleBookingsData, sampleRoomsData, '02/19/2020')
+    availableRooms = hotel.filterOutUnavailable(sampleBookingsData, sampleRoomsData, '02/19/2020')
     expect(hotel.availableRooms.length).to.be.eq(6);
   });
 

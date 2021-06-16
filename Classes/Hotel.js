@@ -20,19 +20,23 @@ class Hotel {
   }
 
   filterOutUnavailable(bkData, rmData, date) {
-    let openRooms = [];
-    let dateNum = date.split('/');
+//reformat the date wanted to remove the forward slashes making it a sequence of 8 nums starting with month then date then year
+    let dateWanted = date.split('/').join('');
+    console.log(dateWanted);
+// forEach bking in the data/api, split the booking date at the forward slash. then reformat using the indexes of the numbers to make a sequence of 8 starting with month then day then year. Using the this.availableRooms property array. If this.availableRooms.indexOf(bkingDate) === -1 then it's not in they array and we want to push that room number into the availableRooms array.
     bkData.bookings.forEach(bking => {
-      let compare = bking.date.split('/');
-      if (Number(compare[2]) !== Number(dateNum[1])) {
-       let avail = rmData.rooms.find(rm => {
-         if (openRooms.indexOf(bking.roomNumber) === -1)
-           openRooms.push(rm.number === bking.roomNumber);
-        });
-        this.availableRooms.push(avail);
+      let dateToCompare = bking.date.split('/');
+      dateToCompare = `${dateToCompare[1]}${dateToCompare[2]}${dateToCompare[0]}`;
+      bking.date = dateToCompare;
+      if (Number(bking.date) !== Number(dateWanted) && this.availableRooms.indexOf(bking.date) === -1) {
+        console.log('room is open')
+        this.availableRooms.push(bking.roomNumber);
       }
     }); 
-    return this.availableRooms;
+    // console.log(openRooms);
+    // console.log(bkData);
+    console.log(this.availableRooms);
+    // return this.availableRooms;
   }
     
 }
