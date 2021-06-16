@@ -1,96 +1,129 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: #050505;
-;
+// @import 'src/css/_mixins.scss'
 
-* {
-  // border: 2px solid orange;
+// /* This is an example of using Sass, otherwise plain CSS works too*/
+$nope: none;
+$primary-color: black;
+$error-color: red;
+$goldieLocks: center;
+$coverAll: cover;
+
+//mixins
+@mixin giveBorderRadius($val) {
+  border-radius: $val;
 }
 
+@mixin setGridGap($rems) {
+  grid-gap: $rems;
+}
+
+@mixin defineElGridArea($el) {
+  grid-area: $el;
+}
+
+@mixin setHeight($amt) {
+  height: $amt;
+}
+
+@mixin chooseDisplay($type) {
+  display: $type;
+}
+
+//SELECTOR STYLING
 body {
-  height: 100%;
+  @include setHeight(100%);
   padding: 0;
   margin: 0;
-  background: $primary-background;
+  background: $primary-color;
 }
 
 // PAGE LOGIN
 .container-login {
-  display: grid;
-  height: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 4fr 5fr 8fr 0.4fr;
   grid-template-areas: "nav-l nav-l nav-l nav-l"
   "sidebar-l main-l main-l main-l"
   "sidebar-l main-l main-l main-l"
   "sidebar-l main-l main-l main-l";
-  grid-gap: 0.5rem;
+  @include chooseDisplay(grid);
+  @include setGridGap(0.5rem);
+  @include setHeight(100vh)
 }
 
 .nav-login {
   background: #638475;
-  color: #56cbf9;
-  grid-area: nav-l;
+  color: $primary-color;
+  @include defineElGridArea(nav-l);
   border-radius: 10px;
   margin: 0.5rem 0.5rem 0 0.5rem;
-  text-align: center;
+  text-align: $goldieLocks;
   font-size: 55px;
 }
 
 .login-err-msg {
   font-size: 26px;
-  color: red;
+  color: $error-color;
 }
 
 .main-login {
   background-image: url(../images/over-overlook.png);
-  background-size: cover;
+  background-size: $coverAll;
   grid-area: main-l;
-  border-radius: 10px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  text-shadow: 2px 2px #a6daef;
+  justify-content: $goldieLocks;
+  align-items: $goldieLocks;
+  color: $primary-color;
+  text-shadow: 3px 3px black;
   font-weight: bold;
+  @include giveBorderRadius(10px);
 
   .username {
-    height: 1.5rem;
     margin-top: 235px;
-    background: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
+    background: $nope;
+    border-top: $nope;
+    border-right: $nope;
+    border-left: $nope;
     border-bottom: 2px solid black;
     font-size: 20px;
+    @include setHeight(1.5rem);
   }
 
   .password {
-    height: 1.5rem;
     margin-top: 35px;
-    background: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 2px solid black;
+    background: $nope;
+    border-top: $nope;
+    border-right: $nope;
+    border-left: $nope;
+    border-bottom: 2px solid $primary-color;
     font-size: 20px;
+    @include setHeight(1.5rem);
   }
 
   .login-btn {
     margin-top: 29px;
     margin-left: 20px;
-    width: 120px;
-    height: 35px;
-    border: 3px solid black;
-    border-radius: 4px;
-    background: none;
+    width: 10%;
+    border: 3px solid $primary-color;
+    background: $nope;
     color: whitesmoke;
     font-size: 20px;
     font-weight: bold;
-    text-shadow: 3px 3px #040404
+    text-shadow: 3px 3px #040404;
+    @include giveBorderRadius(4px);
+    @include setHeight(35px);
+
+    &:hover {
+      background: $primary-color;
+      color: white;
+      text-shadow:  2px 2px #5cd29d;
+      border: 2px solid white;
+    }
+
   }
 
   .label {
+    font-size: 26px;
+    color: #5cd29d;
     margin-right: 30px;
   }
 
@@ -98,71 +131,84 @@ body {
 
 .aside-login {
   background:#805e73;
-  color: #56cbf9;
+  color: $primary-color;
   grid-area: sidebar-l;
-  border-radius: 10px;
   padding-top: 150px;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
-  text-align: center;
+  text-align: $goldieLocks;
   font-size: 22px;
+  font-weight: bold;
+  @include giveBorderRadius(10px);
 }
-
-
 
 // MAIN DASHBOARD
 .container-main {
-  display: grid;
-  height: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 4fr 5fr 8fr 0.4fr;
   grid-template-areas: "nav nav nav nav"
   "sidebar main main main"
   "sidebar content1 content2 content3"
   "sidebar content1 content2 content3";
-  grid-gap: 0.5rem;
+  @include chooseDisplay(grid);
+  @include setGridGap(0.5rem);
+  @include setHeight(100vh);
 }
 
 .nav-bar {
-  background: rgb(139, 165, 108);
+  background: #638475;
   grid-area: nav;
   font-size: 42px;
-  text-align: center;
-  padding-top: 60px;
-  border-radius: 10px;
+  text-align: $goldieLocks;
+  padding-top: 30px;
   margin: 0.5rem 0.5rem 0 0.5rem;
+  @include giveBorderRadius(10px);
 
   p {
     font-size: 22px;
-    color: black;
+    color: $primary-color;
+  }
+}
+
+.logout {
+  width: 8%;
+  // height: 3vw;
+  background: $nope;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 3px solid $primary-color;
+  @include giveBorderRadius(7px);
+
+  &:hover {
+    background: #805e73;
   }
 
 }
 
-
 main {
-  background: #78c5e6;
+  background: #805e73;
   grid-area: main;
   margin-right: 0.5rem;
-  border-radius: 10px;
-  text-align: center;
+  text-align: $goldieLocks;
+  @include giveBorderRadius(10px);
 }
 
 .room-filter-area {
-  background: #78c5e6;
+  background: #805e73;
   grid-area: main;
   margin-right: 0.5rem;
-  border-radius: 10px;
-  text-align: center;
+  text-align: $goldieLocks;
+  @include giveBorderRadius(10px);
 
   button {
+    width: 10%;
     margin-top: 15px;
-    font-size: 18px;
-    background: none;
-    border: 2px solid blue;
-    border-radius: 10px;
+    font-size: 15px;
+    background: $nope;
+    border: 2px solid $primary-color;
+    @include giveBorderRadius(10px);
   }
-
 }
 
 form {
@@ -175,105 +221,129 @@ form {
 
 .booking-err-msg {
   position: absolute;
-  color: red;
-  font-size: 18px;
+  color: $error-color;
+  font-size: 20px;
   font-weight: bold;
-  padding-top: 30px;
+  padding-top: 20px;
   margin-left: 395px;
+  text-shadow: 2px 3px $primary-color;
 }
 
 .book-it-btn {
+  width: 9vw;
+  height: 3vh;
   position: relative;
-  border: 2px solid #2a2929;
-  border-radius: 4px;
-  background: none;
+  border: 2px solid $primary-color;
+  background: $nope;
   font-size: 18px;
-  margin-top: 15px;
+  font-weight: bold;
+  margin-top: 2px;
+  @include giveBorderRadius(4px);
+
+  &:hover {
+    background: #638475;
+  }
+
 }
 
 .sidebar {
   background-image: url(../images/overlook-skypool.png);
-  background-size: cover;
+  background-size: $coverAll;
   grid-area: sidebar;
-  text-align: center;
-  border-radius: 10px;
+  text-align: $goldieLocks;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   overflow: scroll;
+  @include giveBorderRadius(10px);
   
   h2 {
-    text-shadow: 1px 3px #a6daef;
+    text-shadow: 1px 3px whitesmoke;
   }
 
   p {
     margin-top: 35px;
     font-size: 24px;
     font-weight: bold;
-    color: black;
-    text-shadow: 1px 3px #a6daef;
+    color: $primary-color;
+    text-shadow: 1px 3px whitesmoke;
   }
 
   .details-btn {
-    border: 2px solid black;
+    border: 3px solid $primary-color;
     border-radius: 4px;
-    background: none;
+    background: $nope;
     height: 2.8rem;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
-    color: black;
-    text-shadow: 1.5px 1.5px #a6daef;
+    color: $primary-color;
+    text-shadow: 1.5px 1.5px whitesmoke;
+    @include giveBorderRadius(4px);
+
+    &:hover {
+      background: $primary-color;
+      color: whitesmoke;
+      border: 3px solid whitesmoke;
+      text-shadow: 1.5px 1.5px #56cbf9;
+    }
+
   }
 
   .hide-details-btn {
-    border: 2px solid black;
-    color: black;
-    text-shadow: 1.5px 1.5px #a6daef;
-    border-radius: 4px;
-    background: none;
-    font-size: 24px;
+    border: 3px solid $primary-color;
+    color: $primary-color;
+    text-shadow: 1.5px 1.5px whitesmoke;
+    background: $nope;
+    font-size: 20px;
     font-weight: bold;
     height: 2.8rem;
+    @include giveBorderRadius(4px);
+
+    &:hover {
+      &:hover {
+        background: $primary-color;
+        color: whitesmoke;
+        border: 3px solid whitesmoke;
+        text-shadow: 1.5px 1.5px #56cbf9;
+      }
+    }
   }
 
   li { 
     font-size: 20px;
-    background: rgb(249, 248, 246);
+    background: #638475;
     margin-right: 35px;
     padding: 10px;
-    border: 2px solid black;
-    list-style-type: none;
-    box-shadow: 10px 5px 5px #7070ae;
+    color: whitesmoke;
+    border: 3px solid $primary-color;
+    list-style-type: $nope;
+    box-shadow: 10px 5px 5px #805e73;
   } 
 }
 
 hr {
-  border: 1.5px solid black;
-  background: black;
+  border: 1.5px solid $primary-color;
+  background: $primary-color;
 }
 
 .rooms-display {
-  // display: flex;
-  // flex-direction: column;
   grid-area: content1;
-  // justify-content: center;
-  align-items: center;
+  align-items: $goldieLocks;
   overflow: scroll;
 }
 
 .room {
   font-size: 20px;
-  // width: 100%;
   background: rgb(249, 248, 246);
   margin-left: 50%;
   padding: 10px;
-  border: 2px solid black;
-  text-align: center;
-  border-radius: 10px;
+  border: 2px solid $primary-color;
+  text-align: $goldieLocks;
+  @include giveBorderRadius(10px);
 }
 
 .rooms-display-title {
   color:rgb(249, 248, 246);
-  text-align: center;
+  text-align: $goldieLocks;
 }
 
 .selected-room {
@@ -283,31 +353,67 @@ hr {
 
 .content {
   margin-bottom: 0.5rem;
-  text-align: center;
+  text-align: $goldieLocks;
 }
 
 .content-1 {
   background-image: url(../images/overlook-suite.png);
-  background-size: cover;
+  background-size: $coverAll;
   grid-area: content1;
-  border-radius: 10px;
+  @include giveBorderRadius(10px);
 }
 
 .content-2 {
   background-image: url(../images/overlook-queen.png);
-  background-size: cover;
+  background-size: $coverAll;
   grid-area: content2;
-  border-radius: 10px;
+  @include giveBorderRadius(10px);
 }
 
 .content-3 {
   background-image: url(../images/overlook-junior.png);
-  background-size: cover;
+  background-size: $coverAll;
   grid-area: content3;
-  border-radius: 10px;
   margin-right: 0.5rem;
+  @include giveBorderRadius(10px);
 }
 
 .hidden {
-  display: none;
+  @include chooseDisplay($nope);
+}
+
+
+//MEDIA QUERIES
+@media only screen and (max-width: 768px) {
+  
+  .container-login {
+    @include chooseDisplay(flex);
+    flex-direction: column;
+  }
+
+  .aside-login {
+    background:#805e73;
+    color: $primary-color;
+    height: 100%;
+    padding-top: 35px;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    text-align: $goldieLocks;
+    font-size: 22px;
+    font-weight: bold;
+    @include giveBorderRadius(10px);
+  }
+
+  .main-login {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  // .container-main {
+  //   @include chooseDisplay(flex);
+  //   flex-direction: column;
+  // }
+
+
 }

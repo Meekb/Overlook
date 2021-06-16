@@ -1,0 +1,16 @@
+//mixins
+@mixin giveBorderRadius($val) {
+    border-radius: $val;
+  }
+  
+  @mixin setGridGap($rems) {
+    grid-gap: $rems;
+  }
+  
+  @mixin defineElGridArea($el) {
+    grid-area: $el;
+  }
+  
+  @mixin setHeight($amt) {
+    height: $amt;
+  }
