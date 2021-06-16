@@ -7,7 +7,6 @@ $error-color: red;
 $goldieLocks: center;
 $coverAll: cover;
 
-
 //mixins
 @mixin giveBorderRadius($val) {
   border-radius: $val;
@@ -28,7 +27,6 @@ $coverAll: cover;
 @mixin chooseDisplay($type) {
   display: $type;
 }
-
 
 //SELECTOR STYLING
 body {
@@ -53,7 +51,7 @@ body {
 
 .nav-login {
   background: #638475;
-  color: #56cbf9;
+  color: $primary-color;
   @include defineElGridArea(nav-l);
   border-radius: 10px;
   margin: 0.5rem 0.5rem 0 0.5rem;
@@ -75,7 +73,7 @@ body {
   justify-content: $goldieLocks;
   align-items: $goldieLocks;
   color: $primary-color;
-  text-shadow: 2px 2px #a6daef;
+  text-shadow: 3px 3px black;
   font-weight: bold;
   @include giveBorderRadius(10px);
 
@@ -91,7 +89,6 @@ body {
   }
 
   .password {
-    // height: 1.5rem;
     margin-top: 35px;
     background: $nope;
     border-top: $nope;
@@ -105,7 +102,7 @@ body {
   .login-btn {
     margin-top: 29px;
     margin-left: 20px;
-    width: 120px;
+    width: 10%;
     border: 3px solid $primary-color;
     background: $nope;
     color: whitesmoke;
@@ -114,9 +111,19 @@ body {
     text-shadow: 3px 3px #040404;
     @include giveBorderRadius(4px);
     @include setHeight(35px);
+
+    &:hover {
+      background: $primary-color;
+      color: white;
+      text-shadow:  2px 2px #5cd29d;
+      border: 2px solid white;
+    }
+
   }
 
   .label {
+    font-size: 26px;
+    color: #5cd29d;
     margin-right: 30px;
   }
 
@@ -124,17 +131,16 @@ body {
 
 .aside-login {
   background:#805e73;
-  color: #56cbf9;
+  color: $primary-color;
   grid-area: sidebar-l;
   padding-top: 150px;
   margin-bottom: 0.5rem;
   margin-left: 0.5rem;
   text-align: $goldieLocks;
   font-size: 22px;
+  font-weight: bold;
   @include giveBorderRadius(10px);
 }
-
-
 
 // MAIN DASHBOARD
 .container-main {
@@ -150,11 +156,11 @@ body {
 }
 
 .nav-bar {
-  background: rgb(139, 165, 108);
+  background: #638475;
   grid-area: nav;
   font-size: 42px;
   text-align: $goldieLocks;
-  padding-top: 60px;
+  padding-top: 30px;
   margin: 0.5rem 0.5rem 0 0.5rem;
   @include giveBorderRadius(10px);
 
@@ -162,12 +168,26 @@ body {
     font-size: 22px;
     color: $primary-color;
   }
+}
+
+.logout {
+  width: 8%;
+  // height: 3vw;
+  background: $nope;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 3px solid $primary-color;
+  @include giveBorderRadius(7px);
+
+  &:hover {
+    background: #805e73;
+  }
 
 }
 
-
 main {
-  background: #78c5e6;
+  background: #805e73;
   grid-area: main;
   margin-right: 0.5rem;
   text-align: $goldieLocks;
@@ -175,20 +195,20 @@ main {
 }
 
 .room-filter-area {
-  background: #78c5e6;
+  background: #805e73;
   grid-area: main;
   margin-right: 0.5rem;
   text-align: $goldieLocks;
   @include giveBorderRadius(10px);
 
   button {
+    width: 10%;
     margin-top: 15px;
-    font-size: 18px;
+    font-size: 15px;
     background: $nope;
     border: 2px solid $primary-color;
     @include giveBorderRadius(10px);
   }
-
 }
 
 form {
@@ -202,19 +222,28 @@ form {
 .booking-err-msg {
   position: absolute;
   color: $error-color;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  padding-top: 30px;
+  padding-top: 20px;
   margin-left: 395px;
+  text-shadow: 2px 3px $primary-color;
 }
 
 .book-it-btn {
+  width: 9vw;
+  height: 3vh;
   position: relative;
-  border: 2px solid #2a2929;
+  border: 2px solid $primary-color;
   background: $nope;
   font-size: 18px;
-  margin-top: 15px;
+  font-weight: bold;
+  margin-top: 2px;
   @include giveBorderRadius(4px);
+
+  &:hover {
+    background: #638475;
+  }
+
 }
 
 .sidebar {
@@ -228,7 +257,7 @@ form {
   @include giveBorderRadius(10px);
   
   h2 {
-    text-shadow: 1px 3px #a6daef;
+    text-shadow: 1px 3px whitesmoke;
   }
 
   p {
@@ -236,40 +265,58 @@ form {
     font-size: 24px;
     font-weight: bold;
     color: $primary-color;
-    text-shadow: 1px 3px #a6daef;
+    text-shadow: 1px 3px whitesmoke;
   }
 
   .details-btn {
-    border: 2px solid $primary-color;
+    border: 3px solid $primary-color;
     border-radius: 4px;
     background: $nope;
     height: 2.8rem;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: $primary-color;
-    text-shadow: 1.5px 1.5px #a6daef;
+    text-shadow: 1.5px 1.5px whitesmoke;
     @include giveBorderRadius(4px);
+
+    &:hover {
+      background: $primary-color;
+      color: whitesmoke;
+      border: 3px solid whitesmoke;
+      text-shadow: 1.5px 1.5px #56cbf9;
+    }
+
   }
 
   .hide-details-btn {
-    border: 2px solid $primary-color;
+    border: 3px solid $primary-color;
     color: $primary-color;
-    text-shadow: 1.5px 1.5px #a6daef;
+    text-shadow: 1.5px 1.5px whitesmoke;
     background: $nope;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     height: 2.8rem;
     @include giveBorderRadius(4px);
+
+    &:hover {
+      &:hover {
+        background: $primary-color;
+        color: whitesmoke;
+        border: 3px solid whitesmoke;
+        text-shadow: 1.5px 1.5px #56cbf9;
+      }
+    }
   }
 
   li { 
     font-size: 20px;
-    background: rgb(249, 248, 246);
+    background: #638475;
     margin-right: 35px;
     padding: 10px;
-    border: 2px solid $primary-color;
+    color: whitesmoke;
+    border: 3px solid $primary-color;
     list-style-type: $nope;
-    box-shadow: 10px 5px 5px #7070ae;
+    box-shadow: 10px 5px 5px #805e73;
   } 
 }
 
@@ -337,50 +384,36 @@ hr {
 
 
 //MEDIA QUERIES
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
+  
   .container-login {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 4fr 5fr 8fr 0.4fr;
-    grid-template-areas: "nav-l nav-l nav-l nav-l"
-    "main-l main-l main-l main-l"
-    "sidebar-l sidebar-l sidebar-l sidebar-l";
-    @include chooseDisplay(grid);
-    @include setGridGap(0.5rem);
-    @include setHeight(100vh)
+    @include chooseDisplay(flex);
+    flex-direction: column;
   }
 
   .aside-login {
     background:#805e73;
-    color: #56cbf9;
-    grid-area: sidebar-l;
+    color: $primary-color;
+    height: 100%;
     padding-top: 35px;
-    margin: 0 0.5rem 0.5rem 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     text-align: $goldieLocks;
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: bold;
     @include giveBorderRadius(10px);
   }
 
-  .login-btn {
-    margin-top: 29px;
-    margin-bottom: 20px;
-    width: 120px;
-    border: 3px solid $primary-color;
-    background: $nope;
-    color: whitesmoke;
-    font-size: 20px;
-    font-weight: bold;
-    text-shadow: 3px 3px #040404;
-    @include giveBorderRadius(4px);
-    @include setHeight(35px);
+  .main-login {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
   }
 
-  //DASHBOARD 768PX MAX
-  .container-main {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    height: 10%;
-    @include chooseDisplay(grid);
-    @include setGridGap(0.5rem);
-    @include setHeight(100vh);
-  }
+  // .container-main {
+  //   @include chooseDisplay(flex);
+  //   flex-direction: column;
+  // }
+
 
 }

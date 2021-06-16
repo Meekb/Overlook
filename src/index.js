@@ -63,7 +63,6 @@ loginBtn.addEventListener('click', (event) => {
   let username = loginForm.username.value;
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
-  // validate(id, username, password);
   console.log(username, password);
   if (typeof id !== 'number' || id >= 51 || id <= 0 || password !== 'overlook2021') {
     domUpdates.revealError(loginErr);
