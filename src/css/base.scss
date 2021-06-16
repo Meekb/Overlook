@@ -335,9 +335,29 @@ hr {
   overflow: scroll;
 }
 
+.book-room {
+  background: $nope;
+  border: 2px solid $primary-color;
+  @include giveBorderRadius(5px);
+
+  &:hover {
+    background: #638475;
+  }
+}
+
+.confirm-btn {
+  background: $nope;
+  border: 2px solid $primary-color;
+  @include giveBorderRadius(5px);
+
+  &:hover {
+    background: #638475;
+  }
+}
+
 .room {
   font-size: 20px;
-  background: rgb(249, 248, 246);
+  background: #805e73;
   margin-left: 50%;
   padding: 10px;
   border: 2px solid $primary-color;
@@ -346,12 +366,12 @@ hr {
 }
 
 .rooms-display-title {
-  color:rgb(249, 248, 246);
+  color:white;
   text-align: $goldieLocks;
 }
 
 .selected-room {
-  background: rebeccapurple;
+  background: #805e73;
   grid-area: content2;
 }
 
@@ -359,7 +379,7 @@ hr {
   margin-bottom: 0.5rem;
   text-align: $goldieLocks;
   color: $primary-color;
-  text-shadow: 2px 1.5px whitesmoke;
+  text-shadow: 2px 1.5px #638475;
 }
 
 .content-1 {
