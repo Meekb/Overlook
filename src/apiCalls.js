@@ -21,11 +21,11 @@ function receiveCustProfile(id) {
 
 
 let sendData = (bookingInfo) => {
-   fetch('http://localhost:3001/api/v1/bookings', {
-        method: 'POST',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify(bookingInfo),
-    })
+  fetch('http://localhost:3001/api/v1/bookings', {
+    method: 'POST',
+    headers: {'Content-type': 'application/json'},
+    body: JSON.stringify(bookingInfo),
+  })
 
     .then(response => {
       console.log(response);
@@ -39,7 +39,7 @@ let sendData = (bookingInfo) => {
 }
 
 let dataToPost = (bookingObj) => {
-    return Promise.all([sendData(bookingObj, 'http://localhost:3001/api/v1/bookings')]);
+  return Promise.all([sendData(bookingObj, 'http://localhost:3001/api/v1/bookings')]);
 }
 
 

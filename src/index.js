@@ -39,7 +39,7 @@ let acct, customer, newBooking, overlook;
 
 // EVENT LISTENERS
 bookItBtn.addEventListener('click', captureBooking);
-detailBtn.addEventListener('click', generateHistory);
+detailsBtn.addEventListener('click', generateHistory);
 hideDetailBtn.addEventListener('click', closeHistory);
 confirmBtn.addEventListener('click', confirmAndPost);
 roomFilterArea.addEventListener('click', filterRoomSelection);
@@ -54,7 +54,7 @@ window.onload = () => {
       roomsData = promise[1];
       bookingsData = promise[2];
     }); 
-  } 
+} 
 
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
@@ -66,11 +66,11 @@ loginBtn.addEventListener('click', (event) => {
     domUpdates.revealError(loginErr);
   } else {
     apiCalls.receiveCustProfile(id)
-    .then((promise) => {
-    acct = promise[0];
-    customer = new Customer(acct);
-    loginCustomer(customer);  
-    });
+      .then((promise) => {
+        acct = promise[0];
+        customer = new Customer(acct);
+        loginCustomer(customer);  
+      });
   }
 });
 
@@ -88,7 +88,7 @@ function generateHistory(event) {
 function closeHistory(event) {
   event.preventDefault();
   domUpdates.clearHistoryArea();
-  domUpdates.hideShowBtns(hideDetailBtn, detailBtn);
+  domUpdates.hideShowBtns(hideDetailBtn, detailsBtn);
 }
 
 function captureBooking(event) {
@@ -104,8 +104,8 @@ function captureBooking(event) {
     domUpdates.revealError(bookingErr);
     return;
   } else {
-      runBookingSequence();
-      domUpdates.showFilterBtns();
+    runBookingSequence();
+    domUpdates.showFilterBtns();
   }
 }
 
@@ -173,7 +173,7 @@ function filterRoomSelection(event) {
 function showLuxuryRooms() {
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
-  domUpdates.hideRoomFilterBtns(suite, junior, single);
+  domUpdates.hideRoomFilterBtns(suite, junior, junior);
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay);
@@ -184,7 +184,7 @@ function showLuxuryRooms() {
 function showSuiteRooms() {
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
-  domUpdates.hideRoomFilterBtns(luxury, junior, single);
+  domUpdates.hideRoomFilterBtns(luxury, junior, junior);
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
@@ -195,7 +195,7 @@ function showSuiteRooms() {
 function showJuniorRooms() {
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
-  domUpdates.hideRoomFilterBtns(luxury, suite, single);
+  domUpdates.hideRoomFilterBtns(luxury, suite, junior);
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)

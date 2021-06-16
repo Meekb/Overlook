@@ -32,7 +32,6 @@ class Hotel {
         this.availableRooms.push(avail);
       }
     }); 
-    console.log(this.availableRooms)
     return this.availableRooms;
   }
     

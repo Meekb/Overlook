@@ -24,6 +24,7 @@ let domUpdates = {
     <p class="date" id="dateDisplay">The current date and time is: <span id="myDate">${date}</span></p>
     <button type="submit" class="logout" id="logout">Logout</button>`;
     detailText.innerHTML = `${customer.name}`;
+    const logout = document.getElementById('logout');
     logout.addEventListener('click', this.toggleToLoginPage);
   },
 
@@ -31,7 +32,6 @@ let domUpdates = {
     totalBookings.innerHTML = '';
     totalBookings.innerHTML = `Total Bookings at Overlook: ${customer.bookingHistory.length}`;
     totalSpent.innerHTML = '';
-    console.log(customer.bookingTotal);
     totalSpent.innerHTML = `Total Spent at Overlook: $${customer.bookingTotal}`;
   },
 
@@ -52,7 +52,7 @@ let domUpdates = {
         </ul>
         <hr>
        `
-     });  
+    });  
   },
 
   displayCheckInDate(data) {
@@ -63,7 +63,7 @@ let domUpdates = {
   displayRoomType(availRooms) {
     roomsDisplay.innerText = '';
     availRooms.forEach(room => {
-     roomsDisplay.innerHTML +=  
+      roomsDisplay.innerHTML +=  
      `
       <section class="room" id="${room.roomType}" type="${room.number}">
        <h2>${room.roomType}</h2>
@@ -80,7 +80,6 @@ let domUpdates = {
   displaySelectedRoom(el) {
     let roomNumber = el.id
     let yourRoom = document.getElementById('yourRoom');
-    console.log(el.type);
     yourRoom.innerHTML = '';
     yourRoom.innerHTML =  
     `  
