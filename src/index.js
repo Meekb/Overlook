@@ -63,7 +63,7 @@ loginBtn.addEventListener('click', (event) => {
   let username = loginForm.username.value;
   let id = Number(username.split('r')[1]);
   let password = loginForm.password.value;
-  if (typeof id !== 'number' || id >= 51 || id <= 0 || password !== 'overlook2021') {
+  if (isNaN(id) || id >= 51 || id <= 0 || password !== 'overlook2021') {
     domUpdates.revealError(loginErr);
   } else {
     apiCalls.receiveCustProfile(id)
