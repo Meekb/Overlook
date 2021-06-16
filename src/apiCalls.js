@@ -1,3 +1,5 @@
+import domUpdates from "./domUpdates";
+
 let getData = (pathEnd) => fetch(`http://localhost:3001/api/v1/${pathEnd}`)
   .then(response => response.json())
   .then(data => data)
@@ -35,7 +37,7 @@ let sendData = (bookingInfo) => {
         return response.json();
       }
     })
-    .catch(err => console.log(err, 'here is the pt where error should be displayed'));
+    .catch(err => console.log(err, domUpdates.removeHidden(clientErr)));
 }
 
 let dataToPost = (bookingObj) => {
