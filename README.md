@@ -3,7 +3,7 @@
 ## Front-End Project by: [Beth Meeker](https://github.com/Meekb)
 
 ## Overview
-  Overlook Hotel is a Turing School project allowing students to build a hotel booking application that tracks a customer's booking history and calculates the total cost of all the customers bookings.
+  Overlook Hotel is a Turing School project allowing students to build a hotel booking application that tracks a customer's booking history and calculates the total cost of all bookings in the users history. New bookings are posted via fetch API.
 
 ## Construction
   
