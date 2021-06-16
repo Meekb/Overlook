@@ -335,6 +335,26 @@ hr {
   overflow: scroll;
 }
 
+.book-room {
+  background: $nope;
+  border: 2px solid $primary-color;
+  @include giveBorderRadius(5px);
+
+  &:hover {
+    background: #638475;
+  }
+}
+
+.confirm-btn {
+  background: $nope;
+  border: 2px solid $primary-color;
+  @include giveBorderRadius(5px);
+
+  &:hover {
+    background: #638475;
+  }
+}
+
 .room {
   font-size: 20px;
   background: #805e73;
@@ -346,7 +366,7 @@ hr {
 }
 
 .rooms-display-title {
-  color:rgb(249, 248, 246);
+  color:white;
   text-align: $goldieLocks;
 }
 
