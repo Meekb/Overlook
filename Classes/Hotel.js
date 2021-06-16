@@ -28,7 +28,7 @@ class Hotel {
       let dateToCompare = bking.date.split('/');
       dateToCompare = `${dateToCompare[1]}${dateToCompare[2]}${dateToCompare[0]}`;
       bking.date = dateToCompare;
-      if (Number(bking.date) !== Number(dateWanted) && this.availableRooms.indexOf(bking.date) === -1) {
+      if (Number(bking.date) !== Number(dateWanted) && this.availableRooms.indexOf(bking.roomNumber) === -1) {
         console.log('room is open')
         this.availableRooms.push(bking.roomNumber);
       }
