@@ -31,6 +31,7 @@ describe('Customer', () => {
   });
 
   it('should have a name', function() {
+    expect(cust2.name).to.be.a('string');
     expect(cust2.name).to.equal("Era Hand");
   });
 
@@ -55,6 +56,7 @@ describe('Customer', () => {
   it('should be able to create a new hotel Booking', function() {
     let data = cust2
     let newBooking = cust2.createNewBooking(data);
+    expect(newBooking.userID).to.be.a('number');
     expect(newBooking.userID).to.be.equal(8);
   });
 
