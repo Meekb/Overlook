@@ -79,10 +79,11 @@ beforeEach(() => {
 
     const adjustedBkData = {bookings: [{id: "5fwrgu4i7k55hl6yn", userID: 17, date: "2020/02/19", roomNumber: 11, roomServiceCharges:[]}, {id: "5fwkGu4i7k5U9l6yn", userID: 45, date: "2020/02/19", roomNumber: 15, roomServiceCharges:[]}]};
 
-    const adjustedRmData = [{number: 15, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 294.56}, {number: 17, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 325.6}];
+    const adjustedRmData = { rooms: [{number: 15, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 1, costPerNight: 294.56}, {number: 17, roomType: "residential suite", bidet: false, bedSize: "full", numBeds: 2, costPerNight: 325.6}]};
 
+    let dataToPass = hotel.filterRoomsByType(adjustedRmData, 'residential suite');
 
-    availableRooms = hotel.filterOutUnavailable(adjustedBkData, adjustedRmData, '02/19/2020');
+    availableRooms = hotel.filterOutUnavailable(adjustedBkData, dataToPass, '02/19/2020');
 
     expect(availableRooms).to.equal('So sorry, but we do not have available rooms on that date! Please adjust your search dates.');
   });
