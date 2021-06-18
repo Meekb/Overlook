@@ -88,4 +88,5 @@ beforeEach(() => {
     expect(availableRooms).to.equal('So sorry, but we do not have available rooms on that date! Please adjust your search dates.');
   });
 
+
 });
