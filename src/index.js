@@ -136,7 +136,9 @@ function validatePass() {
 }
 
 function loginCustomer(customer) {
+  console.log('customer info', customer);
   customer.getBookingsHistory(bookingsData);
+  console.log('cust hist', customer.bookingHistory)
   customer.bookingTotal = customer.getBookingsTotal(roomsData);
   domUpdates.toggleFromLoginPage();
   domUpdates.greetCustomer(customer);

@@ -9,12 +9,12 @@
 </head>
 <body>
   
-  <section class="container-login" id="loginPage">
+  <section class="container-login hidden" id="loginPage">
     <nav class="nav-login">
       <h1>Experience Overlook!</h1>
     </nav>
 
-    <main class="main-login">
+    <main class="main-login hidden">
       <form action="URLtoSendto" name="login" id="loginForm">
         <div class="label">
           <label for="username" class="label-username">Username:</label>
@@ -34,14 +34,16 @@
       <p class="client-error hidden" id="clientErr">Client Error: Please check your connection and try again</p>
     </main>
 
-    <aside class="aside-login">
+    <aside class="aside-login hidden">
       <p>Welcome to the newly re-opened Overlook Hotel.</p><br>
       <p>New Manager: Sergeant Burgermarpher</p><br>
       <p>Book today to experience luxury first-hand!</p>
     </aside>
   </section>
 
-  <section class="container-main hidden" id="mainPage">
+
+  <!-- //lighthouse -->
+  <section class="container-main" id="mainPage">
     <nav class="nav-bar" id="navBar">
       <h1 class="welcome">Welcome User!</h1>
       <p class="date" id="dateDisplay">The current date and time is: <span id="myDate"></span></p>
@@ -65,7 +67,7 @@
       <button type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
     </main>
 
-    <main class="room-filter-area hidden" id="roomFilterArea">
+    <main class="room-filter-area" id="roomFilterArea">
       <h2>Pick your room type:</h2>
       <h3 class="filter-data" id="filterDate">Checkin Date:</h3>
       <button class="filter-btn" id="luxury">Luxury Residential Suite</button>
