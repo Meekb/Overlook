@@ -7,6 +7,7 @@ import hotelData from '../SampleData/sample-hotel';
 //DOM VARIABLES
 const bookingErr = document.getElementById('bookErrMsg');
 const bookRoomArea = document.getElementById('bookRoom');
+const clientErr = document.getElementById('clientErr');
 const inDate = document.getElementById('inDate');
 const outDate = document.getElementById('outDate');
 const loginErr = document.getElementById('loginErrMsg');
@@ -59,19 +60,7 @@ window.onload = () => {
 loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
   overlook = new Hotel(hotelData);
-  let username = loginForm.username.value;
-  let id = Number(username.split('r')[1]);
-  let password = loginForm.password.value;
-  if (typeof id !== 'number' || id >= 51 || id <= 0 || password !== 'overlook2021') {
-    domUpdates.revealError(loginErr);
-  } else {
-    apiCalls.receiveCustProfile(id)
-      .then((promise) => {
-        acct = promise[0];
-        customer = new Customer(acct);
-        loginCustomer(customer);  
-      });
-   }
+  validatePass();
 });
 
 function generateHistory(event) {
@@ -83,6 +72,7 @@ function generateHistory(event) {
   });
   domUpdates.displayHistory(history);
   domUpdates.hideShowBtns(detailsBtn, hideDetailBtn);
+  domUpdates.addHidden(clientErr);
 }
 
 function closeHistory(event) {
@@ -129,6 +119,22 @@ function confirmAndPost() {
 }
 
 // FUNCTIONS
+function validatePass() {
+  let username = loginForm.username.value;
+  let id = Number(username.split('r')[1]);
+  let password = loginForm.password.value;
+  if (isNaN(id) || id >= 51 || id <= 0 || password !== 'overlook2021') {
+    domUpdates.revealError(loginErr);
+  } else {
+    apiCalls.receiveCustProfile(id)
+      .then((promise) => {
+      acct = promise[0];
+      customer = new Customer(acct);
+      loginCustomer(customer);  
+    });
+  }
+}
+
 function loginCustomer(customer) {
   customer.getBookingsHistory(bookingsData);
   customer.bookingTotal = customer.getBookingsTotal(roomsData);

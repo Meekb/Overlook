@@ -7,7 +7,7 @@
 
 ## Construction
   
-  * 4 Classes, each accompanied by a test file
+  * 4 Classes, each accompanied by a test file: Hotel, Room, Booking, Customer
   * Login page requires valid username and password (username: customer< 1 thru 50 > password: overlook2021)
   * Employed breakpoint at 768px for responsive design enjoyable on desktop, or tablet
   * 100% Lighthouse Accessibility Score

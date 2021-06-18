@@ -2,7 +2,6 @@ import chai from 'chai';
 const expect = chai.expect;
 import Hotel from '../Classes/Hotel';
 import sampleRoomsData from '../SampleData/sample-rooms';
-import sampleBookingsData from '../SampleData/sample-bookings';
 import hotelData from '../SampleData/sample-hotel';
 
 let hotel, availableRooms;
@@ -12,7 +11,6 @@ describe('Hotel', () => {
 beforeEach(() => {
   hotel = new Hotel(hotelData);
 });
-
 
   it('should be a function', function() {
     expect(hotel).to.be.an.instanceOf(Hotel);
