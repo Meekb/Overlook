@@ -65,7 +65,7 @@ let domUpdates = {
     availRooms.forEach(room => {
       roomsDisplay.innerHTML +=  
      `
-      <section class="room" id="${room.roomType}" type="${room.number}">
+      <section class="room" id="" type="">
        <h2>${room.roomType}</h2>
        <br>
        <p>Room Number: ${room.number}<p>

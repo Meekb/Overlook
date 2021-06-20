@@ -110,12 +110,9 @@ function bookThisRoom(event) {
 }
 
 function confirmAndPost() {
-
   apiCalls.dataToPost(newBooking);
   domUpdates.displayCustDetail(customer);
   domUpdates.displayConfirmation(newBooking);
-  fetchUpdatedData();
-
 }
 
 // FUNCTIONS
@@ -141,19 +138,11 @@ function loginCustomer(customer) {
   console.log('cust hist', customer.bookingHistory)
   customer.bookingTotal = customer.getBookingsTotal(roomsData);
   domUpdates.toggleFromLoginPage();
+  domUpdates.removeHidden(bookRoomArea);
+  domUpdates.addHidden(roomFilterArea)
   domUpdates.greetCustomer(customer);
   domUpdates.displayCustDetail(customer);
   domUpdates.hideError(loginErr);
-}
-
-function fetchUpdatedData() {
-  apiCalls.receiveData()
-  .then((promise) => {
-    customersData = promise[0];
-    roomsData = promise[1];
-    bookingsData = promise[2];
-  }); 
-  overlook = new Hotel(hotelData);
 }
 
 function runBookingSequence() {
@@ -202,7 +191,7 @@ function showLuxuryRooms() {
 
   
   let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-
+  console.log(roomsToDisplay)
   domUpdates.displayRoomType(roomsToDisplay);
 }
 
