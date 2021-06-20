@@ -5,6 +5,12 @@ class Booking {
     this.roomNumber = newBooking.roomNumber;
   }
 
+  filterByDate(bkData, date) {
+    date = this.date;
+    let bkings = bkData.bookings.filter(bking => bking.date === date);
+    return bkings;
+  }
+
   createBookingConf(length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let confirmation = '';  
