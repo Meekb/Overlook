@@ -317,8 +317,8 @@ form {
     &:hover {
       &:hover {
         background: #B3B656;
-        color: #0A0E14;
-        border: 3px solid #0A0E14;
+        color: $primary-color;
+        border: 3px solid $primary-color;
         // text-shadow: 1.5px 1.5px #56cbf9;
       }
     }
@@ -329,16 +329,16 @@ form {
     background: #B3B656;
     margin-right: 35px;
     padding: 10px;
-    color: #0A0E14;
-    border: 3px solid #0A0E14;
+    color: $primary-color;
+    border: 3px solid $primary-color;
     list-style-type: $nope;
-    box-shadow: 10px 5px 5px #0A0E14;
+    box-shadow: 10px 5px 5px $primary-color;
   } 
 }
 
 hr {
-  border: 1.5px solid #0A0E14;
-  background: #0A0E14;
+  border: 1.5px solid $primary-color;
+  background: $primary-color;
 }
 
 .rooms-display {
@@ -353,7 +353,7 @@ hr {
   @include giveBorderRadius(5px);
 
   &:hover {
-    background: #638475;
+    background: #B3B656;
   }
 }
 
@@ -363,13 +363,13 @@ hr {
   @include giveBorderRadius(5px);
 
   &:hover {
-    background: #638475;
+    background: #A68776;
   }
 }
 
 .room {
   font-size: 20px;
-  background: #805e73;
+  background: #A68776;
   margin-left: 50%;
   padding: 10px;
   border: 2px solid $primary-color;
@@ -378,12 +378,12 @@ hr {
 }
 
 .rooms-display-title {
-  color:white;
+  color: $primary-color;
   text-align: $goldieLocks;
 }
 
 .selected-room {
-  background: #805e73;
+  background: #B3B656;
   grid-area: content2;
 }
 
@@ -427,30 +427,30 @@ hr {
 
 
 //MEDIA QUERIES
-@media only screen and (max-width: 768px) {
+// @media only screen and (max-width: 768px) {
   
-  .container-login {
-    @include chooseDisplay(flex);
-    flex-direction: column;
-  }
+//   .container-login {
+//     @include chooseDisplay(flex);
+//     flex-direction: column;
+//   }
 
-  .aside-login {
-    background:#805e73;
-    color: $primary-color;
-    height: 100%;
-    padding-top: 35px;
-    margin-bottom: 0.5rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    text-align: $goldieLocks;
-    font-size: 22px;
-    font-weight: bold;
-    @include giveBorderRadius(10px);
-  }
+//   .aside-login {
+//     background:#805e73;
+//     color: $primary-color;
+//     height: 100%;
+//     padding-top: 35px;
+//     margin-bottom: 0.5rem;
+//     margin-left: 0.5rem;
+//     margin-right: 0.5rem;
+//     text-align: $goldieLocks;
+//     font-size: 22px;
+//     font-weight: bold;
+//     @include giveBorderRadius(10px);
+//   }
 
-  .main-login {
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-  }
+//   .main-login {
+//     margin-right: 0.5rem;
+//     margin-left: 0.5rem;
+//   }
 
-}
+// }
