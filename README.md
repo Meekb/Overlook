@@ -10,7 +10,6 @@
   * 4 Classes, each accompanied by a test file: Hotel, Room, Booking, Customer
   * Login page requires valid username and password (username: customer< 1 thru 50 > password: overlook2021)
   * Employed breakpoint at 768px for responsive design enjoyable on desktop, or tablet
-  * 100% Lighthouse Accessibility Score
   * Deployment to GitHub Pages coming Soon!
 
 ## Technologies
@@ -42,10 +41,6 @@ Login and View Booking History. Trying to Book invalid checkin/checkout dates wi
 
 Going through the booking process with a valid room selection will generate a Confirmation number and a new Booking Card to review
 ![recording (13)](https://user-images.githubusercontent.com/76264735/122156302-f5548180-ce25-11eb-97c0-04663ccabdf3.gif)
-
-100% accessibility score via Dev Tools Lighthouse
-![recording (14)](https://user-images.githubusercontent.com/76264735/122156731-cdb1e900-ce26-11eb-9b5b-25dd36508c54.gif)
-
 
 
 ## Resources
