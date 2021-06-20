@@ -20,28 +20,12 @@ beforeEach(() => {
     expect(hotel.name).to.be.equal('Overlook');
   });
 
-  it('should have a location', function() {
-    expect(hotel.location).to.be.equal('Las Vegas, NV');
-  });
-
-  it('should have an address', function() {
-    expect(hotel.address).to.be.equal('123 Overlook Place');
-  });
-
   it('should have a manager', function() {
     expect(hotel.manager).to.be.equal('Sergeant Burgermarpher');
   });
 
   it('should have a number of rooms', function() {
     expect(hotel.numberOfRooms).to.eq(25);
-  });
-
-  it('should have amenitites', function() {
-    expect(hotel.amenities).to.be.an('array');
-  });
-
-  it('should be able to have multiple amentities', function() {
-    expect(hotel.amenities.length).to.eq(6);
   });
 
   it('should be able to filter rooms by type', function() {

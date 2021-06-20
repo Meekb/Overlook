@@ -2,8 +2,8 @@
 
 // /* This is an example of using Sass, otherwise plain CSS works too*/
 $nope: none;
-$primary-color: black;
-$error-color: red;
+$primary-color: #0A0E14;
+$error-color: rgb(218, 36, 36);
 $goldieLocks: center;
 $coverAll: cover;
 
@@ -54,8 +54,8 @@ body {
 }
 
 .nav-login {
-  background: #638475;
-  color: $primary-color;
+  background: #A68776;
+  color: #0A0E14;
   @include defineElGridArea(nav-l);
   border-radius: 10px;
   margin: 0.5rem 0.5rem 0 0.5rem;
@@ -69,15 +69,16 @@ body {
 }
 
 .main-login {
-  background-image: url(../images/over-overlook.png);
-  background-size: $coverAll;
+  // background-image: url(../images/over-overlook.png);
+  // background-size: $coverAll;
   grid-area: main-l;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   justify-content: $goldieLocks;
   align-items: $goldieLocks;
-  color: $primary-color;
-  text-shadow: 3px 3px black;
+  color: #0A0E14;
+  background-color: #A3A64E;
+  // text-shadow: 3px 3px black;
   font-weight: bold;
   @include giveBorderRadius(10px);
 
@@ -107,34 +108,34 @@ body {
     margin-top: 29px;
     margin-left: 20px;
     width: 10%;
-    border: 3px solid $primary-color;
+    border: 3px solid #0A0E14;
     background: $nope;
-    color: whitesmoke;
+    color: #0A0E14;
     font-size: 20px;
     font-weight: bold;
-    text-shadow: 3px 3px #040404;
+    // text-shadow: 3px 3px #040404;
     @include giveBorderRadius(4px);
     @include setHeight(35px);
 
     &:hover {
-      background: $primary-color;
-      color: white;
-      text-shadow:  2px 2px #5cd29d;
-      border: 2px solid white;
+      background: #A68776;
+      color: #0A0E14;
+      // text-shadow:  2px 2px #5cd29d;
+      border: 2px solid #0A0E14;
     }
 
   }
 
   .label {
     font-size: 26px;
-    color: #5cd29d;
+    color: #0A0E14;
     margin-right: 30px;
   }
 
 }
 
 .aside-login {
-  background:#805e73;
+  background:#A68776;
   color: $primary-color;
   grid-area: sidebar-l;
   padding-top: 150px;
@@ -160,9 +161,10 @@ body {
 }
 
 .nav-bar {
-  background: #638475;
+  background: #A68776;
   grid-area: nav;
   font-size: 42px;
+  color: #0A0E14;
   text-align: $goldieLocks;
   padding-top: 30px;
   margin: 0.5rem 0.5rem 0 0.5rem;
@@ -170,7 +172,8 @@ body {
 
   p {
     font-size: 22px;
-    color: $primary-color;
+    font-weight: bold;
+    color: #0A0E14;
   }
 }
 
@@ -184,13 +187,13 @@ body {
   @include giveBorderRadius(7px);
 
   &:hover {
-    background: #805e73;
+    background: #B3B656;
   }
 
 }
 
 main {
-  background: #805e73;
+  background: #A3A64E;
   grid-area: main;
   margin-right: 0.5rem;
   text-align: $goldieLocks;
@@ -198,19 +201,25 @@ main {
 }
 
 .room-filter-area {
-  background: #805e73;
+  background: #A3A64E;
   grid-area: main;
   margin-right: 0.5rem;
   text-align: $goldieLocks;
+  color: #0A0E14;
   @include giveBorderRadius(10px);
 
   button {
-    width: 10%;
-    margin-top: 15px;
-    font-size: 15px;
+    width: 22%;
+    font-size: 18px;
+    color: #0A0E14;
     background: $nope;
-    border: 2px solid $primary-color;
+    margin-top: 4px;
+    border: 2px solid #0A0E14;
     @include giveBorderRadius(10px);
+
+    &:hover {
+      background: #A68776;
+    }
   }
 }
 
@@ -220,6 +229,7 @@ form {
 
 .date {
   font-size: 18px;
+  color: #0A0E14
 }
 
 .booking-err-msg {
@@ -229,14 +239,15 @@ form {
   font-weight: bold;
   padding-top: 20px;
   margin-left: 395px;
-  text-shadow: 2px 3px $primary-color;
+  // text-shadow: 2px 3px $primary-color;
 }
 
 .book-it-btn {
   width: 9vw;
   height: 3vh;
   position: relative;
-  border: 2px solid $primary-color;
+  color: #0A0E14;
+  border: 2px solid #0A0E14;
   background: $nope;
   font-size: 18px;
   font-weight: bold;
@@ -244,14 +255,15 @@ form {
   @include giveBorderRadius(4px);
 
   &:hover {
-    background: #638475;
+    background: #A68776;
   }
 
 }
 
 .sidebar {
-  background-image: url(../images/overlook-skypool.png);
-  background-size: $coverAll;
+  // background-image: url(../images/overlook-skypool.png);
+  // background-size: $coverAll;
+  background-color: #A68776;
   grid-area: sidebar;
   text-align: $goldieLocks;
   margin-bottom: 0.5rem;
@@ -260,33 +272,34 @@ form {
   @include giveBorderRadius(10px);
   
   h2 {
-    text-shadow: 1px 3px whitesmoke;
+    color: #0A0E14;
+    // text-shadow: 1px 3px whitesmoke;
   }
 
   p {
     margin-top: 35px;
     font-size: 24px;
     font-weight: bold;
-    color: $primary-color;
-    text-shadow: 1px 3px whitesmoke;
+    color: #0A0E14;
+    // text-shadow: 1px 3px whitesmoke;
   }
 
   .details-btn {
-    border: 3px solid $primary-color;
+    border: 3px solid #0A0E14;
     border-radius: 4px;
     background: $nope;
     height: 2.8rem;
     font-size: 20px;
     font-weight: bold;
     color: $primary-color;
-    text-shadow: 1.5px 1.5px whitesmoke;
+    // text-shadow: 1.5px 1.5px whitesmoke;
     @include giveBorderRadius(4px);
 
     &:hover {
-      background: $primary-color;
-      color: whitesmoke;
-      border: 3px solid whitesmoke;
-      text-shadow: 1.5px 1.5px #56cbf9;
+      background: #B3B656;
+      color: #0A0E14;
+      border: 3px solid #0A0E14;
+      // text-shadow: 1.5px 1.5px #56cbf9;
     }
 
   }
@@ -294,7 +307,7 @@ form {
   .hide-details-btn {
     border: 3px solid $primary-color;
     color: $primary-color;
-    text-shadow: 1.5px 1.5px whitesmoke;
+    // text-shadow: 1.5px 1.5px whitesmoke;
     background: $nope;
     font-size: 20px;
     font-weight: bold;
@@ -303,23 +316,23 @@ form {
 
     &:hover {
       &:hover {
-        background: $primary-color;
-        color: whitesmoke;
-        border: 3px solid whitesmoke;
-        text-shadow: 1.5px 1.5px #56cbf9;
+        background: #B3B656;
+        color: $primary-color;
+        border: 3px solid $primary-color;
+        // text-shadow: 1.5px 1.5px #56cbf9;
       }
     }
   }
 
   li { 
     font-size: 20px;
-    background: #638475;
+    background: #B3B656;
     margin-right: 35px;
     padding: 10px;
-    color: whitesmoke;
+    color: $primary-color;
     border: 3px solid $primary-color;
     list-style-type: $nope;
-    box-shadow: 10px 5px 5px #805e73;
+    box-shadow: 10px 5px 5px $primary-color;
   } 
 }
 
@@ -340,7 +353,7 @@ hr {
   @include giveBorderRadius(5px);
 
   &:hover {
-    background: #638475;
+    background: #B3B656;
   }
 }
 
@@ -350,13 +363,13 @@ hr {
   @include giveBorderRadius(5px);
 
   &:hover {
-    background: #638475;
+    background: #A68776;
   }
 }
 
 .room {
   font-size: 20px;
-  background: #805e73;
+  background: #A68776;
   margin-left: 50%;
   padding: 10px;
   border: 2px solid $primary-color;
@@ -365,20 +378,25 @@ hr {
 }
 
 .rooms-display-title {
-  color:white;
+  color: $primary-color;
   text-align: $goldieLocks;
 }
 
 .selected-room {
-  background: #805e73;
+  background: #B3B656;
   grid-area: content2;
 }
 
 .content {
+  color: #0A0E14;
+  font-size: 20px;
   margin-bottom: 0.5rem;
   text-align: $goldieLocks;
   color: $primary-color;
-  text-shadow: 2px 1.5px #638475;
+  // text-shadow: 2px 1.5px #638475;
+  h2 {
+    margin-top: 2px;
+  }
 }
 
 .content-1 {
@@ -409,30 +427,30 @@ hr {
 
 
 //MEDIA QUERIES
-@media only screen and (max-width: 768px) {
+// @media only screen and (max-width: 768px) {
   
-  .container-login {
-    @include chooseDisplay(flex);
-    flex-direction: column;
-  }
+//   .container-login {
+//     @include chooseDisplay(flex);
+//     flex-direction: column;
+//   }
 
-  .aside-login {
-    background:#805e73;
-    color: $primary-color;
-    height: 100%;
-    padding-top: 35px;
-    margin-bottom: 0.5rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    text-align: $goldieLocks;
-    font-size: 22px;
-    font-weight: bold;
-    @include giveBorderRadius(10px);
-  }
+//   .aside-login {
+//     background:#805e73;
+//     color: $primary-color;
+//     height: 100%;
+//     padding-top: 35px;
+//     margin-bottom: 0.5rem;
+//     margin-left: 0.5rem;
+//     margin-right: 0.5rem;
+//     text-align: $goldieLocks;
+//     font-size: 22px;
+//     font-weight: bold;
+//     @include giveBorderRadius(10px);
+//   }
 
-  .main-login {
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-  }
+//   .main-login {
+//     margin-right: 0.5rem;
+//     margin-left: 0.5rem;
+//   }
 
-}
+// }

@@ -3,11 +3,8 @@
 class Hotel {
   constructor(newHotel) {
     this.name = newHotel.name;
-    this.location = newHotel.location;
-    this.address = newHotel.address;
     this.manager = newHotel.manager;
     this.numberOfRooms = newHotel.numberOfRooms;
-    this.amenities = newHotel.amenities;
     this.availableRooms = [];
   }
 
@@ -32,7 +29,7 @@ class Hotel {
       if (Number(bking.date) !== Number(dateWanted) && roomsAvail.indexOf(bking.roomNumber) === -1) {
         roomsAvail.push(bking.roomNumber);
       }
-    }); 
+    });
 
     let filtered = rmData.reduce((acc, cur) => {
       if (roomsAvail.includes(cur.number)) {
@@ -43,7 +40,7 @@ class Hotel {
 
     this.availableRooms = filtered;
     if (this.availableRooms.length === 0) {
-      return 'So sorry, but we do not have available rooms on that date! Please adjust your search dates.'
+      return 'So sorry, but we do not have available rooms on that date! Please adjust your search dates.';
     } else {
       return this.availableRooms;
     }
