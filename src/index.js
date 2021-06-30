@@ -5,6 +5,7 @@ import Hotel from '../Classes/Hotel';
 import hotelData from '../SampleData/sample-hotel';
 
 //DOM VARIABLES
+const apology = document.getElementById('apology');
 const bookingErr = document.getElementById('bookErrMsg');
 const bookRoomArea = document.getElementById('bookRoom');
 const clientErr = document.getElementById('clientErr');
@@ -81,19 +82,69 @@ function closeHistory(event) {
   domUpdates.hideShowBtns(hideDetailBtn, detailsBtn);
 }
 
+function determineMonth(month) {
+  if (month === 'Jan') {
+    month = 1;
+  } else if (month === 'Feb') {
+    month = 2;
+  } else if (month === 'Mar') {
+    month = 3;
+  } else if (month === 'Apr') {
+    month = 4;
+  } else if (month === 'May') {
+    month = 5;
+  } else if (month === 'Jun') {
+    month = 6;
+  } else if (month === 'Jul') {
+    month = 7;
+  } else if (month === 'Aug') {
+    month = 8;
+  } else if (month === 'Sep') {
+    month = 9;
+  } else if (month === 'Oct') {
+    month = 10;
+  } else if (month === 'Nov') {
+    month = 11;
+  } else {
+    month = 12;
+  }
+  return month;
+}
+
+function formatInDate() {
+  let enteredInMonth = Number(inDate.value.split('-')[1]);
+  console.log(enteredInMonth)
+  let enteredInDate = Number(inDate.value.split('-')[2]);
+  let formatInDate = Number(enteredInMonth) + '/' + Number(enteredInDate);
+  console.log(formatInDate)
+  return formatInDate;
+}
+
+function formatOutDate() {
+  let enteredOutMonth = Number(outDate.value.split('-')[1]);
+  let enteredOutDate = Number(outDate.value.split('-')[2]);
+  let formatOutDate = Number(enteredOutMonth) + '/' + Number(enteredOutDate);
+  console.log('FORMATTED OUT DATE', formatOutDate)
+  return formatOutDate;
+}
+
 function captureBooking(event) {
   event.preventDefault()  
   let now = new Date().toString();
-  let todaysDate = Number(now.split(' ')[2]);
-  let enteredDate = inDate.value;
-  let enteredInToNum = enteredDate.split('-')[2];
-  let enteredOutDate = outDate.value;
-  let enteredOutToNum = enteredOutDate.split('-')[2];
-  
-  if (inDate.value === '' || outDate.value === '' || enteredInToNum < todaysDate || enteredOutToNum <= todaysDate) {
+  let currentMonth = now.split(' ')[1];
+  let currentMonthNum = determineMonth(currentMonth);
+  let currentDate = Number(new Date().toString().split(' ')[2]);
+  // let currentYear = Number(new Date().toString().split(' ')[3]);
+  let checkIn = formatInDate();
+  let checkOut = formatOutDate();
+  let checkInMonth = Number(checkIn.split('/')[0]);
+  let checkInDate = Number(checkIn.split('/')[1]);
+  let checkOutMonth = Number(checkOut.split('/')[0]);
+  let checkOutDate = Number(checkOut.split('/')[1]);
+  if (checkInMonth < currentMonthNum || checkOutMonth < currentMonthNum || inDate.value === '' || outDate.value === '' || (checkInMonth >= currentMonthNum && checkInDate < currentDate) || (checkOutMonth === currentMonthNum && checkOutDate <= currentDate)) {
     domUpdates.revealError(bookingErr);
     return;
-  } else {
+  } else { 
     runBookingSequence();
     domUpdates.showFilterBtns();
   }
@@ -118,6 +169,7 @@ function confirmAndPost() {
       bookingsData = promise[2];
   }); 
   domUpdates.displayCustDetail(customer);
+  console.log(newBooking);
   domUpdates.displayConfirmation(newBooking);
 }
 
@@ -159,7 +211,8 @@ function runBookingSequence() {
   newBooking.userID = customer.id;
   newBooking.date = checkin;
   domUpdates.addHidden(bookRoomArea); 
-  domUpdates.removeHidden(roomFilterArea); 
+  domUpdates.removeHidden(roomFilterArea);
+
   domUpdates.displayCheckInDate(newBooking);
 }
 
@@ -192,21 +245,20 @@ function showLuxuryRooms() {
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay);
-// filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'residential suite');
-  // console.log('filter down the rooms by type chosen', results);
-  // call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
+
   results.forEach(result => {
     if (!unavail.find(rm => rm.roomNumber === result.number)) {
       availRooms.push(result);
     }
   });
-  domUpdates.displayRoomType(availRooms);
-  // console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-  // let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-  // console.log(roomsToDisplay)
+  if (availRooms.length === 0) {
+    domUpdates.removeHidden(apology);
+  } else {
+    domUpdates.displayRoomType(availRooms);
+  }
 }
 
 function showSuiteRooms() {
@@ -217,10 +269,7 @@ function showSuiteRooms() {
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
-// filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'suite');
-// console.log('filter down the rooms by type chosen', results);
-// call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
@@ -229,9 +278,6 @@ function showSuiteRooms() {
   }
 });
   domUpdates.displayRoomType(availRooms);
-// console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-// let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-// console.log(roomsToDisplay)
 }
 
 function showJuniorRooms() {
@@ -242,10 +288,7 @@ function showJuniorRooms() {
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
-  // filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'junior suite');
-  // console.log('filter down the rooms by type chosen', results);
-  // call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
@@ -254,9 +297,6 @@ function showJuniorRooms() {
     }
   });
   domUpdates.displayRoomType(availRooms);
-  // console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-  // let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-  // console.log(roomsToDisplay)
 }
 
 function showSingleRooms() {
@@ -267,10 +307,7 @@ function showSingleRooms() {
   domUpdates.removeHidden(startOver); 
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
-  // filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'single room');
-  // console.log('filter down the rooms by type chosen', results);
-  // call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
@@ -279,22 +316,20 @@ function showSingleRooms() {
     }
   });
   domUpdates.displayRoomType(availRooms);
-  // console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-  // let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-  // console.log(roomsToDisplay)
 }
 
 function returnToCalendar() {
-  domUpdates.showContentAreas();
-  domUpdates.removeHidden(bookRoomArea);
-  domUpdates.hideFilterBtns();
-  domUpdates.addHidden(roomFilterArea);
+  domUpdates.addHidden(apology);
   domUpdates.addHidden(backBtn); 
-  domUpdates.addHidden(startOver);
   domUpdates.addHidden(roomsDisplay);
+  domUpdates.addHidden(roomFilterArea);
   domUpdates.addHidden(selectedRoom);
   domUpdates.addHidden(selectionTitle);
+  domUpdates.addHidden(startOver);
+  domUpdates.removeHidden(bookRoomArea);
   domUpdates.clearCalendar(inDate, outDate);
+  domUpdates.hideFilterBtns();
+  domUpdates.showContentAreas();
 }
 
 function returnToFilters() {
@@ -305,6 +340,7 @@ function returnToFilters() {
   domUpdates.addHidden(roomsDisplay);
   domUpdates.addHidden(selectedRoom);
   domUpdates.addHidden(selectionTitle);
+  domUpdates.addHidden(apology);
 }
 
 
