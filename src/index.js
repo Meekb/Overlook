@@ -82,6 +82,7 @@ function closeHistory(event) {
   domUpdates.hideShowBtns(hideDetailBtn, detailsBtn);
 }
 
+//i should be able to write this as switch.....
 function determineMonth(month) {
   if (month === 'Jan') {
     month = 1;
