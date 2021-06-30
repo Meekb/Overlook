@@ -328,7 +328,6 @@ function returnToCalendar() {
   domUpdates.addHidden(startOver);
   domUpdates.removeHidden(bookRoomArea);
   domUpdates.clearCalendar(inDate, outDate);
-  domUpdates.hideFilterBtns();
   domUpdates.showContentAreas();
 }
 
