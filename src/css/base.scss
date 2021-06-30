@@ -360,8 +360,8 @@ form {
 
 .apology {
   text-align: center;
-  background-color: rosybrown;
-  color: black;
+  background-color: #A68776;
+  color: $primary-color;
 }
 
 hr {
@@ -371,6 +371,7 @@ hr {
 
 .rooms-display {
   grid-area: content1;
+  width: 200%;
   align-items: $goldieLocks;
   overflow: scroll;
 }
