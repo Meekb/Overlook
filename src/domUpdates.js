@@ -58,6 +58,7 @@ let domUpdates = {
   displayCheckInDate(data) {
     filterDate.innerHTML = '';
     filterDate.innerHTML = `Checkin Date: ${data.date}`;
+    console.log(data.date);
   },
 
   displayRoomType(availRooms) {
@@ -96,6 +97,17 @@ let domUpdates = {
       <h4>Please retain for your records</h4>
     `
   },
+
+  // displayApology() {
+  //   apology.innerHTML = '';
+  //   apology.innerHTML +=  
+  //   `  
+  //   <div>
+  //     <h2 class="your-room" id="yourRoom">We're SO sorry!<br></h2><h3>We have no rooms of that type available on your check-in date. Please select a new room type or check-in date.</h3><br>
+  //     <h4>Please retain for your records</h4>
+  //   <div>
+  //   `
+  // },
 
   clearCalendar(inDay, outDay) {
     inDay.value = '';

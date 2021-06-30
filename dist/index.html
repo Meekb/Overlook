@@ -71,11 +71,11 @@
       <h2>Pick your room type:</h2>
       <h3 class="filter-data" id="filterDate">Checkin Date:</h3>
       <button class="filter-btn" id="luxury">Luxury Residential Suite</button>
-      <button class="filter-btn" id="suite">Suite</button>
-      <button class="filter-btn" id="junior">Junior Suite</button>
-      <button class="filter-btn" id="single">Single Room</button>
+      <button type="button" class="filter-btn" id="suite">Suite</button>
+      <button type ="button" class="filter-btn" id="junior">Junior Suite</button>
+      <button type="button" class="filter-btn" id="single">Single Room</button>
       <div>
-        <button class="filter-btn hidden" id="startOver">Start Over</button>
+        <button type="button" class="filter-btn hidden" id="startOver">Start Over</button>
         <button type="button" class="back-btn" id="backBtn">Back To Rooms</button>
       </div>
     </main>
@@ -106,6 +106,11 @@
     <section class="content selected-room hidden" id="selectedRoom">
       <h2 class="your-room" id="yourRoom"></h2>
       <button class="confirm-btn" id="postBtn">Click to confirm</button>
+    </section>
+
+    <section class="apology hidden" id="apology">
+      <h2 class="your-room" id="yourRoom">We're SO sorry!<br></h2><h3>We have no rooms of that type available on your check-in date. Please select a new room type or check-in date.</h3><br>
+      <h4>Please retain for your records</h4>
     </section>
     
     <div class="rooms-display-title hidden" id="selectionTitle"><h1 id="selectRoomText">Select Your Room Now!</h1></div>
