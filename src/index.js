@@ -192,10 +192,7 @@ function showLuxuryRooms() {
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay);
-// filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'residential suite');
-  // console.log('filter down the rooms by type chosen', results);
-  // call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
@@ -204,9 +201,6 @@ function showLuxuryRooms() {
     }
   });
   domUpdates.displayRoomType(availRooms);
-  // console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-  // let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-  // console.log(roomsToDisplay)
 }
 
 function showSuiteRooms() {
@@ -217,10 +211,7 @@ function showSuiteRooms() {
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
-// filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'suite');
-// console.log('filter down the rooms by type chosen', results);
-// call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
@@ -229,9 +220,6 @@ function showSuiteRooms() {
   }
 });
   domUpdates.displayRoomType(availRooms);
-// console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-// let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-// console.log(roomsToDisplay)
 }
 
 function showJuniorRooms() {
@@ -242,10 +230,7 @@ function showJuniorRooms() {
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
-  // filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'junior suite');
-  // console.log('filter down the rooms by type chosen', results);
-  // call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
@@ -254,9 +239,6 @@ function showJuniorRooms() {
     }
   });
   domUpdates.displayRoomType(availRooms);
-  // console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-  // let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-  // console.log(roomsToDisplay)
 }
 
 function showSingleRooms() {
@@ -267,10 +249,7 @@ function showSingleRooms() {
   domUpdates.removeHidden(startOver); 
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
-  // filter roomsData down to an array of only the res suite room type
   let results = overlook.filterRoomsByType(roomsData, 'single room');
-  // console.log('filter down the rooms by type chosen', results);
-  // call the bookings method that will take in bookings data, the (type) results above, and the date to checkin  
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
@@ -279,9 +258,6 @@ function showSingleRooms() {
     }
   });
   domUpdates.displayRoomType(availRooms);
-  // console.log('this should now be an arr of only avail rooms of type for date', availRooms)
-  // let roomsToDisplay = overlook.filterOutUnavailable(bookingsData, results, date);
-  // console.log(roomsToDisplay)
 }
 
 function returnToCalendar() {

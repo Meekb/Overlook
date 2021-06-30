@@ -200,6 +200,10 @@ main {
   @include giveBorderRadius(10px);
 }
 
+.booking-err-msg {
+  color:#ed4545
+}
+
 .room-filter-area {
   background: #A3A64E;
   grid-area: main;
