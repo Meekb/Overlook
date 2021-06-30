@@ -7,6 +7,7 @@ const totalSpent = document.getElementById('totalSpent');
 const allDetails = document.getElementById('allDetails');
 const filterDate = document.getElementById('filterDate');
 const filterBtns = document.querySelectorAll('.filter-btn');
+const filterLabels = document.querySelectorAll('label');
 
 //ROOM CONTENT
 const content = document.querySelectorAll('.content');
@@ -98,16 +99,16 @@ let domUpdates = {
     `
   },
 
-  // displayApology() {
-  //   apology.innerHTML = '';
-  //   apology.innerHTML +=  
-  //   `  
-  //   <div>
-  //     <h2 class="your-room" id="yourRoom">We're SO sorry!<br></h2><h3>We have no rooms of that type available on your check-in date. Please select a new room type or check-in date.</h3><br>
-  //     <h4>Please retain for your records</h4>
-  //   <div>
-  //   `
-  // },
+  displayApology() {
+    apology.innerHTML = '';
+    apology.innerHTML +=  
+    `  
+    <div>
+      <h2 class="your-room" id="yourRoom">We're SO sorry!<br></h2><h3>We have no rooms of that type available on your check-in date. Please select a new room type or check-in date.</h3><br>
+      <h4>Please retain for your records</h4>
+    <div>
+    `
+  },
 
   clearCalendar(inDay, outDay) {
     inDay.value = '';
@@ -132,6 +133,14 @@ let domUpdates = {
 
   showFilterBtns() {
     filterBtns.forEach(btn => btn.classList.remove('hidden'));
+  },
+
+  hideFilterLabels() {
+    filterLabels.forEach(label => label.classList.add('hidden'));
+  },
+
+  showFilterLabels() {
+    filterLabels.forEach(label => label.classList.remove('hidden'));
   },
   
   toggleFromLoginPage() {
@@ -163,19 +172,6 @@ let domUpdates = {
 
   removeHidden(el) {
     el.classList.remove('hidden');
-  },
-
-  hideAllRmFilters(btn1, btn2, btn3, btn4) {
-    btn1.classList.add('hidden');
-    btn2.classList.add('hidden');
-    btn3.classList.add('hidden');
-    btn4.classList.add('hidden');
-  },
-
-  hideRoomFilterBtns(btn1, btn2, btn3) {
-    btn1.classList.add('hidden');
-    btn2.classList.add('hidden');
-    btn3.classList.add('hidden');
   },
 
 }

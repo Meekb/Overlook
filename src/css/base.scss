@@ -3,7 +3,7 @@
 // /* This is an example of using Sass, otherwise plain CSS works too*/
 $nope: none;
 $primary-color: #0A0E14;
-$error-color: rgb(218, 36, 36);
+$error-color: #ef2121;
 $goldieLocks: center;
 $coverAll: cover;
 
@@ -149,8 +149,8 @@ body {
 
 // MAIN DASHBOARD
 .container-main {
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 4fr 5fr 8fr 0.4fr;
+  grid-template-columns: 0.7fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 8fr 5fr 0.4fr;
   grid-template-areas: "nav nav nav nav"
   "sidebar main main main"
   "sidebar content1 content2 content3"
@@ -163,10 +163,9 @@ body {
 .nav-bar {
   background: #A68776;
   grid-area: nav;
-  font-size: 42px;
+  font-size: 32px;
   color: #0A0E14;
   text-align: $goldieLocks;
-  padding-top: 30px;
   margin: 0.5rem 0.5rem 0 0.5rem;
   @include giveBorderRadius(10px);
 
@@ -189,7 +188,6 @@ body {
   &:hover {
     background: #B3B656;
   }
-
 }
 
 main {
@@ -207,13 +205,14 @@ main {
 .room-filter-area {
   background: #A3A64E;
   grid-area: main;
+  margin-top: 0;
   margin-right: 0.5rem;
   text-align: $goldieLocks;
   color: #0A0E14;
   @include giveBorderRadius(10px);
 
-  button {
-    width: 22%;
+  input {
+    width: 230px;
     font-size: 18px;
     color: #0A0E14;
     background: $nope;
@@ -227,42 +226,61 @@ main {
   }
 }
 
-form {
-  font-size: 20px;
-}
-
-.date {
-  font-size: 18px;
-  color: #0A0E14
-}
-
-.booking-err-msg {
-  position: absolute;
-  color: $error-color;
-  font-size: 20px;
-  font-weight: bold;
-  padding-top: 20px;
-  margin-left: 395px;
-  // text-shadow: 2px 3px $primary-color;
-}
-
 .book-it-btn {
   width: 9vw;
   height: 3vh;
-  position: relative;
+  margin-top: 30px;
+  // position: relative;
   color: #0A0E14;
   border: 2px solid #0A0E14;
   background: $nope;
   font-size: 18px;
   font-weight: bold;
-  margin-top: 2px;
   @include giveBorderRadius(4px);
 
   &:hover {
     background: #A68776;
   }
-
 }
+
+form {
+  font-size: 20px;
+}
+
+.date {
+  font-size: 14px;
+  color: #0A0E14
+}
+
+.booking-err-msg {
+  position: relative;
+  color: $error-color;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 20px;
+  margin-top: 55px;
+  margin-left: 500px;
+  text-align: justify;
+  text-shadow: 0.1px 1px $primary-color;
+}
+
+// .book-it-btn {
+//   width: 9vw;
+//   height: 3vh;
+//   // position: relative;
+//   color: #0A0E14;
+//   border: 2px solid #0A0E14;
+//   background: $nope;
+//   font-size: 18px;
+//   font-weight: bold;
+//   margin-top: 2px;
+//   @include giveBorderRadius(4px);
+
+//   &:hover {
+//     background: #A68776;
+//   }
+
+// }
 
 .sidebar {
   // background-image: url(../images/overlook-skypool.png);
