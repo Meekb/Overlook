@@ -9,7 +9,7 @@
 </head>
 <body>
   
-  <section class="container-login" id="loginPage">
+  <section class="container-login hidden" id="loginPage">
     <nav class="nav-login">
       <h1>Experience Overlook!</h1>
     </nav>
@@ -43,17 +43,16 @@
 
 
   <!-- //lighthouse -->
-  <section class="container-main hidden" id="mainPage">
+  <section class="container-main " id="mainPage">
     <nav class="nav-bar" id="navBar">
       <h1 class="welcome">Welcome User!</h1>
       <p class="date" id="dateDisplay">The current date and time is: <span id="myDate"></span></p>
-      <button class="logout-btn" type="submit">Logout</button>
     </nav>
 
     <main class="book-area" id="bookRoom">
       <h2>Book A Room</h2>
       <h3>Select your dates:</h3>
-      <form action="">
+      <form action="current page">
         <label for="check-in">Check-in</label>
         <input type="date" class="in-date" id="inDate">
       </form>
@@ -70,13 +69,19 @@
     <main class="room-filter-area" id="roomFilterArea">
       <h2>Pick your room type:</h2>
       <h3 class="filter-data" id="filterDate">Checkin Date:</h3>
-      <button class="filter-btn" id="luxury">Luxury Residential Suite</button>
-      <button type="button" class="filter-btn" id="suite">Suite</button>
-      <button type ="button" class="filter-btn" id="junior">Junior Suite</button>
-      <button type="button" class="filter-btn" id="single">Single Room</button>
+      <label for="filter-btn">Most Luxurious:</label><br>
+      <input type="button" name="Luxury Residential Suite" value="Luxury Residential Suite" class="filter-btn" id="luxury" /><br> 
+      <label for="filter-btn">Still Very Luxurious:</label><br>
+      <input type="button" name="Suite" value="Suite" class="filter-btn" id="suite" /><br> 
+      <label for="filter-btn">A Lil Luxurious:</label><br>
+      <input type="button" name="Junior Suite" value="Junior Suite" class="filter-btn" id="junior" /><br> 
+      <label for="filter-btn">Free Breakfast:</label><br>
+      <input type="button" name="Single Room" value="Single Room" class="filter-btn" id="single" /><br> 
       <div>
-        <button type="button" class="filter-btn hidden" id="startOver">Start Over</button>
-        <button type="button" class="back-btn" id="backBtn">Back To Rooms</button>
+        <label for="back-btn" class="back-btn hidden">Back To Room Selection:</label><br>
+        <input type="button" name="Back To Rooms" value="Back To Rooms" class="back-btn hidden" id="backBtn" /><br>
+        <label for="start-over-btn">Back To Calendar:</label><br>
+        <input type="button" name="Start Over" value="Start Over" class="start-over-btn" id="startOver" />
       </div>
     </main>
     
@@ -89,6 +94,7 @@
       <button type="submit" class="hide-details-btn hidden" id="hideDetailBtn">Hide History</button>
       <div class="all-details" id="allDetails">
       </div>
+      
     </aside>
     
     <section class="content content-1" id="luxeSuite">

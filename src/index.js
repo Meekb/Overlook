@@ -147,6 +147,7 @@ function captureBooking(event) {
   } else { 
     runBookingSequence();
     domUpdates.showFilterBtns();
+    domUpdates.showFilterLabels();
   }
 }
 
@@ -212,7 +213,7 @@ function runBookingSequence() {
   newBooking.date = checkin;
   domUpdates.addHidden(bookRoomArea); 
   domUpdates.removeHidden(roomFilterArea);
-
+  // domUpdates.removeHidden(startOver);
   domUpdates.displayCheckInDate(newBooking);
 }
 
@@ -241,8 +242,9 @@ function showLuxuryRooms() {
   console.log(newBooking.date);
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
-  domUpdates.hideRoomFilterBtns(suite, junior, junior);
-  domUpdates.removeHidden(startOver);
+  domUpdates.hideFilterBtns();
+  domUpdates.hideFilterLabels();
+  // domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay);
   let results = overlook.filterRoomsByType(roomsData, 'residential suite');
@@ -256,6 +258,8 @@ function showLuxuryRooms() {
   });
   if (availRooms.length === 0) {
     domUpdates.removeHidden(apology);
+    domUpdates.removeHidden(backBtn);
+    domUpdates.removeHidden(startOver);
   } else {
     domUpdates.displayRoomType(availRooms);
   }
@@ -265,7 +269,8 @@ function showSuiteRooms() {
   let date = newBooking.date;
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
-  domUpdates.hideRoomFilterBtns(luxury, junior, junior);
+  domUpdates.hideFilterBtns();
+  domUpdates.hideFilterLabels();
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
@@ -273,18 +278,25 @@ function showSuiteRooms() {
   let unavail = newBooking.filterByDate(bookingsData, date);
   let availRooms = [];
   results.forEach(result => {
-  if (!unavail.find(rm => rm.roomNumber === result.number)) {
-    availRooms.push(result);
+    if (!unavail.find(rm => rm.roomNumber === result.number)) {
+      availRooms.push(result);
+    }
+  });
+  if (availRooms.length === 0) {
+    domUpdates.removeHidden(apology);
+    domUpdates.removeHidden(backBtn);
+    domUpdates.removeHidden(startOver);
+  } else {
+    domUpdates.displayRoomType(availRooms);
   }
-});
-  domUpdates.displayRoomType(availRooms);
 }
 
 function showJuniorRooms() {
   let date = newBooking.date;
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
-  domUpdates.hideRoomFilterBtns(luxury, suite, junior);
+  domUpdates.hideFilterBtns();
+  domUpdates.hideFilterLabels();
   domUpdates.removeHidden(startOver);
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
@@ -296,14 +308,21 @@ function showJuniorRooms() {
       availRooms.push(result);
     }
   });
-  domUpdates.displayRoomType(availRooms);
+  if (availRooms.length === 0) {
+    domUpdates.removeHidden(apology);
+    domUpdates.removeHidden(backBtn);
+    domUpdates.removeHidden(startOver);
+  } else {
+    domUpdates.displayRoomType(availRooms);
+  }
 }
 
 function showSingleRooms() {
   let date = newBooking.date;
   domUpdates.hideContentAreas();
   domUpdates.removeHidden(selectionTitle);
-  domUpdates.hideRoomFilterBtns(luxury, suite, junior);
+  domUpdates.hideFilterBtns();
+  domUpdates.hideFilterLabels();
   domUpdates.removeHidden(startOver); 
   domUpdates.removeHidden(backBtn);
   domUpdates.removeHidden(roomsDisplay)
@@ -315,7 +334,13 @@ function showSingleRooms() {
       availRooms.push(result);
     }
   });
-  domUpdates.displayRoomType(availRooms);
+  if (availRooms.length === 0) {
+    domUpdates.removeHidden(apology);
+    domUpdates.removeHidden(backBtn);
+    domUpdates.removeHidden(startOver);
+  } else {
+    domUpdates.displayRoomType(availRooms);
+  }
 }
 
 function returnToCalendar() {
@@ -333,6 +358,7 @@ function returnToCalendar() {
 
 function returnToFilters() {
   domUpdates.showFilterBtns();
+  domUpdates.showFilterLabels();
   domUpdates.showContentAreas();
   domUpdates.addHidden(backBtn);
   domUpdates.addHidden(startOver);
