@@ -23,15 +23,20 @@ gif
 Going through the booking process with a valid room selection will generate a Confirmation number and a new Booking Card to review
 gif
 
-## Technologies
-  1. Languages: HTML, Sass, ES6 JavaScript 
-  2. Testing: Mocha, Chai Should/Expect
-  3. Development Server: Webpack
-  4. GETs and POSTs: .fetch() API
-  5. Code Editor: VS Code
-  6. Formatting: Eslint
-  7. Repo Host: GitHub
-  8. Issues: GitBut Project Board utilizing GitHub Issues
+## Tech Stack
+
+<table>
+  <tr>
+    <td>JavaScript ES6</td>
+    <td>Sassy CSS</td>
+    <td>HTML</td>
+    <td>Webpack</td>
+    <td>Mocha & Chai</td>
+  </tr>
+  <tr>
+  </tr>
+</table>
+
 
 ## Contributors
 
