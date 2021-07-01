@@ -150,7 +150,7 @@ body {
 // MAIN DASHBOARD
 .container-main {
   grid-template-columns: 0.7fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 8fr 5fr 0.4fr;
+  grid-template-rows: 1fr 8fr 5fr 1fr;
   grid-template-areas: "nav nav nav nav"
   "sidebar main main main"
   "sidebar content1 content2 content3"
@@ -414,6 +414,7 @@ hr {
 .selected-room {
   background: #B3B656;
   grid-area: content2;
+  font-size: 14px;
 }
 
 .content {

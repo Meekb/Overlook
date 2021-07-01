@@ -16,7 +16,7 @@ const loginForm = document.getElementById('loginForm');
 const loginBtn = document.getElementById('loginBtn');
 
 // CUSTOMER DETAIL HISTORY
-const detailsBtn = document.getElementById('detailBtn');
+const detailsBtn = document.getElementById('detailsBtn');
 const hideDetailBtn = document.getElementById('hideDetailBtn');
 
 // ROOM BOOK DETAIL AREA
@@ -82,34 +82,23 @@ function closeHistory(event) {
   domUpdates.hideShowBtns(hideDetailBtn, detailsBtn);
 }
 
-//i should be able to write this as switch.....
-function determineMonth(month) {
-  if (month === 'Jan') {
-    month = 1;
-  } else if (month === 'Feb') {
-    month = 2;
-  } else if (month === 'Mar') {
-    month = 3;
-  } else if (month === 'Apr') {
-    month = 4;
-  } else if (month === 'May') {
-    month = 5;
-  } else if (month === 'Jun') {
-    month = 6;
-  } else if (month === 'Jul') {
-    month = 7;
-  } else if (month === 'Aug') {
-    month = 8;
-  } else if (month === 'Sep') {
-    month = 9;
-  } else if (month === 'Oct') {
-    month = 10;
-  } else if (month === 'Nov') {
-    month = 11;
-  } else {
-    month = 12;
+function determineMonth(monthString) {
+  let monthObj = {
+    'Jan': 1,
+    'Feb': 2,
+    'Mar': 3,
+    'Apr': 4,
+    'May': 5,
+    'Jun': 6,
+    'Jul': 7,
+    'Aug': 8,
+    'Sep': 9,
+    'Oct': 10,
+    'Nov': 11,
+    'Dec': 12
   }
-  return month;
+  let monthNum = monthObj[monthString];
+  return monthNum
 }
 
 function formatInDate() {
@@ -135,14 +124,13 @@ function captureBooking(event) {
   let currentMonth = now.split(' ')[1];
   let currentMonthNum = determineMonth(currentMonth);
   let currentDate = Number(new Date().toString().split(' ')[2]);
-  // let currentYear = Number(new Date().toString().split(' ')[3]);
   let checkIn = formatInDate();
   let checkOut = formatOutDate();
   let checkInMonth = Number(checkIn.split('/')[0]);
   let checkInDate = Number(checkIn.split('/')[1]);
   let checkOutMonth = Number(checkOut.split('/')[0]);
   let checkOutDate = Number(checkOut.split('/')[1]);
-  if (checkInMonth < currentMonthNum || checkOutMonth < currentMonthNum || inDate.value === '' || outDate.value === '' || (checkInMonth >= currentMonthNum && checkInDate < currentDate) || (checkOutMonth === currentMonthNum && checkOutDate <= currentDate)) {
+  if ((checkInMonth === currentMonthNum && checkInDate < currentDate) || (checkOutMonth === currentMonthNum && checkOutDate <= currentDate) || inDate.value === '' || outDate.value === '') {
     domUpdates.revealError(bookingErr);
     return;
   } else { 
@@ -361,8 +349,6 @@ function returnToFilters() {
   domUpdates.showFilterBtns();
   domUpdates.showFilterLabels();
   domUpdates.showContentAreas();
-  domUpdates.addHidden(backBtn);
-  domUpdates.addHidden(startOver);
   domUpdates.addHidden(roomsDisplay);
   domUpdates.addHidden(selectedRoom);
   domUpdates.addHidden(selectionTitle);

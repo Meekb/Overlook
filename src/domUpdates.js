@@ -85,7 +85,7 @@ let domUpdates = {
     yourRoom.innerHTML = '';
     yourRoom.innerHTML =  
     `  
-      <h2 class="your-room" id="yourRoom">You have rightly selected the luxurious, Room Number ${roomNumber}!</h2>
+      <h4 class="your-room" id="yourRoom">You have rightly selected the luxurious, Room Number ${roomNumber}!</h4>
     `
   },
 
