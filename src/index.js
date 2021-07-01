@@ -22,9 +22,6 @@ const hideDetailBtn = document.getElementById('hideDetailBtn');
 // ROOM BOOK DETAIL AREA
 const roomFilterArea = document.getElementById('roomFilterArea');
 const bookItBtn = document.getElementById('bookItBtn');
-const junior = document.getElementById('junior');
-const luxury = document.getElementById('luxury');
-const suite = document.getElementById('suite');
 const startOver = document.getElementById('startOver');
 const backBtn = document.getElementById('backBtn');
 const selectionTitle = document.getElementById('selectionTitle');
@@ -50,7 +47,7 @@ roomsDisplay.addEventListener('click', bookThisRoom);
 
 //ONLOAD/EVENT HANDLERS
 window.onload = () => {
-  apiCalls.receiveData()
+apiCalls.receiveData()
     .then((promise) => {
       customersData = promise[0];
       roomsData = promise[1];
@@ -83,7 +80,7 @@ function closeHistory(event) {
 }
 
 function determineMonth(monthString) {
-  let monthObj = {
+  const monthObj = {
     'Jan': 1,
     'Feb': 2,
     'Mar': 3,
@@ -157,10 +154,10 @@ function confirmAndPost() {
       customersData = promise[0];
       roomsData = promise[1];
       bookingsData = promise[2];
-  }); 
-  domUpdates.displayCustDetail(customer);
-  console.log(newBooking);
-  domUpdates.displayConfirmation(newBooking);
+  });
+  let conf = newBooking.createBookingConf(17) 
+  domUpdates.displayConfirmation(conf);
+  // domUpdates.displayCustDetail(customer);
 }
 
 // FUNCTIONS
@@ -340,9 +337,9 @@ function returnToCalendar() {
   domUpdates.addHidden(selectedRoom);
   domUpdates.addHidden(selectionTitle);
   domUpdates.addHidden(startOver);
+  domUpdates.showContentAreas();
   domUpdates.removeHidden(bookRoomArea);
   domUpdates.clearCalendar(inDate, outDate);
-  domUpdates.showContentAreas();
 }
 
 function returnToFilters() {
