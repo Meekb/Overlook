@@ -62,13 +62,13 @@
         <input type="date" class="out-date" id="outDate" required>
       </form>
       <p class="booking-err-msg hidden" id="bookErrMsg">Error: Please select valid check-in/checkout dates.</p>
-      <p class="client-error hidden" id="clientErr">Client Error: Please check your connection and try again</p>
+      <!-- <p class="client-error hidden" id="clientErr">Client Error: Please check your connection and try again</p> -->
       <button type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
     </main>
 
     <main class="room-filter-area" id="roomFilterArea">
-      <h2>Pick your room type:</h2>
-      <h3 class="filter-data" id="filterDate">Checkin Date:</h3>
+      <h3>Pick your room type:</h3>
+      <h4 class="filter-data" id="filterDate">Checkin Date:</h4>
       <label for="filter-btn">Most Luxurious:</label><br>
       <input type="button" name="Luxury Residential Suite" value="Luxury Residential Suite" class="filter-btn" id="luxury" /><br> 
       <label for="filter-btn">Still Very Luxurious:</label><br>
@@ -93,7 +93,9 @@
       <label for="details-btn">
         <input type="button" name="details" value="Display History" class="details-btn" id="detailsBtn">
       </label>
-      <button type="submit" class="hide-details-btn hidden" id="hideDetailBtn">Hide History</button>
+      <label for="hideDetailBtn">
+        <input type="button" class="hide-details-btn hidden" id="hideDetailBtn"/>
+      </label>
       <div class="all-details" id="allDetails">
       </div>
       
@@ -122,9 +124,6 @@
     </section>
     
     <div class="rooms-display-title hidden" id="selectionTitle"><h1 id="selectRoomText">Select Your Room Now!</h1></div>
-    
-    <!-- <section class="content content-3" id="roomPic">
-    </section> -->
     
     <div class="rooms-display hidden" id="roomsDisplay">
       <section class="room-display" id="roomDisplay">

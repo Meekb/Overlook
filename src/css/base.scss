@@ -69,8 +69,6 @@ body {
 }
 
 .main-login {
-  // background-image: url(../images/over-overlook.png);
-  // background-size: $coverAll;
   grid-area: main-l;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
@@ -78,7 +76,6 @@ body {
   align-items: $goldieLocks;
   color: #0A0E14;
   background-color: #A3A64E;
-  // text-shadow: 3px 3px black;
   font-weight: bold;
   @include giveBorderRadius(10px);
 
@@ -123,7 +120,6 @@ body {
       // text-shadow:  2px 2px #5cd29d;
       border: 2px solid #0A0E14;
     }
-
   }
 
   .label {
@@ -150,7 +146,7 @@ body {
 // MAIN DASHBOARD
 .container-main {
   grid-template-columns: 0.7fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 8fr 5fr 1fr;
+  grid-template-rows: 1fr 8fr 5.5fr 1fr;
   grid-template-areas: "nav nav nav nav"
   "sidebar main main main"
   "sidebar content1 content2 content3"
@@ -207,6 +203,7 @@ main {
   grid-area: main;
   margin-top: 0;
   margin-right: 0.5rem;
+  padding-bottom: 10px;
   text-align: $goldieLocks;
   color: #0A0E14;
   @include giveBorderRadius(10px);
@@ -227,8 +224,8 @@ main {
 }
 
 .book-it-btn {
-  width: 9vw;
-  height: 3vh;
+  width: 130px;
+  // height: 3vh;
   margin-top: 30px;
   // position: relative;
   color: #0A0E14;
@@ -248,39 +245,21 @@ form {
 }
 
 .date {
-  font-size: 14px;
+  font-size: 12px;
   color: #0A0E14
 }
 
 .booking-err-msg {
-  position: relative;
+  position: absolute;
   color: $error-color;
   font-size: 20px;
   font-weight: bold;
   padding-top: 20px;
   margin-top: 55px;
-  margin-left: 500px;
+  margin-left: 350px;
   text-align: justify;
   text-shadow: 0.1px 1px $primary-color;
 }
-
-// .book-it-btn {
-//   width: 9vw;
-//   height: 3vh;
-//   // position: relative;
-//   color: #0A0E14;
-//   border: 2px solid #0A0E14;
-//   background: $nope;
-//   font-size: 18px;
-//   font-weight: bold;
-//   margin-top: 2px;
-//   @include giveBorderRadius(4px);
-
-//   &:hover {
-//     background: #A68776;
-//   }
-
-// }
 
 .sidebar {
   // background-image: url(../images/overlook-skypool.png);
@@ -310,12 +289,12 @@ form {
     border: 3px solid #0A0E14;
     border-radius: 4px;
     background: $nope;
-    height: 2.8rem;
+    height: 2.2rem;
     font-size: 20px;
     font-weight: bold;
     color: $primary-color;
     // text-shadow: 1.5px 1.5px whitesmoke;
-    @include giveBorderRadius(4px);
+    @include giveBorderRadius(6px);
 
     &:hover {
       background: #B3B656;
@@ -334,7 +313,7 @@ form {
     font-size: 20px;
     font-weight: bold;
     height: 2.8rem;
-    @include giveBorderRadius(4px);
+    @include giveBorderRadius(6px);
 
     &:hover {
       &:hover {
@@ -457,30 +436,49 @@ hr {
 
 
 //MEDIA QUERIES
-// @media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1200px) {
   
-//   .container-login {
-//     @include chooseDisplay(flex);
-//     flex-direction: column;
-//   }
+  .container-login {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20% 20% 20% 40%;
+    grid-template-areas: "nav-l nav-l nav-l nav-l"
+    "main-l main-l main-l main-l"
+    "main-l main-l main-l main-l"
+    "sidebar-l sidebar-l sidebar-l sidebar-l";
+    @include chooseDisplay(grid);
+    @include setGridGap(0.5rem);
+    @include setHeight(100vh)
+  }
 
-//   .aside-login {
-//     background:#805e73;
-//     color: $primary-color;
-//     height: 100%;
-//     padding-top: 35px;
-//     margin-bottom: 0.5rem;
-//     margin-left: 0.5rem;
-//     margin-right: 0.5rem;
-//     text-align: $goldieLocks;
-//     font-size: 22px;
-//     font-weight: bold;
-//     @include giveBorderRadius(10px);
-//   }
+  .main-login {
+    grid-area: main-l;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+    justify-content: $goldieLocks;
+    align-items: $goldieLocks;
+    color: #0A0E14;
+    background-color: #A3A64E;
+    font-weight: bold;
+    @include giveBorderRadius(10px);
+  
+    .username {
+      margin-top: 95px;
+    }
+  }
 
-//   .main-login {
-//     margin-right: 0.5rem;
-//     margin-left: 0.5rem;
-//   }
+  .aside-login {
+    background:#A68776;
+    color: $primary-color;
+    grid-area: sidebar-l;
+    padding-top: 60px;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+    text-align: $goldieLocks;
+    font-size: 22px;
+    font-weight: bold;
+    @include giveBorderRadius(10px);
+  }
 
-// }
+}

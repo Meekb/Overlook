@@ -23,7 +23,10 @@ let domUpdates = {
     navBar.innerHTML = `Welcome back, ${customer.name.split(' ').shift()}! 
     <br> 
     <p class="date" id="dateDisplay">The current date and time is: <span id="myDate">${date}</span></p>
-    <button type="submit" class="logout" id="logout">Logout</button>`;
+    <label for='logout'>
+    <input type="button" value='Logout' class="logout" id="logout"/>
+    <label/>
+    `
     detailText.innerHTML = `${customer.name}`;
     const logout = document.getElementById('logout');
     logout.addEventListener('click', this.toggleToLoginPage);
@@ -89,13 +92,12 @@ let domUpdates = {
     `
   },
 
-  displayConfirmation(bking) {
+  displayConfirmation(conf) {
     let yourRoom = document.getElementById('yourRoom');
     yourRoom.innerHTML = '';
     yourRoom.innerHTML +=  
     `  
-      <h2 class="your-room" id="yourRoom">Your Room is booked!<br></h2><h3>Confirmation# ${bking.bookingConfirmation}</h3><br>
-      <h4>Please retain for your records</h4>
+      <h2 class="your-room" id="yourRoom">Your Room is booked!<br></h2><p>Confirmation# ${conf}</p><p>Please retain for your records</p>
     `
   },
 
