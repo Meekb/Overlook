@@ -150,7 +150,7 @@ body {
 // MAIN DASHBOARD
 .container-main {
   grid-template-columns: 0.7fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 8fr 5fr 1fr;
+  grid-template-rows: 1fr 8fr 5.5fr 1fr;
   grid-template-areas: "nav nav nav nav"
   "sidebar main main main"
   "sidebar content1 content2 content3"
@@ -207,6 +207,7 @@ main {
   grid-area: main;
   margin-top: 0;
   margin-right: 0.5rem;
+  padding-bottom: 10px;
   text-align: $goldieLocks;
   color: #0A0E14;
   @include giveBorderRadius(10px);
@@ -227,8 +228,8 @@ main {
 }
 
 .book-it-btn {
-  width: 9vw;
-  height: 3vh;
+  width: 130px;
+  // height: 3vh;
   margin-top: 30px;
   // position: relative;
   color: #0A0E14;
@@ -253,34 +254,16 @@ form {
 }
 
 .booking-err-msg {
-  position: relative;
+  position: absolute;
   color: $error-color;
   font-size: 20px;
   font-weight: bold;
   padding-top: 20px;
   margin-top: 55px;
-  margin-left: 500px;
+  margin-left: 350px;
   text-align: justify;
   text-shadow: 0.1px 1px $primary-color;
 }
-
-// .book-it-btn {
-//   width: 9vw;
-//   height: 3vh;
-//   // position: relative;
-//   color: #0A0E14;
-//   border: 2px solid #0A0E14;
-//   background: $nope;
-//   font-size: 18px;
-//   font-weight: bold;
-//   margin-top: 2px;
-//   @include giveBorderRadius(4px);
-
-//   &:hover {
-//     background: #A68776;
-//   }
-
-// }
 
 .sidebar {
   // background-image: url(../images/overlook-skypool.png);
