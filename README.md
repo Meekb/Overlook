@@ -11,7 +11,7 @@
   * Login page requires valid username and password (username: customer < 1 thru 50 > password: overlook2021)
   * Availability of room type changes with each booking POSTed
   * Aria labels for full accessibility 
-  * Employed breakpoint at 768px for responsive design enjoyable on desktop, or tablet
+  * Employed breakpoint at 1200px for responsive design enjoyable on desktop, or tablet
   * Deployment to GitHub Pages coming Soon!
 
 Providing Incorrect Username or Password will throw an error!
