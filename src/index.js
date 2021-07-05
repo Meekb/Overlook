@@ -116,7 +116,38 @@ function formatOutDate() {
 }
 
 function captureBooking(event) {
-  event.preventDefault()  
+  event.preventDefault();
+  if (checkForDateErr()) {
+    domUpdates.revealError(bookingErr);
+    return;
+  } else { 
+    runBookingSequence();
+    domUpdates.showFilterBtns();
+    domUpdates.showFilterLabels();
+  }
+}  
+
+  // let now = new Date().toString();
+  // let currentMonth = now.split(' ')[1];
+  // let currentMonthNum = determineMonth(currentMonth);
+  // let currentDate = Number(new Date().toString().split(' ')[2]);
+  // let checkIn = formatInDate();
+  // let checkOut = formatOutDate();
+  // let checkInMonth = Number(checkIn.split('/')[0]);
+  // let checkInDate = Number(checkIn.split('/')[1]);
+  // let checkOutMonth = Number(checkOut.split('/')[0]);
+  // let checkOutDate = Number(checkOut.split('/')[1]);
+  // if ((checkInMonth === currentMonthNum && checkInDate < currentDate) || (checkOutMonth === currentMonthNum && checkOutDate <= currentDate) || inDate.value === '' || outDate.value === '') {
+  //   domUpdates.revealError(bookingErr);
+  //   return;
+//   } else { 
+//     runBookingSequence();
+//     domUpdates.showFilterBtns();
+//     domUpdates.showFilterLabels();
+//   }
+// }
+
+function checkForDateErr() {
   let now = new Date().toString();
   let currentMonth = now.split(' ')[1];
   let currentMonthNum = determineMonth(currentMonth);
@@ -128,14 +159,9 @@ function captureBooking(event) {
   let checkOutMonth = Number(checkOut.split('/')[0]);
   let checkOutDate = Number(checkOut.split('/')[1]);
   if ((checkInMonth === currentMonthNum && checkInDate < currentDate) || (checkOutMonth === currentMonthNum && checkOutDate <= currentDate) || inDate.value === '' || outDate.value === '') {
-    domUpdates.revealError(bookingErr);
-    return;
-  } else { 
-    runBookingSequence();
-    domUpdates.showFilterBtns();
-    domUpdates.showFilterLabels();
+    return true;
   }
-}
+}   
 
 function bookThisRoom(event) {
   event.preventDefault();

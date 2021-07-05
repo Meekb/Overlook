@@ -9,23 +9,23 @@
 </head>
 <body>
   
-  <section class="container-login " id="loginPage">
+  <section class="container-login hidden" id="loginPage">
     <nav class="nav-login">
       <h1>Experience Overlook!</h1>
     </nav>
 
     <main class="main-login">
-      <form action="URLtoSendto" name="login" id="loginForm">
+      <form aria-label="Login Area" action="URLtoSendto" name="login" id="loginForm">
         <div class="label">
           <label for="username" class="label-username">Username:</label>
-          <input type="text" id="username" placeholder="username" class="username" required>
+          <input aria-label="Username Input" type="text" id="username" placeholder="username" class="username" required>
         </div>
         <div class="label">
           <label for="password" class="label-password">Password:</label>
-          <input type="password" id="password" placeholder="password" class="password" required>
+          <input aria-label="Password Input" type="password" id="password" placeholder="password" class="password" required>
         </div>
         <div class="login-btn-container">
-          <button type="submit" name="login" form="loginForm" formmethod="GET" class="login-btn" id="loginBtn">Login</button>
+          <button aria-label="Login" type="submit" name="login" form="loginForm" formmethod="GET" class="login-btn" id="loginBtn">Login</button>
         </div>
         <div class="login-error-container">
           <p class="login-err-msg hidden" id="loginErrMsg">Invalid username and/or password</p>
@@ -36,14 +36,14 @@
 
     <aside class="aside-login">
       <p>Welcome to the newly re-opened Overlook Hotel.</p><br>
-      <p>New Manager: Sergeant Burgermarpher</p><br>
+      <p>Manager: Sergeant Burgermarpher</p><br>
       <p>Book today to experience luxury first-hand!</p>
     </aside>
   </section>
 
 
   <!-- //lighthouse -->
-  <section class="container-main hidden" id="mainPage">
+  <section class="container-main " id="mainPage">
     <nav class="nav-bar" id="navBar">
       <h1 class="welcome">Welcome User!</h1>
       <p class="date" id="dateDisplay">The current date and time is: <span id="myDate"></span></p>
@@ -52,36 +52,29 @@
     <main class="book-area" id="bookRoom">
       <h2>Book A Room</h2>
       <h3>Select your dates:</h3>
-      <form action="current page">
+      <form aria-label="Calendar Check-in" action="current page">
         <label for="check-in">Check-in</label>
-        <input type="date" class="in-date" id="inDate">
+        <input aria-label="Check-in Date Entry" type="date" class="in-date" id="inDate">
       </form>
       <br>
-      <form action="checkout">
+      <form aria-label="Calendar Checkout" action="checkout">
         <label for="roomBooking">Checkout</label>
-        <input type="date" class="out-date" id="outDate" required>
+        <input aria-label="Checkout Date Entry" type="date" class="out-date" id="outDate" required>
       </form>
       <p class="booking-err-msg hidden" id="bookErrMsg">Error: Please select valid check-in/checkout dates.</p>
       <!-- <p class="client-error hidden" id="clientErr">Client Error: Please check your connection and try again</p> -->
-      <button type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
+      <button aria-label="Book Room" type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
     </main>
 
     <main class="room-filter-area" id="roomFilterArea">
       <h3>Pick your room type:</h3>
       <h4 class="filter-data" id="filterDate">Checkin Date:</h4>
-      <label for="filter-btn">Most Luxurious:</label><br>
-      <input type="button" name="Luxury Residential Suite" value="Luxury Residential Suite" class="filter-btn" id="luxury" /><br> 
-      <label for="filter-btn">Still Very Luxurious:</label><br>
-      <input type="button" name="Suite" value="Suite" class="filter-btn" id="suite" /><br> 
-      <label for="filter-btn">A Lil Luxurious:</label><br>
-      <input type="button" name="Junior Suite" value="Junior Suite" class="filter-btn" id="junior" /><br> 
-      <label for="filter-btn">Free Breakfast:</label><br>
-      <input type="button" name="Single Room" value="Single Room" class="filter-btn" id="single" /><br> 
-      <div>
-        <label for="back-btn" class="back-btn">Back To Room Selection:</label><br>
-        <input type="button" name="Back To Rooms" value="Back To Rooms" class="back-btn" id="backBtn" /><br>
-        <label for="start-over-btn">Back To Calendar:</label><br>
-        <input type="button" name="Start Over" value="Start Over" class="start-over-btn" id="startOver" />
+      <button aria-label="Residential Suite" class="filter-btn" id="luxury">Residential Suite</button>
+      <button aria-label="Suite" class="filter-btn" id="suite">Suite</button>
+      <button aria-label="Junior Suite" class="filter-btn" id="junior">Junior Suite</button>
+      <button aria-label="Single Room" class="filter-btn" id="single">Single Room</button>
+      <button aria-label="Back To Choose Room Type" class="back-btn" id="backBtn">Room Types</button>
+      <button aria-label="Start Over" class="filter-btn" id="startOver">Start Over</button>
       </div>
     </main>
     
@@ -90,12 +83,8 @@
       <p class="detail-text" id="detailText">Customer Detail</p>
       <p class="total-bookings" id="totalBookings">Total Bookings at Overlook:</p>
       <p class="total-spent" id="totalSpent">Total Spent at Overlook:</p>
-      <label for="details-btn">
-        <input type="button" name="details" value="Display History" class="details-btn" id="detailsBtn">
-      </label>
-      <label for="hideDetailBtn">
-        <input type="button" class="hide-details-btn hidden" id="hideDetailBtn"/>
-      </label>
+        <button aria-label="Display My Overlook History" type="button" class="details-btn" id="detailsBtn">Display History</button>
+        <button aria-label="Hide My History" type="button" class="hide-details-btn hidden" id="hideDetailBtn">Hide History</button>
       <div class="all-details" id="allDetails">
       </div>
       
@@ -132,7 +121,6 @@
     </div>
 
   </section>  
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
 
 </body>

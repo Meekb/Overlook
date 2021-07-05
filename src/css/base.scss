@@ -37,7 +37,7 @@ body {
   @include setHeight(100%);
   padding: 0;
   margin: 0;
-  background: $primary-color;
+  background: #563813;
 }
 
 // PAGE LOGIN
@@ -208,13 +208,14 @@ main {
   color: #0A0E14;
   @include giveBorderRadius(10px);
 
-  input {
+  button {
     width: 230px;
     font-size: 18px;
     color: #0A0E14;
     background: $nope;
-    margin-top: 4px;
-    border: 2px solid #0A0E14;
+    // margin-top: 4px;
+    margin: 25px;
+    border: 4px solid #0A0E14;
     @include giveBorderRadius(10px);
 
     &:hover {
@@ -262,8 +263,6 @@ form {
 }
 
 .sidebar {
-  // background-image: url(../images/overlook-skypool.png);
-  // background-size: $coverAll;
   background-color: #A68776;
   grid-area: sidebar;
   text-align: $goldieLocks;
@@ -274,7 +273,6 @@ form {
   
   h2 {
     color: #0A0E14;
-    // text-shadow: 1px 3px whitesmoke;
   }
 
   p {
@@ -282,45 +280,40 @@ form {
     font-size: 24px;
     font-weight: bold;
     color: #0A0E14;
-    // text-shadow: 1px 3px whitesmoke;
   }
 
   .details-btn {
     border: 3px solid #0A0E14;
-    border-radius: 4px;
     background: $nope;
     height: 2.2rem;
     font-size: 20px;
     font-weight: bold;
     color: $primary-color;
-    // text-shadow: 1.5px 1.5px whitesmoke;
     @include giveBorderRadius(6px);
 
     &:hover {
       background: #B3B656;
       color: #0A0E14;
       border: 3px solid #0A0E14;
-      // text-shadow: 1.5px 1.5px #56cbf9;
     }
 
   }
 
   .hide-details-btn {
-    border: 3px solid $primary-color;
-    color: $primary-color;
-    // text-shadow: 1.5px 1.5px whitesmoke;
+    border: 3px solid #0A0E14;
     background: $nope;
+    height: 2.2rem;
     font-size: 20px;
     font-weight: bold;
-    height: 2.8rem;
+    color: $primary-color;
     @include giveBorderRadius(6px);
+
 
     &:hover {
       &:hover {
         background: #B3B656;
         color: $primary-color;
         border: 3px solid $primary-color;
-        // text-shadow: 1.5px 1.5px #56cbf9;
       }
     }
   }
