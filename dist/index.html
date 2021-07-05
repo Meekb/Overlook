@@ -25,7 +25,7 @@
           <input type="password" id="password" placeholder="password" class="password" required>
         </div>
         <div class="login-btn-container">
-          <button type="submit" name="login" form="loginForm" formmethod="GET" class="login-btn" id="loginBtn">Login</button>
+          <button aria-label="Login" type="submit" name="login" form="loginForm" formmethod="GET" class="login-btn" id="loginBtn">Login</button>
         </div>
         <div class="login-error-container">
           <p class="login-err-msg hidden" id="loginErrMsg">Invalid username and/or password</p>
@@ -36,7 +36,7 @@
 
     <aside class="aside-login">
       <p>Welcome to the newly re-opened Overlook Hotel.</p><br>
-      <p>New Manager: Sergeant Burgermarpher</p><br>
+      <p>Manager: Sergeant Burgermarpher</p><br>
       <p>Book today to experience luxury first-hand!</p>
     </aside>
   </section>
@@ -63,13 +63,19 @@
       </form>
       <p class="booking-err-msg hidden" id="bookErrMsg">Error: Please select valid check-in/checkout dates.</p>
       <!-- <p class="client-error hidden" id="clientErr">Client Error: Please check your connection and try again</p> -->
-      <button type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
+      <button aria-label="Book Room" type="submit" class="book-it-btn" id="bookItBtn">Book Now!</button>
     </main>
 
     <main class="room-filter-area" id="roomFilterArea">
       <h3>Pick your room type:</h3>
       <h4 class="filter-data" id="filterDate">Checkin Date:</h4>
-      <label for="filter-btn">Most Luxurious:</label><br>
+      <button aria-label="Residential Suite" class="filter-btn" id="luxury">Residential Suite</button>
+      <button aria-label="Suite" class="filter-btn" id="suite">Suite</button>
+      <button class="filter-btn" id="junior">Junior Suite</button>
+      <button class="filter-btn" id="single">Single Room</button>
+      <button class="back-btn" id="backBtn">Room Types</button>
+      <button class="filter-btn" id="startOver">Start Over</button>
+      <!-- <label for="filter-btn">Most Luxurious:</label><br>
       <input type="button" name="Luxury Residential Suite" value="Luxury Residential Suite" class="filter-btn" id="luxury" /><br> 
       <label for="filter-btn">Still Very Luxurious:</label><br>
       <input type="button" name="Suite" value="Suite" class="filter-btn" id="suite" /><br> 
@@ -81,7 +87,7 @@
         <label for="back-btn" class="back-btn">Back To Room Selection:</label><br>
         <input type="button" name="Back To Rooms" value="Back To Rooms" class="back-btn" id="backBtn" /><br>
         <label for="start-over-btn">Back To Calendar:</label><br>
-        <input type="button" name="Start Over" value="Start Over" class="start-over-btn" id="startOver" />
+        <input type="button" name="Start Over" value="Start Over" class="start-over-btn" id="startOver" /> -->
       </div>
     </main>
     
