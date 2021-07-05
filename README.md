@@ -34,6 +34,11 @@ gif
     <td>Mocha & Chai</td>
   </tr>
   <tr>
+    <td><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/></td>
+    <td><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/sass.svg"/></td>
+    <td><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/html-5.svg"/></td>
+    <td><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/webpack.svg"/></td>
+    <td><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/mocha.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/chai.svg"/></td>
   </tr>
 </table>
 
