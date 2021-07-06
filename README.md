@@ -15,15 +15,14 @@
   * Deployment to GitHub Pages coming Soon!
 
 Providing Incorrect Username or Password will throw an error!
-gif
-
+![recording (15)](https://user-images.githubusercontent.com/76264735/124529565-1a566780-ddc8-11eb-8070-172d7fb96a70.gif)
 
 Login and View Booking History. Trying to Book invalid checkin/checkout dates will throw an err!
-gif 
-
+![recording (16)](https://user-images.githubusercontent.com/76264735/124529760-74efc380-ddc8-11eb-9195-d99672f683a3.gif)
 
 Going through the booking process with a valid room selection will generate a Confirmation number and a new Booking Card to review
-gif
+![recording (17)](https://user-images.githubusercontent.com/76264735/124529971-d9128780-ddc8-11eb-95e2-dd03295d0248.gif)
+
 
 ## Tech Stack
 
