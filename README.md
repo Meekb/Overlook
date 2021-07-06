@@ -23,6 +23,10 @@ Login and View Booking History. Trying to Book invalid checkin/checkout dates wi
 Going through the booking process with a valid room selection will generate a Confirmation number and a new Booking Card to review
 ![recording (17)](https://user-images.githubusercontent.com/76264735/124529971-d9128780-ddc8-11eb-95e2-dd03295d0248.gif)
 
+Availability changes with every booking. If a room type is unavailable on the selected date, the user will receive an apology and be 
+prompted to select a different room type, or adjust their dates
+![recording (18)](https://user-images.githubusercontent.com/76264735/124530880-8fc33780-ddca-11eb-9f05-2e435b721851.gif)
+
 
 ## Tech Stack
 
